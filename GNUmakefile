@@ -4,7 +4,7 @@
 # 1. Source files
 
 makefile_dir = .
-VPATH = ${makefile_dir}/Sources ${makefile_dir}/Sources/Numerical
+VPATH = ${makefile_dir} ${makefile_dir}/Numerical
 
 sources = avg_mag.f count_lines.f opt_merge.f point.f compare.f csvread.f new_unit.f read_column.f jumble.f averge.f get_divisors.f dtridgl.f quadrat.f spherical.f prep_file.f prt_cmp.f uniq.f ediff1d.f pack_indices.f argwhere.f get_command_arg_dyn.f
 
