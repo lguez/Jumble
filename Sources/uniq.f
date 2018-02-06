@@ -14,13 +14,13 @@ contains
     ! zero-sized.
 
     integer, intent(in):: v(:)
-    integer, pointer:: squeezed(:)
-    integer, pointer, optional:: multiplicity(:)
+    integer, allocatable, intent(out):: squeezed(:)
+    integer, allocatable, intent(out), optional:: multiplicity(:) ! (n_squeezed)
 
     ! Local:
     logical new_val(size(v)) ! new value
     integer i, n, n_squeezed
-    integer, allocatable:: i_new(:)
+    integer, allocatable:: i_new(:) ! (n_squeezed)
     
     !------------------------------------------------------------
 
@@ -33,14 +33,11 @@ contains
        new_val(1) = .true.
        forall (i = 2: n) new_val(i) = v(i) /= v(i - 1)
 
-       n_squeezed = count(new_val)
-       allocate(squeezed(n_squeezed))
-
        if (present(multiplicity)) then
-          allocate(i_new(n_squeezed), multiplicity(n_squeezed))
-          i_new = pack((/(i, i = 1, n)/), new_val)
+          n_squeezed = count(new_val)
+          allocate(multiplicity(n_squeezed))
+          i_new = pack([(i, i = 1, n)], new_val)
           squeezed = v(i_new)
-
           forall (i = 1: n_squeezed - 1) &
                multiplicity(i) = i_new(i + 1) - i_new(i)
           multiplicity(n_squeezed) = n - i_new(n_squeezed) + 1

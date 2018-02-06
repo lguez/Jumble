@@ -21,7 +21,7 @@ contains
     use new_unit_m, only: new_unit
 
     character(len=*), intent(in):: file
-    real, pointer:: a(:)
+    real, allocatable, intent(out):: a(:)
     integer, intent(in), optional:: first ! (first line to read)
     integer, intent(in), optional:: last ! (last line to read)
 
@@ -48,7 +48,7 @@ contains
     use new_unit_m, only: new_unit
 
     character(len=*), intent(in):: file
-    character(len=*), pointer:: a(:)
+    character(len=*), allocatable, intent(out):: a(:)
     integer, intent(in), optional:: first ! (first line to read)
     integer, intent(in), optional:: last ! (last line to read)
 
