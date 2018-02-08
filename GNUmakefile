@@ -3,8 +3,7 @@
 
 # 1. Source files
 
-makefile_dir = .
-VPATH = ${makefile_dir}/Sources
+VPATH = .
 
 sources = nrtype.F nr_util.f iminloc.f arth.f array_copy.f swap.f reallocate.f imaxloc.f assert.f assert_eq.f geop.f cumsum.f poly.f poly_term.f outerprod.f outerdiff.f scatter_add.f scatter_max.f diagadd.f diagmult.f get_diag.f put_diag.f cumprod.f ifirstloc.f lower_triangle.f nrerror.f outerand.f outerdiv.f outersum.f unit_matrix.f upper_triangle.f vabs.f zroots_unity.f
 
@@ -34,14 +33,14 @@ ${lib_dyn}: ${objects}
 
 ${lib_stat}: ${lib_stat}(${objects})
 
-depend ${makefile_dir}/depend.mk:
-	makedepf90 $(addprefix -D, ${cpp_macros}) -free -Wmissing -Wconfused $(addprefix -I, ${VPATH}) -nosrc ${sources} >${makefile_dir}/depend.mk
+depend ${VPATH}/depend.mk:
+	makedepf90 $(addprefix -D, ${cpp_macros}) -free -Wmissing -Wconfused $(addprefix -I, ${VPATH}) -nosrc ${sources} >${VPATH}/depend.mk
 
 clean:
 	rm -f ${lib_dyn} ${lib_stat} ${objects} log
 
 clobber: clean
-	rm -f *.mod ${makefile_dir}/depend.mk
+	rm -f *.mod ${VPATH}/depend.mk
 
 log:
 	hostname >$@
@@ -49,5 +48,5 @@ log:
 	echo -e "\nFC = ${FC}\n\nCPPFLAGS = ${CPPFLAGS}\n\nFFLAGS = ${FFLAGS}\n\nLDFLAGS = ${LDFLAGS}\n\nldflags_lib_dyn = ${ldflags_lib_dyn}" >>$@
 
 ifneq ($(MAKECMDGOALS), clobber)
-include ${makefile_dir}/depend.mk
+include ${VPATH}/depend.mk
 endif
