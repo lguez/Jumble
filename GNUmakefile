@@ -6,7 +6,7 @@
 makefile_dir = .
 VPATH = ${makefile_dir} ${makefile_dir}/Numerical ${makefile_dir}/Numerical/Lin_2d_real
 
-sources = avg_mag.f count_lines.f opt_merge.f point.f compare.f csvread.f new_unit.f read_column.f jumble.f averge.f get_divisors.f dtridgl.f quadrat.f spherical.f prep_file.f prt_cmp.f uniq.f ediff1d.f pack_indices.f argwhere.f get_command_arg_dyn.f determin.f eigval.f eigvect.f inv_mat.f set2lin.f
+sources = avg_mag.f count_lines.f opt_merge.f point.f compare.f csvread.f new_unit.f read_column.f jumble.f averge.f divisors.f dtridgl.f quadrat.f spherical.f prep_file.f prt_cmp.f uniq.f ediff1d.f pack_indices.f argwhere.f get_command_arg_dyn.f determin.f eigval.f eigvect.f inv_mat.f set2lin.f
 
 # 2. Objects and libraries
 

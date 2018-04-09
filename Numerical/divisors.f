@@ -1,15 +1,15 @@
-module get_divisors_m
+module divisors_m
 
   implicit none
 
 contains
 
-  subroutine get_divisors(n, div)
+  pure function divisors(n)
 
-    ! Find all the divisors of a given integer.
+    ! Returns all the divisors of a given integer, not sorted.
 
-    integer, intent(in):: n
-    integer, pointer:: div(:)
+    integer, intent(in):: n ! must be >= 1
+    integer, allocatable:: divisors(:)
 
     ! Variables local to the procedure:
 
@@ -19,14 +19,8 @@ contains
 
     !------------------------
 
-    if (n <= 0) then
-       print *, "get_divisors: n = ", n
-       stop 1
-    end if
-    
     if (n == 1) then
-       work(1) = 1
-       n_div = 1
+       divisors = [1]
     else
        ! n >= 2, there are at least two divisors: 1 and "n"
        work(1) = 1
@@ -37,25 +31,24 @@ contains
 
        do i = 2, i_max - 1
           if (mod(n, i) == 0) then
-             work(n_div+1) = i
-             work(n_div+2) = n / i
+             work(n_div + 1) = i
+             work(n_div + 2) = n / i
              n_div = n_div + 2
           end if
        end do
 
        if (i_max >= 2 .and. mod(n, i_max) == 0) then
-          work(n_div+1) = i_max
+          work(n_div + 1) = i_max
           n_div = n_div + 1
           if (i_max**2 /= n) then
-             work(n_div+1) = n / i_max
+             work(n_div + 1) = n / i_max
              n_div = n_div + 1
           end if
        end if
+
+       divisors = work(:n_div)
     end if
 
-    allocate(div(n_div))
-    div = work(:n_div)
+  end function divisors
 
-  end subroutine get_divisors
-
-end module get_divisors_m
+end module divisors_m
