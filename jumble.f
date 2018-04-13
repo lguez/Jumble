@@ -14,6 +14,7 @@ module jumble
   use eigvect_m
   use get_command_arg_dyn_m
   use inv_mat_m
+  use iso_varying_string
   use new_unit_m
   use opt_merge_m
   use pack_indices_m
