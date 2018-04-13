@@ -17,6 +17,7 @@ module jumble
   use new_unit_m
   use opt_merge_m
   use pack_indices_m
+  use pr_matrix_m
   use point_m
   use quadrat_m
   use read_column_m
