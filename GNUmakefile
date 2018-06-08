@@ -15,18 +15,11 @@ objects := $(addsuffix .o, $(basename ${sources}))
 lib_dyn = libnr_util.so
 lib_stat = libnr_util.a
 
-# 3. Compiler-dependent part
+# 3. Rules
 
-mode = debug
-include ${general_compiler_options_dir}/${FC}_${mode}.mk
-
-# 4. Rules
-
-SHELL = bash
-.DELETE_ON_ERROR:
-.PHONY: all clean clobber depend
 all: ${lib_stat} log
 ##${lib_dyn}
+include ${general_compiler_options_dir}/settings.mk
 
 ${lib_dyn}: ${objects}
 	$(FC) $(LDFLAGS) ${ldflags_lib_dyn} $^ -o $@
@@ -41,11 +34,6 @@ clean:
 
 clobber: clean
 	rm -f *.mod ${VPATH}/depend.mk
-
-log:
-	hostname >$@
-	${FC} ${version_flag} >>$@ 2>&1
-	echo -e "\nFC = ${FC}\n\nCPPFLAGS = ${CPPFLAGS}\n\nFFLAGS = ${FFLAGS}\n\nLDFLAGS = ${LDFLAGS}\n\nldflags_lib_dyn = ${ldflags_lib_dyn}" >>$@
 
 ifneq ($(MAKECMDGOALS), clobber)
 include ${VPATH}/depend.mk

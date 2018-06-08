@@ -9,13 +9,15 @@ contains
     ! Location of first true value in a logical array, returned as an
     ! integer.
 
-    ! If my_lbound is not present, returns size(mask) + 1 if mask has
-    ! zero element or all elements of mask are false. So the result is
-    ! always >= 1.
+    ! If my_lbound is not present and mask has zero element or all
+    ! elements of mask are false, then this procedure returns
+    ! size(mask) + 1 . So if my_lbound is not present then the result
+    ! is always >= 1.
 
-    ! If my_lbound is present, returns my_lbound + size(mask) if mask has
-    ! zero element or all elements of mask are false. So the result is
-    ! always >= my_lbound.
+    ! If my_lbound is present and mask has zero element or all
+    ! elements of mask are false, then this procedure returns
+    ! my_lbound + size(mask) . So if my_lbound is present then the
+    ! result is always >= my_lbound.
 
     LOGICAL, INTENT(IN):: mask(:)
 

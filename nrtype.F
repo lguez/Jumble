@@ -16,6 +16,9 @@ MODULE nrtype
   DOUBLE PRECISION, PARAMETER:: PIO2_D = PI_D / 2d0
   DOUBLE PRECISION, PARAMETER:: TWOPI_D= 2d0 * pi_d
 
+  real, parameter:: deg_to_rad = pi / 180. ! degrees to radians
+  real, parameter:: rad_to_deg = 180. / pi ! radians to degrees
+  
   ! Derived data types for sparse matrices, single and double
   ! precision (see use in Chapter B2):
 
