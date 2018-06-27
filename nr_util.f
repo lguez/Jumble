@@ -13,8 +13,6 @@ module nr_util
   use geop_m
   use get_diag_m
   use ifirstloc_m
-  use imaxloc_m
-  use iminloc_m
   use lower_triangle_m
   use nrerror_m
   use nrtype

@@ -14,7 +14,7 @@ MODULE poly_term_m
      ! to lowest-order coefficients, n.b.) evaluated at x. This is
      ! equivalent to synthetic division, and can be parallelized. See
      ! § 22.3. Note that the order of arguments is reversed in poly
-     ! and poly_term —each routine returns a value with the size and
+     ! and poly_term -- each routine returns a value with the size and
      ! shape of the first argument, the usual Fortran 90 convention.
   END INTERFACE
 
