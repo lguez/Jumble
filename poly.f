@@ -6,6 +6,9 @@ MODULE poly_m
 
   INTERFACE poly
 
+     ! Evaluate a polynomial P (x) for one or more values x, with
+     ! optional mask.
+
      ! Returns a scalar value or array with the same type and shape as
      ! x, containing the result of evaluating the polynomial with
      ! one-dimensional coefficient vector coeffs on each component of

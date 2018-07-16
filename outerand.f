@@ -5,6 +5,9 @@ module outerand_m
 contains
 
   FUNCTION outerand(a,b)
+
+    ! Returns the outer logical and of two vectors.
+
     LOGICAL, DIMENSION(:), INTENT(IN) :: a,b
     LOGICAL, DIMENSION(size(a),size(b)) :: outerand
     outerand = spread(a,dim=2,ncopies=size(b)) .and. &

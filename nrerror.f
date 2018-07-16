@@ -6,7 +6,11 @@ contains
 
   SUBROUTINE nrerror(string)
 
+    ! Exit with error message.
+
     CHARACTER(LEN=*), INTENT(IN) :: string
+
+    !---------------------------------------------------------------
 
     print *, 'nrerror: ', string
     print *, 'program terminated by nrerror'

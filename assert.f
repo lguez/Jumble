@@ -3,6 +3,12 @@ MODULE assert_m
   implicit none
 
   INTERFACE assert
+     ! Exit with error message if any assertion is false. Embedding
+     ! program dies gracefully with an error message if any of the
+     ! logical arguments are false. Typical use is with logical
+     ! expressions as the actual arguments. assert implements and
+     ! overloads forms with 1, 2, 3, and 4 logical arguments, plus a
+     ! form with a vector logical argument
      MODULE PROCEDURE assert1,assert2,assert3,assert4,assert_v
   END INTERFACE
 

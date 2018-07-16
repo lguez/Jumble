@@ -3,6 +3,14 @@ MODULE assert_eq_m
   implicit none
 
   INTERFACE assert_eq
+     ! Exit with error message if integer arguments not all
+     ! equal. Embedding program dies gracefully with an error message
+     ! if any of the integer arguments are not equal to the
+     ! first. Otherwise, return the value of the first
+     ! argument. Typical use is for enforcing equality on the sizes of
+     ! arrays passed to a subprogram. assert_eq implements and
+     ! overloads forms with 1, 2, 3, and 4 integer arguments, plus a
+     ! form with a vector integer argument,
      MODULE PROCEDURE assert_eq2,assert_eq3,assert_eq4,assert_eqn
   END INTERFACE
 

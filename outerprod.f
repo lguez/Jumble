@@ -3,6 +3,7 @@ MODULE outerprod_m
   IMPLICIT NONE
 
   INTERFACE outerprod
+     ! Returns the outer product of two vectors.
      MODULE PROCEDURE outerprod_r,outerprod_d
   END INTERFACE
 

@@ -3,6 +3,7 @@ MODULE swap_m
   IMPLICIT NONE
 
   INTERFACE swap
+     ! Swap elements of two input arguments corresponding to input mask.
      MODULE PROCEDURE swap_i, swap_r, swap_rv, swap_rm, swap_c, swap_cv, &
           swap_cm, swap_z, swap_zv, swap_zm, swap_d, swap_dv
   END INTERFACE

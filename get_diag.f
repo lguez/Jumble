@@ -3,6 +3,7 @@ MODULE get_diag_m
   IMPLICIT NONE
 
   INTERFACE get_diag
+     ! Gets diagonal of a matrix.
      MODULE PROCEDURE get_diag_rv, get_diag_dv
   END INTERFACE
 

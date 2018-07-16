@@ -3,6 +3,7 @@ MODULE diagadd_m
   IMPLICIT NONE
 
   INTERFACE diagadd
+     ! Adds vector to diagonal of a matrix.
      MODULE PROCEDURE diagadd_rv,diagadd_r
   END INTERFACE
 

@@ -5,6 +5,7 @@ module lower_triangle_m
 contains
 
   FUNCTION lower_triangle(j,k,extra)
+    !  Returns a lower triangular logical mask.
     use arth_m, only: arth
     use outerdiff_m, only: outerdiff
     INTEGER, INTENT(IN) :: j,k

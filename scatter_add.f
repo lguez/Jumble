@@ -5,6 +5,8 @@ MODULE scatter_add_m
   IMPLICIT NONE
 
   INTERFACE scatter_add
+     ! Scatter-adds source vector to specified components of
+     ! destination vector.
      MODULE PROCEDURE scatter_add_r,scatter_add_d
   END INTERFACE
 

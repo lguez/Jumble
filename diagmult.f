@@ -3,6 +3,7 @@ MODULE diagmult_m
   IMPLICIT NONE
 
   INTERFACE diagmult
+     ! Multiplies vector into diagonal of a matrix.
      MODULE PROCEDURE diagmult_rv,diagmult_r
   END INTERFACE
 

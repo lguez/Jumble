@@ -5,6 +5,8 @@ module unit_matrix_m
 contains
 
   SUBROUTINE unit_matrix(mat)
+
+    ! Sets matrix to be a unit matrix.
     
     USE nrtype, only: wp
     

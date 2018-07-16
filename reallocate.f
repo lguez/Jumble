@@ -3,6 +3,7 @@ MODULE reallocate_m
   IMPLICIT NONE
 
   INTERFACE reallocate
+     ! Reallocate pointer to new size, preserving its contents.
      MODULE PROCEDURE reallocate_rv, reallocate_rm, reallocate_iv, &
           reallocate_im, reallocate_hv
   END INTERFACE

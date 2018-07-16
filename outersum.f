@@ -5,6 +5,9 @@ module outersum_m
 contains
 
   FUNCTION outersum(a,b)
+
+    ! Returns the outer sum of two vectors.
+    
     USE nrtype, only: wp
     REAL(WP), DIMENSION(:), INTENT(IN) :: a,b
     REAL(WP), DIMENSION(size(a),size(b)) :: outersum

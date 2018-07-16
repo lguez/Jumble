@@ -5,6 +5,8 @@ MODULE scatter_max_m
   IMPLICIT NONE
 
   INTERFACE scatter_max
+     ! Scatter-max source vector to specified components of
+     ! destination vector.
      MODULE PROCEDURE scatter_max_r, scatter_max_d
   END INTERFACE
 

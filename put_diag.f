@@ -3,6 +3,7 @@ MODULE put_diag_m
   IMPLICIT NONE
 
   INTERFACE put_diag
+     ! Sets diagonal of a matrix.
      MODULE PROCEDURE put_diag_rv, put_diag_r
   END INTERFACE
 

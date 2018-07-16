@@ -5,6 +5,9 @@ module vabs_m
 contains
 
   FUNCTION vabs(v)
+
+    ! Length of a vector in L2 norm.
+    
     USE nrtype, only: wp
     REAL(WP), DIMENSION(:), INTENT(IN) :: v
     REAL(WP) :: vabs

@@ -3,6 +3,7 @@ MODULE geop_m
   IMPLICIT NONE
 
   INTERFACE geop
+     ! Return a geometrical progression as an array.
      MODULE PROCEDURE geop_r, geop_d, geop_i, geop_c, geop_dv
   END INTERFACE
 

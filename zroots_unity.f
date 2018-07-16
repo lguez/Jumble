@@ -6,7 +6,7 @@ contains
 
   FUNCTION zroots_unity(n, nn)
 
-    ! Returns nn powers of the nth root of unity.
+    ! Returns nn consecutive powers of the nth root of unity.
 
     USE nrtype, only: wp, twopi
 

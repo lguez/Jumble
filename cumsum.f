@@ -5,6 +5,7 @@ MODULE cumsum_m
   INTEGER, PARAMETER, private :: NPAR_CUMSUM=16
 
   INTERFACE cumsum
+     ! Cumulative sums of one-dimensional array, with optional seed value.
      MODULE PROCEDURE cumsum_r,cumsum_i, cumsum_d
   END INTERFACE
 
