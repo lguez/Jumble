@@ -15,7 +15,7 @@ FFLAGS = -ffree-form -O2
 
 # 3. Rules
 
-.PHONY: all clean depend
+.PHONY: all clean
 all: ${lib}
 ${lib}: ${lib}(${objects})
 
