@@ -9,8 +9,9 @@ lib = libnr_util.a
 
 # 2. Compiler-dependent part
 
+FC = gfortran
 CPPFLAGS = -DCPP_WP='kind(0.)'
-FFLAGS = -ffree-form
+FFLAGS = -ffree-form -O2
 
 # 3. Rules
 
