@@ -7,6 +7,7 @@ module jumble
   use count_lines_m
   use csvread_m
   use determin_m
+  use differ_s_m
   use divisors_m
   use dtridgl_m
   use ediff1d_m

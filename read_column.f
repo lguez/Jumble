@@ -77,6 +77,7 @@ contains
     ! actually be read, taking information from the file itself if necessary.
     ! It also positions the input file on the first line to read.
 
+    use count_lines_m, only: count_lines
     use opt_merge_m, only: opt_merge
 
     integer, intent(in):: unit ! logical unit for input file
@@ -85,8 +86,8 @@ contains
     integer, intent(out):: first_not_opt ! (first line to read, not optional)
     integer, intent(out):: last_not_opt ! (last line to read, not optional)
 
-    ! Variables local to the subprogram:
-    integer iostat, i
+    ! Local:
+    integer i
 
     !------------------------------------------------------
 
@@ -94,16 +95,8 @@ contains
     last_not_opt = opt_merge(last, 0)
 
     if (last_not_opt == 0) then
-       ! Count the number of lines in the file:
-       i = 0
-       do
-          read(unit, fmt=*, iostat=iostat)
-          if (iostat /= 0) exit
-          i = i + 1
-       end do
-       last_not_opt = i
+       call count_lines(unit, last_not_opt)
        if (last_not_opt == 0) stop 'Empty file.'
-
        rewind(unit)
     end if
 

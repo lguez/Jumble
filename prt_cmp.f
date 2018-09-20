@@ -3,7 +3,8 @@ module prt_cmp_m
   implicit none
 
   interface prt_cmp
-     ! Used by "compare".
+     ! Used by "compare". Only useful for "compare" so do not use this
+     ! module in the grouping module jumble.
      module procedure prt_cmp_real, prt_cmp_double
   end interface prt_cmp
 

@@ -4,9 +4,10 @@
 # 1. Source files
 
 makefile_dir = .
-VPATH = ${makefile_dir} ${makefile_dir}/Numerical ${makefile_dir}/Numerical/Lin_2d_real
 
-sources = avg_mag.f count_lines.f opt_merge.f point.f compare.f csvread.f new_unit.f read_column.f jumble.f averge.f divisors.f dtridgl.f quadrat.f spherical.f prep_file.f prt_cmp.f uniq.f ediff1d.f pack_indices.f argwhere.f get_command_arg_dyn.f determin.f eigval.f eigvect.f inv_mat.f set2lin.f pr_matrix.f iso_varying_string.f
+VPATH := ${makefile_dir} $(addprefix ${makefile_dir}/, Numerical Numerical/Lin_2d_real)
+
+sources = avg_mag.f count_lines.f opt_merge.f point.f compare.f csvread.f new_unit.f read_column.f jumble.f averge.f divisors.f dtridgl.f quadrat.f spherical.f prep_file.f prt_cmp.f uniq.f ediff1d.f pack_indices.f argwhere.f get_command_arg_dyn.f determin.f eigval.f eigvect.f inv_mat.f set2lin.f pr_matrix.f iso_varying_string.f differ_s.f
 
 # 2. Objects and libraries
 
@@ -16,16 +17,12 @@ lib_stat = libjumble.a
 
 # 3. Compiler-dependent part
 
-mode = debug
-include ${general_compiler_options_dir}/${FC}_${mode}.mk
+include ${general_compiler_options_dir}/settings.mk
 
 # 4. Rules
 
 all: ${lib_stat} log
 ##${lib_dyn}
-
-include ${general_compiler_options_dir}/settings.mk
-.PHONY: all clean clobber depend
 
 ${lib_dyn}: ${objects}
 	$(FC) $(LDFLAGS) ${ldflags_lib_dyn} $^ -o $@
@@ -37,9 +34,6 @@ depend ${makefile_dir}/depend.mk:
 
 clean:
 	rm -f ${lib_dyn} ${lib_stat} ${objects} log
-
-clobber: clean
-	rm -f *.mod ${makefile_dir}/depend.mk TAGS
 
 ifneq ($(MAKECMDGOALS), clobber)
 include ${makefile_dir}/depend.mk

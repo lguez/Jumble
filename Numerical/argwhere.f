@@ -2,16 +2,36 @@ module argwhere_m
 
   implicit none
 
-contains
-
-  pure function argwhere(mask)
-
+  interface argwhere
     ! Returns the indices of true elements, in array element
     ! order. (The name of this procedure is taken from Numpy.) See
     ! also pack_indices.
 
+     module procedure argwhere_1, argwhere_2
+  end interface argwhere
+
+contains
+
+  pure function argwhere_1(mask)
+
+    logical, intent(in):: mask(:)
+    integer, allocatable:: argwhere_1(:)
+
+    ! Local:
+    integer i
+
+    !--------------------------------------------------------------
+
+    argwhere_1 = pack([(i, i = 1, size(mask))], mask)
+
+  end function argwhere_1
+
+  !******************************************************************  
+
+  pure function argwhere_2(mask)
+
     logical, intent(in):: mask(:, :)
-    integer, allocatable:: argwhere(:, :) ! (2, :)
+    integer, allocatable:: argwhere_2(:, :) ! (2, :)
 
     ! Local:
     integer n_packed, i, j, m
@@ -32,8 +52,8 @@ contains
        end do
     end do
 
-    argwhere = t(:, :n_packed)
+    argwhere_2 = t(:, :n_packed)
 
-  end function argwhere
+  end function argwhere_2
 
 end module argwhere_m

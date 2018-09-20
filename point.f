@@ -3,8 +3,17 @@ module point_m
   implicit none
 
   interface point
-     ! The difference between the procedures is the rank and type of
-     ! the first argument.
+     ! Returns the element of an array, given the vector of its
+     ! indices. That is, you can write:
+     
+     ! point(array, location)
+
+     ! instead of :
+
+     ! array(location(1), location(2), location(3))
+
+     ! for example. The difference between the procedures is the rank
+     ! and type of the first argument.
      module procedure point_2, point_2_dble, point_3, point_3_dble, point_4, &
           point_4_dble
   end interface

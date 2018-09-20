@@ -2,6 +2,9 @@ module prep_file_m
 
   implicit none
 
+  ! This module is not used in the grouping module jumble, since
+  ! prep_file is only useful to csvread.
+
 contains
 
   subroutine prep_file(unit, first_r, first_c, last_r, last_c, f_r_not_opt, &
@@ -15,6 +18,7 @@ contains
 
     ! Does not work with several adjacent commas.
 
+    use count_lines_m, only: count_lines
     use opt_merge_m, only: opt_merge
 
     integer, intent(in):: unit ! logical unit for input file
@@ -27,7 +31,7 @@ contains
     integer, intent(out):: l_r_not_opt ! (last row to read, not optional)
     integer, intent(out):: l_c_not_opt ! (last column to read, not optional)
 
-    ! Variables local to the subprogram:
+    ! Local:
     integer iostat, i
     character c
     logical prev_value ! previous character was part of a value
@@ -41,15 +45,8 @@ contains
     l_c_not_opt = opt_merge(last_c, 0)
 
     if (l_r_not_opt == 0) then
-       ! Count the number of lines in the file:
-       l_r_not_opt = 0
-       do
-          read(unit, fmt=*, iostat=iostat)
-          if (iostat /= 0) exit
-          l_r_not_opt = l_r_not_opt + 1
-       end do
+       call count_lines(unit, l_r_not_opt)
        if (l_r_not_opt == 0) stop 'Empty file.'
-
        rewind(unit)
     end if
 

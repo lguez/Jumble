@@ -6,6 +6,8 @@ contains
 
   pure real FUNCTION AVERGE(X,Y)
 
+    ! Arithmetic average of arithmetic and geometric averages.
+
     real, intent(in):: x, y
 
     !-------------

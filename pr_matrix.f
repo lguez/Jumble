@@ -5,8 +5,8 @@ module pr_matrix_m
   private
   public pr_matrix
   interface pr_matrix
-    ! Prints a real matrix. The difference between the specific
-    ! procedures is the kind of argument a.
+    ! Pretty printing of a real matrix. The difference between the
+    ! specific procedures is the kind of argument a.
      module procedure s_pr_mat, d_pr_mat
   end interface
 
