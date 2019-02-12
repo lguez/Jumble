@@ -9,11 +9,11 @@ module jumble
   use determin_m
   use differ_s_m
   use divisors_m
-  use dtridgl_m
   use ediff1d_m
   use eigval_m
   use eigvect_m
   use get_command_arg_dyn_m
+  use greg2jd_m
   use inv_mat_m
   use iso_varying_string
   use new_unit_m

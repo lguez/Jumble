@@ -6,7 +6,9 @@ contains
 
   pure function pack_indices(my_array, excluded)
 
-    ! Returns the indices of the elements not excluded in my_array.
+    ! Given a two-dimensional integer array and a list of array values
+    ! to be excluded, the procedure returns the indices of the
+    ! elements not excluded.
 
     integer, allocatable:: pack_indices(:, :) ! (2, n_packed)
     integer, intent(in):: my_array(:, :) ! (m, :)
