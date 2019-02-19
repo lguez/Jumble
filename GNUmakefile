@@ -14,9 +14,9 @@ lib = libjumble.a
 
 # 3. Compiler-dependent part
 
-nr_util_dir = 
+nr_util_inc_dir = 
 FC = gfortran
-FFLAGS = -ffree-form -O2 -I${nr_util_dir}
+FFLAGS = -ffree-form -O2 -I${nr_util_inc_dir}
 
 # 4. Rules
 
