@@ -14,7 +14,7 @@ lib = libjumble.a
 
 # 3. Compiler-dependent part
 
-nr_util_dir = ${HOME}/Compil_prod/NR_util_gfortran_debug
+nr_util_dir = 
 FC = gfortran
 FFLAGS = -ffree-form -O2 -I${nr_util_dir}
 
