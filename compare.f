@@ -14,7 +14,7 @@ module compare_m
           compare3, compare3_dble, compare4, compare4_dble
   end interface compare
 
-  character(len=*), parameter:: dashes &
+  character(len = *), parameter:: dashes &
        = "---------------------------------------------"
 
   private
@@ -27,7 +27,7 @@ contains
     ! Rank 1, real
 
     real, intent(in):: data_old(:), data_new(:)
-    character(len=*), intent(in):: tag
+    character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
@@ -43,7 +43,7 @@ contains
     ! (absolute value of absolute difference)
 
     integer location(1)
-    character(len=len(dashes)+len(tag)+20) tag_fmt
+    character(len = len(dashes) + len(tag) + 20) tag_fmt
     integer, parameter:: wp = kind(0.)
 
     !------------------------------------------------------
@@ -59,7 +59,7 @@ contains
     ! Rank 1, double precision
 
     double precision, intent(in):: data_old(:), data_new(:)
-    character(len=*), intent(in):: tag
+    character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
@@ -75,7 +75,7 @@ contains
     ! (absolute value of absolute difference)
 
     integer location(1)
-    character(len=len(dashes)+len(tag)+20) tag_fmt
+    character(len = len(dashes) + len(tag) + 20) tag_fmt
     integer, parameter:: wp = kind(0d0)
 
     !------------------------------------------------------
@@ -91,7 +91,7 @@ contains
     ! Rank 2, real
 
     real, intent(in):: data_old(:,:), data_new(:,:)
-    character(len=*), intent(in):: tag
+    character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
@@ -107,7 +107,7 @@ contains
     ! (absolute value of absolute difference)
 
     integer location(2)
-    character(len=len(dashes)+len(tag)+20) tag_fmt
+    character(len = len(dashes) + len(tag) + 20) tag_fmt
     integer, parameter:: wp = kind(0.)
 
     !------------------------------------------------------
@@ -123,7 +123,7 @@ contains
     ! Rank 2, double precision
 
     double precision, intent(in):: data_old(:,:), data_new(:,:)
-    character(len=*), intent(in):: tag
+    character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
@@ -139,7 +139,7 @@ contains
     ! (absolute value of absolute difference)
 
     integer location(2)
-    character(len=len(dashes)+len(tag)+20) tag_fmt
+    character(len = len(dashes) + len(tag) + 20) tag_fmt
     integer, parameter:: wp = kind(0d0)
 
     !------------------------------------------------------
@@ -155,7 +155,7 @@ contains
     ! Rank 3, real
 
     real, intent(in):: data_old(:, :, :), data_new(:, : ,:)
-    character(len=*), intent(in):: tag
+    character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
@@ -171,7 +171,7 @@ contains
     ! (absolute value of absolute difference)
 
     integer location(3)
-    character(len=len(dashes)+len(tag)+20) tag_fmt
+    character(len = len(dashes) + len(tag) + 20) tag_fmt
     integer, parameter:: wp = kind(0.)
 
     !------------------------------------------------------
@@ -187,7 +187,7 @@ contains
     ! Rank 3, double precision
 
     double precision, intent(in):: data_old(:, :, :), data_new(:, : ,:)
-    character(len=*), intent(in):: tag
+    character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
@@ -205,7 +205,7 @@ contains
     ! (absolute value of absolute difference)
 
     integer location(3)
-    character(len=len(dashes)+len(tag)+20) tag_fmt
+    character(len = len(dashes) + len(tag) + 20) tag_fmt
     integer, parameter:: wp = kind(0d0)
 
     !------------------------------------------------------
@@ -221,7 +221,7 @@ contains
     ! Rank 4, real
 
     real, intent(in):: data_old(:, :, :, :), data_new(:, : ,:, :)
-    character(len=*), intent(in):: tag
+    character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
@@ -240,7 +240,7 @@ contains
     ! (absolute value of absolute difference)
 
     integer location(4)
-    character(len=len(dashes)+len(tag)+20) tag_fmt
+    character(len = len(dashes) + len(tag) + 20) tag_fmt
     integer, parameter:: wp = kind(0.)
 
     !------------------------------------------------------
@@ -256,7 +256,7 @@ contains
     ! Rank 4, double precision
 
     double precision, intent(in):: data_old(:, :, :, :), data_new(:, : ,:, :)
-    character(len=*), intent(in):: tag
+    character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
@@ -275,7 +275,7 @@ contains
     ! (absolute value of absolute difference)
 
     integer location(4)
-    character(len=len(dashes)+len(tag)+20) tag_fmt
+    character(len = len(dashes) + len(tag) + 20) tag_fmt
     integer, parameter:: wp = kind(0d0)
 
     !------------------------------------------------------

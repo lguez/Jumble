@@ -1,11 +1,10 @@
 module avg_mag_m
 
-  ! The generic procedure computes the average magnitude, that is
-  ! log10 of absolute value of an array.
-  ! The difference between the specific procedures is the kind and
-  ! rank of the array.
-  ! We do not care here about precision so all specific procedures
-  ! compute and return a default real kind value.
+  ! The generic procedure computes the average magnitude of an
+  ! array. Magnitude of an element is log10 of absolute value. The
+  ! difference between the specific procedures is the kind and rank of
+  ! the array. We do not care here about precision so all specific
+  ! procedures compute and return a default real kind value.
 
   implicit none
 
@@ -23,7 +22,7 @@ contains
 
     real, intent(in):: a(:)
 
-    ! Variables local to the procedure:
+    ! Local:
     logical not_zero(size(a)) ! not zero in "a"
     real magnit(size(a)) ! magnitudes of elements of "a"
 
@@ -33,7 +32,7 @@ contains
 
     if (any(not_zero)) then
        where (not_zero) magnit = log10(abs(a))
-       avg_mag1 = sum(magnit, mask=not_zero) / count(not_zero)
+       avg_mag1 = sum(magnit, mask = not_zero) / count(not_zero)
     else
        avg_mag1 = - huge(0.) ! minus infinity
     end if
