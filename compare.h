@@ -1,3 +1,4 @@
+  ! -*- mode: f90; -*-
   ! Body of all the specific procedures of generic interface "compare".
   
   call assert(shape(data_old) == shape(data_new), &
@@ -15,12 +16,12 @@
   else
      if (all(data_old == data_new)) then
         if (report_id) then
-           write(unit=*, fmt=tag_fmt, advance="no") tag
+           write(unit = *, fmt = tag_fmt, advance = "no") tag
            print *, "arrays are identical."
         end if
      else
         if (quiet) then
-           write(unit=*, fmt=tag_fmt, advance="no") tag
+           write(unit = *, fmt = tag_fmt, advance = "no") tag
            print *, "arrays are different."
         else
            zero = data_old == 0._wp .or. data_new == 0._wp
@@ -38,7 +39,7 @@
            if (any(.not. zero)) then
               print *
               print *, 'Relative difference for non-zero values:'
-              location = maxloc(rel_diff, mask=.not. zero)
+              location = maxloc(rel_diff, mask = .not. zero)
               call prt_cmp(point(data_old, location), &
                    point(data_new, location), point(rel_diff, location), &
                    location)
@@ -47,7 +48,7 @@
            if (any(zero)) then
               print *
               print *, 'Absolute difference when there is a zero:'
-              location = maxloc(abs_diff, mask=zero)
+              location = maxloc(abs_diff, mask = zero)
               call prt_cmp(point(data_old, location), &
                    point(data_new, location), point(abs_diff, location), &
                    location)
