@@ -22,7 +22,8 @@ module compare_m
 
 contains
 
-  subroutine compare1(data_old, data_new, tag, comp_mag, report_id, quiet)
+  subroutine compare1(data_old, data_new, tag, comp_mag, report_id, quiet, &
+       valid)
 
     ! Rank 1, real
 
@@ -31,10 +32,11 @@ contains
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
+    logical, intent(in):: valid(:)
 
     ! Local:
 
-    logical zero(size(data_old))
+    logical zero(size(data_old)), not_zero(size(data_old))
 
     real rel_diff(size(data_old))
     ! (absolute value of relative difference)
@@ -54,7 +56,8 @@ contains
 
   !***********************************************************
 
-  subroutine compare1_dble(data_old, data_new, tag, comp_mag, report_id, quiet)
+  subroutine compare1_dble(data_old, data_new, tag, comp_mag, report_id, &
+       quiet, valid)
 
     ! Rank 1, double precision
 
@@ -63,10 +66,11 @@ contains
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
+    logical, intent(in):: valid(:)
 
-    ! Variables local to the subprogram:
+    ! Local:
 
-    logical zero(size(data_old))
+    logical zero(size(data_old)), not_zero(size(data_old))
 
     double precision rel_diff(size(data_old))
     ! (absolute value of relative difference)
@@ -86,7 +90,8 @@ contains
 
   !***********************************************************
 
-  subroutine compare2(data_old, data_new, tag, comp_mag, report_id, quiet)
+  subroutine compare2(data_old, data_new, tag, comp_mag, report_id, quiet, &
+       valid)
 
     ! Rank 2, real
 
@@ -95,10 +100,11 @@ contains
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
+    logical, intent(in):: valid(:, :)
 
-    ! Variables local to the subprogram:
+    ! Local:
 
-    logical zero(size(data_old,1), size(data_old,2))
+    logical, dimension(size(data_old,1), size(data_old,2))::  zero, not_zero
 
     real rel_diff(size(data_old,1), size(data_old,2))
     ! (absolute value of relative difference)
@@ -118,7 +124,8 @@ contains
 
   !***********************************************************
 
-  subroutine compare2_dble(data_old, data_new, tag, comp_mag, report_id, quiet)
+  subroutine compare2_dble(data_old, data_new, tag, comp_mag, report_id, &
+       quiet, valid)
 
     ! Rank 2, double precision
 
@@ -127,10 +134,11 @@ contains
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
+    logical, intent(in):: valid(:, :)
 
-    ! Variables local to the subprogram:
+    ! Local:
 
-    logical zero(size(data_old,1), size(data_old,2))
+    logical, dimension(size(data_old,1), size(data_old,2)):: zero, not_zero
 
     double precision rel_diff(size(data_old,1), size(data_old,2))
     ! (absolute value of relative difference)
@@ -150,7 +158,8 @@ contains
 
   !***********************************************************
 
-  subroutine compare3(data_old, data_new, tag, comp_mag, report_id, quiet)
+  subroutine compare3(data_old, data_new, tag, comp_mag, report_id, quiet, &
+       valid)
 
     ! Rank 3, real
 
@@ -159,10 +168,12 @@ contains
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
+    logical, intent(in):: valid(:, :, :)
 
-    ! Variables local to the subprogram:
+    ! Local:
 
-    logical zero(size(data_old,1), size(data_old,2), size(data_old,3))
+    logical, dimension(size(data_old,1), size(data_old,2), size(data_old,3)):: &
+         zero, not_zero
 
     real rel_diff(size(data_old,1), size(data_old,2), size(data_old,3))
     ! (absolute value of relative difference)
@@ -182,7 +193,8 @@ contains
 
   !***********************************************************
 
-  subroutine compare3_dble(data_old, data_new, tag, comp_mag, report_id, quiet)
+  subroutine compare3_dble(data_old, data_new, tag, comp_mag, report_id, &
+       quiet, valid)
 
     ! Rank 3, double precision
 
@@ -191,10 +203,12 @@ contains
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
+    logical, intent(in):: valid(:, :, :)
 
-    ! Variables local to the subprogram:
+    ! Local:
 
-    logical zero(size(data_old,1), size(data_old,2), size(data_old,3))
+    logical, dimension(size(data_old,1), size(data_old,2), size(data_old,3)):: &
+         zero, not_zero
 
     double precision rel_diff(size(data_old,1), size(data_old,2), &
          size(data_old,3))
@@ -216,7 +230,8 @@ contains
 
   !***********************************************************
 
-  subroutine compare4(data_old, data_new, tag, comp_mag, report_id, quiet)
+  subroutine compare4(data_old, data_new, tag, comp_mag, report_id, quiet, &
+       valid)
 
     ! Rank 4, real
 
@@ -225,11 +240,12 @@ contains
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
+    logical, intent(in):: valid(:, :, :, :)
 
-    ! Variables local to the subprogram:
+    ! Local:
 
-    logical zero(size(data_old,1), size(data_old,2), size(data_old,3), &
-         size(data_old,4))
+    logical, dimension(size(data_old,1), size(data_old,2), size(data_old,3), &
+         size(data_old,4)):: zero, not_zero
 
     real rel_diff(size(data_old,1), size(data_old,2), size(data_old,3), &
          size(data_old,4))
@@ -251,7 +267,8 @@ contains
 
   !***********************************************************
 
-  subroutine compare4_dble(data_old, data_new, tag, comp_mag, report_id, quiet)
+  subroutine compare4_dble(data_old, data_new, tag, comp_mag, report_id, &
+       quiet, valid)
 
     ! Rank 4, double precision
 
@@ -260,11 +277,12 @@ contains
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
     logical, intent(in):: quiet
+    logical, intent(in):: valid(:, :, :, :)
 
-    ! Variables local to the subprogram:
+    ! Local:
 
-    logical zero(size(data_old,1), size(data_old,2), size(data_old,3), &
-         size(data_old,4))
+    logical, dimension(size(data_old,1), size(data_old,2), size(data_old,3), &
+         size(data_old,4)):: zero, not_zero
 
     double precision rel_diff(size(data_old,1), size(data_old,2), &
          size(data_old,3), size(data_old,4))
