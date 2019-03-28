@@ -1,22 +1,28 @@
 # This is a makefile for GNU make.
 # This makefile builds the library NR_util.
 
-# 1. Objects and library
+# 1. Source files
 
-objects = nrtype.o nr_util.o arth.o array_copy.o swap.o reallocate.o assert.o assert_eq.o geop.o cumsum.o poly.o poly_term.o outerprod.o outerdiff.o scatter_add.o scatter_max.o diagadd.o diagmult.o get_diag.o put_diag.o cumprod.o ifirstloc.o lower_triangle.o nrerror.o outerand.o outerdiv.o outersum.o unit_matrix.o upper_triangle.o vabs.o zroots_unity.o
+sources = nrtype.F nr_util.f arth.f array_copy.f swap.f reallocate.f assert.f assert_eq.f geop.f cumsum.f poly.f poly_term.f outerprod.f outerdiff.f scatter_add.f scatter_max.f diagadd.f diagmult.f get_diag.f put_diag.f cumprod.f ifirstloc.f lower_triangle.f nrerror.f outerand.f outerdiv.f outersum.f unit_matrix.f upper_triangle.f vabs.f zroots_unity.f
 
+# 2. Objects and library
+
+objects := $(addsuffix .o, $(basename ${sources}))
 lib = libnr_util.a
 
-# 2. Compiler-dependent part
+# 3. Compiler-dependent part
 
 CPPFLAGS = -DCPP_WP='kind(0.)'
 FFLAGS = -ffree-form
 
-# 3. Rules
+# 4. Rules
 
 .PHONY: all clean depend
 all: ${lib}
 ${lib}: ${lib}(${objects})
+
+depend depend.mk:
+	makedepf90 ${CPPFLAGS} -free -Wmissing -Wconfused -nosrc ${sources} >depend.mk
 
 clean:
 	rm -f ${lib} ${objects}
