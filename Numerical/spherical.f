@@ -91,13 +91,13 @@ contains
     sphbase(:,2) = sphrect(col + pi/2, azm)
 
     ! Azimuthal vector:
-    sphbase(:,3) = (/0., - sin(azm), cos(azm)/)
+    sphbase(:,3) = [0., - sin(azm), cos(azm)]
 
   end function sphbase
 
   !*****************************************************************
 
-  real function sphrect(col,azm,r)
+  pure real function sphrect(col,azm,r)
 
     ! Converts spherical coordinates to rectangular coordinates. (Ox)
     ! is taken as the polar axis. Azimuth "azm" is the angle in the
@@ -112,7 +112,7 @@ contains
 
     !---------------------------------------------------------------
 
-    sphrect = (/cos(col), sin(col) * cos(azm), sin(col) * sin(azm)/)
+    sphrect = [cos(col), sin(col) * cos(azm), sin(col) * sin(azm)]
     if (present(r)) sphrect = sphrect * r
 
   end function sphrect
