@@ -1,60 +1,54 @@
-! ***************************************************************************
-!
-! * iso_varying_string.f90
-!
-! * Copyright (c) 2003, Rich Townsend <rhdt@bartol.udel.edu>
-! * All rights reserved.
-!
-! * Redistribution and use in source and binary forms, with or without
-! * modification, are permitted provided that the following conditions are
-! * met:
-!
-! *  * Redistributions of source code must retain the above copyright notice,
-! *    this list of conditions and the following disclaimer.
-! *  * Redistributions in binary form must reproduce the above copyright
-! *    notice, this list of conditions and the following disclaimer in the
-! *    documentation and/or other materials provided with the distribution.
-!
-! * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-! * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-! * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-! * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-! * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-! * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-! * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-! * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-! * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-! * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-! * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-!
-! ***************************************************************************
-!
-! Author    : Rich Townsend <rhdt@bartol.udel.edu>
-! Synopsis  : Definition of iso_varying_string module, conformant to the API 
-!             specified in ISO/IEC 1539-2:2000 (varying-length strings for 
-!             Fortran 95). 
-! Version   : 1.3-F
-! Thanks   : Lawrie Schonfelder (bugfixes and design pointers), Walt Brainerd
-!             (conversion to F).
-
 module iso_varying_string
 
-! No implicit typing
+  ! * Copyright (c) 2003, Rich Townsend <rhdt@bartol.udel.edu>
+  ! * All rights reserved.
+  !
+  ! * Redistribution and use in source and binary forms, with or without
+  ! * modification, are permitted provided that the following conditions are
+  ! * met:
+  !
+  ! *  * Redistributions of source code must retain the above copyright notice,
+  ! *    this list of conditions and the following disclaimer.
+  ! *  * Redistributions in binary form must reproduce the above copyright
+  ! *    notice, this list of conditions and the following disclaimer in the
+  ! *    documentation and/or other materials provided with the distribution.
+  !
+  ! * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+  ! * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  ! * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  ! * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+  ! * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  ! * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  ! * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  ! * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  ! * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+  ! * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  ! * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  !
+  ! ***************************************************************************
+  !
+  ! Author    : Rich Townsend <rhdt@bartol.udel.edu>
+  ! Synopsis  : Definition of iso_varying_string module, conformant to the API 
+  !             specified in ISO/IEC 1539-2:2000 (varying-length strings for 
+  !             Fortran 95). 
+  ! Version   : 1.3-F
+  ! Thanks   : Lawrie Schonfelder (bugfixes and design pointers), Walt Brainerd
+  !             (conversion to F).
 
   implicit none
 
-! Parameter definitions
+  ! Parameter definitions
 
   integer, parameter, private :: GET_BUFFER_LEN = 256
 
-! Type definitions
+  ! Type definitions
 
   type, public :: varying_string
      private
      character(LEN=1), dimension(:), allocatable :: chars
   end type varying_string
 
-! Interface blocks
+  ! Interface blocks
 
   interface assignment(=)
      module procedure op_assign_CH_VS
@@ -77,32 +71,32 @@ module iso_varying_string
      module procedure op_ne_VS_VS
      module procedure op_ne_CH_VS
      module procedure op_ne_VS_CH
-  end interface operator (/=)
-  
+  end interface operator(/=)
+
   interface operator(<)
      module procedure op_lt_VS_VS
      module procedure op_lt_CH_VS
      module procedure op_lt_VS_CH
-  end interface operator (<)
-  
+  end interface operator(<)
+
   interface operator(<=)
      module procedure op_le_VS_VS
      module procedure op_le_CH_VS
      module procedure op_le_VS_CH
-  end interface operator (<=)
-  
+  end interface operator(<=)
+
   interface operator(>=)
      module procedure op_ge_VS_VS
      module procedure op_ge_CH_VS
      module procedure op_ge_VS_CH
-  end interface operator (>=)
+  end interface operator(>=)
 
   interface operator(>)
      module procedure op_gt_VS_VS
      module procedure op_gt_CH_VS
      module procedure op_gt_VS_CH
-  end interface operator (>)
-  
+  end interface operator(>)
+
   interface adjustl
      module procedure adjustl_
   end interface adjustl
@@ -143,7 +137,7 @@ module iso_varying_string
      module procedure lge_CH_VS
      module procedure lge_VS_CH
   end interface lge
-  
+
   interface lgt
      module procedure lgt_VS_VS
      module procedure lgt_CH_VS
@@ -243,14 +237,14 @@ module iso_varying_string
      module procedure replace_CH_VS_CH_target
      module procedure replace_VS_CH_CH_target
      module procedure replace_CH_CH_CH_target
-  end interface
+  end interface replace
 
   interface split
      module procedure split_VS
      module procedure split_CH
   end interface split
 
-! Access specifiers
+  ! Access specifiers
 
   public :: assignment(=)
   public :: operator(//)
@@ -382,45 +376,43 @@ module iso_varying_string
   private :: split_VS
   private :: split_CH
 
-! Procedures
-
 contains
 
-!***
+  !***
 
   elemental subroutine op_assign_CH_VS (var, exp)
 
     character(LEN=*), intent(out)    :: var
     type(varying_string), intent(in) :: exp
 
-! Assign a varying string to a character string
+    ! Assign a varying string to a character string
 
     var = char(exp)
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine op_assign_CH_VS
 
-!***
+  !***
 
   elemental subroutine op_assign_VS_CH (var, exp)
 
     type(varying_string), intent(out) :: var
     character(LEN=*), intent(in)      :: exp
 
-! Assign a character string to a varying string
+    ! Assign a character string to a varying string
 
     var = var_str(exp)
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine op_assign_VS_CH
 
-!***
+  !***
 
   elemental function op_concat_VS_VS (string_a, string_b) result (concat_string)
 
@@ -430,7 +422,7 @@ contains
 
     integer                          :: len_string_a
 
-! Concatenate two varying strings
+    ! Concatenate two varying strings
 
     len_string_a = len(string_a)
 
@@ -439,13 +431,13 @@ contains
     concat_string%chars(:len_string_a) = string_a%chars
     concat_string%chars(len_string_a+1:) = string_b%chars
 
-! Finish
+    ! Finish
 
     return
 
   end function op_concat_VS_VS
 
-!***
+  !***
 
   elemental function op_concat_CH_VS (string_a, string_b) result (concat_string)
 
@@ -453,18 +445,18 @@ contains
     type(varying_string), intent(in) :: string_b
     type(varying_string)             :: concat_string
 
-! Concatenate a character string and a varying 
-! string
+    ! Concatenate a character string and a varying 
+    ! string
 
     concat_string = op_concat_VS_VS(var_str(string_a), string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_concat_CH_VS
 
-!***
+  !***
 
   elemental function op_concat_VS_CH (string_a, string_b) result (concat_string)
 
@@ -472,18 +464,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     type(varying_string)             :: concat_string
 
-! Concatenate a varying string and a character
-! string
+    ! Concatenate a varying string and a character
+    ! string
 
     concat_string = op_concat_VS_VS(string_a, var_str(string_b))
 
-! Finish
+    ! Finish
 
     return
 
   end function op_concat_VS_CH
 
-!***
+  !***
 
   elemental function op_eq_VS_VS (string_a, string_b) result (op_eq)
 
@@ -491,17 +483,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_eq
 
-! Compare (==) two varying strings
+    ! Compare (==) two varying strings
 
     op_eq = char(string_a) == char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_eq_VS_VS
 
-!***
+  !***
 
   elemental function op_eq_CH_VS (string_a, string_b) result (op_eq)
 
@@ -509,18 +501,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_eq
 
-! Compare (==) a character string and a varying 
-! string
+    ! Compare (==) a character string and a varying 
+    ! string
 
     op_eq = string_a == char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_eq_CH_VS
 
-!***
+  !***
 
   elemental function op_eq_VS_CH (string_a, string_b) result (op_eq)
 
@@ -528,18 +520,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: op_eq
 
-! Compare (==) a varying string and a character
-! string
+    ! Compare (==) a varying string and a character
+    ! string
 
     op_eq = char(string_a) == string_b
 
-! Finish
+    ! Finish
 
     return
 
   end function op_eq_VS_CH
 
-!***
+  !***
 
   elemental function op_ne_VS_VS (string_a, string_b) result (op_ne)
 
@@ -547,17 +539,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_ne
 
-! Compare (/=) two varying strings
+    ! Compare (/=) two varying strings
 
     op_ne = char(string_a) /= char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_ne_VS_VS
 
-!***
+  !***
 
   elemental function op_ne_CH_VS (string_a, string_b) result (op_ne)
 
@@ -565,18 +557,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_ne
 
-! Compare (/=) a character string and a varying
-! string
+    ! Compare (/=) a character string and a varying
+    ! string
 
     op_ne = string_a /= char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_ne_CH_VS
 
-!***
+  !***
 
   elemental function op_ne_VS_CH (string_a, string_b) result (op_ne)
 
@@ -584,18 +576,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: op_ne
 
-! Compare (/=) a varying string and a character
-! string
+    ! Compare (/=) a varying string and a character
+    ! string
 
     op_ne = char(string_a) /= string_b
 
-! Finish
+    ! Finish
 
     return
 
   end function op_ne_VS_CH
 
-!***
+  !***
 
   elemental function op_lt_VS_VS (string_a, string_b) result (op_lt)
 
@@ -603,17 +595,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_lt
 
-! Compare (<) two varying strings
+    ! Compare (<) two varying strings
 
     op_lt = char(string_a) < char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_lt_VS_VS
 
-!***
+  !***
 
   elemental function op_lt_CH_VS (string_a, string_b) result (op_lt)
 
@@ -621,18 +613,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_lt
 
-! Compare (<) a character string and a varying
-! string
+    ! Compare (<) a character string and a varying
+    ! string
 
     op_lt = string_a < char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_lt_CH_VS
 
-!***
+  !***
 
   elemental function op_lt_VS_CH (string_a, string_b) result (op_lt)
 
@@ -640,18 +632,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: op_lt
 
-! Compare (<) a varying string and a character 
-! string
+    ! Compare (<) a varying string and a character 
+    ! string
 
     op_lt = char(string_a) < string_b
 
-! Finish
+    ! Finish
 
     return
 
   end function op_lt_VS_CH
 
-!***
+  !***
 
   elemental function op_le_VS_VS (string_a, string_b) result (op_le)
 
@@ -659,17 +651,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_le
 
-! Compare (<=) two varying strings
+    ! Compare (<=) two varying strings
 
     op_le = char(string_a) <= char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_le_VS_VS
 
-!***
+  !***
 
   elemental function op_le_CH_VS (string_a, string_b) result (op_le)
 
@@ -677,18 +669,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_le
 
-! Compare (<=) a character string and a varying 
-! string
+    ! Compare (<=) a character string and a varying 
+    ! string
 
     op_le = string_a <= char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_le_CH_VS
 
-!***
+  !***
 
   elemental function op_le_VS_CH (string_a, string_b) result (op_le)
 
@@ -696,18 +688,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: op_le
 
-! Compare (<=) a varying string and a character 
-! string
+    ! Compare (<=) a varying string and a character 
+    ! string
 
     op_le = char(string_a) <= string_b
 
-! Finish
+    ! Finish
 
     return
 
   end function op_le_VS_CH
 
-!***
+  !***
 
   elemental function op_ge_VS_VS (string_a, string_b) result (op_ge)
 
@@ -715,17 +707,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_ge
 
-! Compare (>=) two varying strings
+    ! Compare (>=) two varying strings
 
     op_ge = char(string_a) >= char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_ge_VS_VS
 
-!***
+  !***
 
   elemental function op_ge_CH_VS (string_a, string_b) result (op_ge)
 
@@ -733,18 +725,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_ge
 
-! Compare (>=) a character string and a varying
-! string
+    ! Compare (>=) a character string and a varying
+    ! string
 
     op_ge = string_a >= char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_ge_CH_VS
 
-!***
+  !***
 
   elemental function op_ge_VS_CH (string_a, string_b) result (op_ge)
 
@@ -752,18 +744,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: op_ge
 
-! Compare (>=) a varying string and a character
-! string
+    ! Compare (>=) a varying string and a character
+    ! string
 
     op_ge = char(string_a) >= string_b
 
-! Finish
+    ! Finish
 
     return
 
   end function op_ge_VS_CH
 
-!***
+  !***
 
   elemental function op_gt_VS_VS (string_a, string_b) result (op_gt)
 
@@ -771,17 +763,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_gt
 
-! Compare (>) two varying strings
+    ! Compare (>) two varying strings
 
     op_gt = char(string_a) > char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_gt_VS_VS
 
-!***
+  !***
 
   elemental function op_gt_CH_VS (string_a, string_b) result (op_gt)
 
@@ -789,18 +781,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: op_gt
 
-! Compare (>) a character string and a varying
-! string
+    ! Compare (>) a character string and a varying
+    ! string
 
     op_gt = string_a > char(string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function op_gt_CH_VS
 
-!***
+  !***
 
   elemental function op_gt_VS_CH (string_a, string_b) result (op_gt)
 
@@ -808,52 +800,52 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: op_gt
 
-! Compare (>) a varying string and a character
-! string
+    ! Compare (>) a varying string and a character
+    ! string
 
     op_gt = char(string_a) > string_b
 
-! Finish
+    ! Finish
 
     return
 
   end function op_gt_VS_CH
 
-!***
+  !***
 
   elemental function adjustl_ (string) result (adjustl_string)
 
     type(varying_string), intent(in) :: string
     type(varying_string)             :: adjustl_string
 
-! Adjust the varying string to the left
+    ! Adjust the varying string to the left
 
     adjustl_string = ADJUSTL(CHAR(string))
 
-! Finish
+    ! Finish
 
     return
 
   end function adjustl_
 
-!***
+  !***
 
   elemental function adjustr_ (string) result (adjustr_string)
 
     type(varying_string), intent(in) :: string
     type(varying_string)             :: adjustr_string
 
-! Adjust the varying string to the right
+    ! Adjust the varying string to the right
 
     adjustr_string = ADJUSTR(CHAR(string))
 
-! Finish
+    ! Finish
 
     return
 
   end function adjustr_
 
-!***
+  !***
 
   pure function char_auto (string) result (char_string)
 
@@ -862,20 +854,20 @@ contains
 
     integer                          :: i_char
 
-! Convert a varying string into a character string
-! (automatic length)
-    
+    ! Convert a varying string into a character string
+    ! (automatic length)
+
     forall(i_char = 1:len(string))
        char_string(i_char:i_char) = string%chars(i_char)
     end forall
 
-! Finish
+    ! Finish
 
     return
 
   end function char_auto
 
-!***
+  !***
 
   pure function char_fixed (string, length) result (char_string)
 
@@ -883,54 +875,54 @@ contains
     integer, intent(in)              :: length
     character(LEN=length)            :: char_string
 
-! Convert a varying string into a character string
-! (fixed length)
+    ! Convert a varying string into a character string
+    ! (fixed length)
 
     char_string = char(string)
 
-! Finish
+    ! Finish
 
     return
 
   end function char_fixed
 
-!***
+  !***
 
   elemental function iachar_ (c) result (i)
 
     type(varying_string), intent(in) :: c
     integer                          :: i
 
-! Get the position in the ISO 646 collating sequence
-! of a varying string character
+    ! Get the position in the ISO 646 collating sequence
+    ! of a varying string character
 
     i = ICHAR(char(c))
 
-! Finish
+    ! Finish
 
     return
 
   end function iachar_
 
-!***
+  !***
 
   elemental function ichar_ (c) result (i)
 
     type(varying_string), intent(in) :: c
     integer                          :: i
 
-! Get the position in the processor collating 
-! sequence of a varying string character
+    ! Get the position in the processor collating 
+    ! sequence of a varying string character
 
     i = ICHAR(char(c))
 
-! Finish
+    ! Finish
 
     return
 
   end function ichar_
 
-!***
+  !***
 
   elemental function index_VS_VS (string, substring, back) result (i_substring)
 
@@ -939,18 +931,18 @@ contains
     logical, intent(in), optional    :: back
     integer                          :: i_substring
 
-! Get the index of a varying substring within a
-! varying string
+    ! Get the index of a varying substring within a
+    ! varying string
 
     i_substring = INDEX(char(string), char(substring), back)
 
-! Finish
+    ! Finish
 
     return
 
   end function index_VS_VS
 
-!***
+  !***
 
   elemental function index_CH_VS (string, substring, back) result (i_substring)
 
@@ -959,18 +951,18 @@ contains
     logical, intent(in), optional    :: back
     integer                          :: i_substring
 
-! Get the index of a varying substring within a
-! character string
+    ! Get the index of a varying substring within a
+    ! character string
 
     i_substring = INDEX(string, char(substring), back)
 
-! Finish
+    ! Finish
 
     return
 
   end function index_CH_VS
 
-!***
+  !***
 
   elemental function index_VS_CH (string, substring, back) result (i_substring)
 
@@ -979,25 +971,25 @@ contains
     logical, intent(in), optional    :: back
     integer                          :: i_substring
 
-! Get the index of a character substring within a
-! varying string
+    ! Get the index of a character substring within a
+    ! varying string
 
     i_substring = INDEX(char(string), substring, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function index_VS_CH
 
-!***
+  !***
 
   elemental function len_ (string) result (length)
 
     type(varying_string), intent(in) :: string
     integer                          :: length
 
-! Get the length of a varying string
+    ! Get the length of a varying string
 
     if(ALLOCATED(string%chars)) then
        length = SIZE(string%chars)
@@ -1005,20 +997,20 @@ contains
        length = 0
     endif
 
-! Finish
+    ! Finish
 
     return
 
   end function len_
 
-!***
+  !***
 
   elemental function len_trim_ (string) result (length)
 
     type(varying_string), intent(in) :: string
     integer                          :: length
 
-! Get the trimmed length of a varying string
+    ! Get the trimmed length of a varying string
 
     if(ALLOCATED(string%chars)) then
        length = LEN_TRIM(char(string))
@@ -1026,13 +1018,13 @@ contains
        length = 0
     endif
 
-! Finish
+    ! Finish
 
     return
 
   end function len_trim_
 
-!***
+  !***
 
   elemental function lge_VS_VS (string_a, string_b) result (comp)
 
@@ -1040,17 +1032,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: comp
 
-! Compare (LGE) two varying strings
+    ! Compare (LGE) two varying strings
 
     comp = (char(string_a) >= char(string_b))
 
-! Finish
+    ! Finish
 
     return
 
   end function lge_VS_VS
 
-!***
+  !***
 
   elemental function lge_CH_VS (string_a, string_b) result (comp)
 
@@ -1058,18 +1050,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: comp
 
-! Compare (LGE) a character string and a varying
-! string
+    ! Compare (LGE) a character string and a varying
+    ! string
 
     comp = (string_a >= char(string_b))
 
-! Finish
+    ! Finish
 
     return
 
   end function lge_CH_VS
 
-!***
+  !***
 
   elemental function lge_VS_CH (string_a, string_b) result (comp)
 
@@ -1077,18 +1069,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: comp
 
-! Compare (LGE) a varying string and a character
-! string
+    ! Compare (LGE) a varying string and a character
+    ! string
 
     comp = (char(string_a) >= string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function lge_VS_CH
 
-!***
+  !***
 
   elemental function lgt_VS_VS (string_a, string_b) result (comp)
 
@@ -1096,17 +1088,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: comp
 
-! Compare (LGT) two varying strings
+    ! Compare (LGT) two varying strings
 
     comp = (char(string_a) > char(string_b))
 
-! Finish
+    ! Finish
 
     return
 
   end function lgt_VS_VS
 
-!***
+  !***
 
   elemental function lgt_CH_VS (string_a, string_b) result (comp)
 
@@ -1114,18 +1106,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: comp
 
-! Compare (LGT) a character string and a varying
-! string
+    ! Compare (LGT) a character string and a varying
+    ! string
 
     comp = (string_a > char(string_b))
 
-! Finish
+    ! Finish
 
     return
 
   end function lgt_CH_VS
 
-!***
+  !***
 
   elemental function lgt_VS_CH (string_a, string_b) result (comp)
 
@@ -1133,18 +1125,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: comp
 
-! Compare (LGT) a varying string and a character
-! string
+    ! Compare (LGT) a varying string and a character
+    ! string
 
     comp = (char(string_a) > string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function lgt_VS_CH
 
-!***
+  !***
 
   elemental function lle_VS_VS (string_a, string_b) result (comp)
 
@@ -1152,17 +1144,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: comp
 
-! Compare (LLE) two varying strings
+    ! Compare (LLE) two varying strings
 
     comp = (char(string_a) <= char(string_b))
 
-! Finish
+    ! Finish
 
     return
 
   end function lle_VS_VS
 
-!***
+  !***
 
   elemental function lle_CH_VS (string_a, string_b) result (comp)
 
@@ -1170,18 +1162,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: comp
 
-! Compare (LLE) a character string and a varying
-! string
+    ! Compare (LLE) a character string and a varying
+    ! string
 
     comp = (string_a <= char(string_b))
 
-! Finish
+    ! Finish
 
     return
 
   end function lle_CH_VS
 
-!***
+  !***
 
   elemental function lle_VS_CH (string_a, string_b) result (comp)
 
@@ -1189,18 +1181,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: comp
 
-! Compare (LLE) a varying string and a character
-! string
+    ! Compare (LLE) a varying string and a character
+    ! string
 
     comp = (char(string_a) <= string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function lle_VS_CH
 
-!***
+  !***
 
   elemental function llt_VS_VS (string_a, string_b) result (comp)
 
@@ -1208,17 +1200,17 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: comp
 
-! Compare (LLT) two varying strings
+    ! Compare (LLT) two varying strings
 
     comp = (char(string_a) < char(string_b))
 
-! Finish
+    ! Finish
 
     return
 
   end function llt_VS_VS
 
-!***
+  !***
 
   elemental function llt_CH_VS (string_a, string_b) result (comp)
 
@@ -1226,18 +1218,18 @@ contains
     type(varying_string), intent(in) :: string_b
     logical                          :: comp
 
-! Compare (LLT) a character string and a varying
-! string
+    ! Compare (LLT) a character string and a varying
+    ! string
 
     comp = (string_a < char(string_b))
 
-! Finish
+    ! Finish
 
     return
 
   end function llt_CH_VS
 
-!***
+  !***
 
   elemental function llt_VS_CH (string_a, string_b) result (comp)
 
@@ -1245,18 +1237,18 @@ contains
     character(LEN=*), intent(in)     :: string_b
     logical                          :: comp
 
-! Compare (LLT) a varying string and a character
-! string
+    ! Compare (LLT) a varying string and a character
+    ! string
 
     comp = (char(string_a) < string_b)
 
-! Finish
+    ! Finish
 
     return
 
   end function llt_VS_CH
 
-!***
+  !***
 
   elemental function repeat_ (string, ncopies) result (repeat_string)
 
@@ -1264,17 +1256,17 @@ contains
     integer, intent(in)              :: ncopies
     type(varying_string)             :: repeat_string
 
-! Concatenate several copies of a varying string
+    ! Concatenate several copies of a varying string
 
     repeat_string = var_str(REPEAT(char(string), ncopies))
 
-! Finish
+    ! Finish
 
     return
 
   end function repeat_
 
-!***
+  !***
 
   elemental function scan_VS_VS (string, set, back) result (i)
 
@@ -1283,18 +1275,18 @@ contains
     logical, intent(in), optional    :: back
     integer                          :: i
 
-! Scan a varying string for occurrences of 
-! characters in a varying-string set
+    ! Scan a varying string for occurrences of 
+    ! characters in a varying-string set
 
     i = SCAN(char(string), char(set), back)
 
-! Finish
+    ! Finish
 
     return
 
   end function scan_VS_VS
-    
-!***
+
+  !***
 
   elemental function scan_CH_VS (string, set, back) result (i)
 
@@ -1303,18 +1295,18 @@ contains
     logical, intent(in), optional    :: back
     integer                          :: i
 
-! Scan a character string for occurrences of 
-! characters in a varying-string set
+    ! Scan a character string for occurrences of 
+    ! characters in a varying-string set
 
     i = SCAN(string, char(set), back)
 
-! Finish
+    ! Finish
 
     return
 
   end function scan_CH_VS
-    
-!***
+
+  !***
 
   elemental function scan_VS_CH (string, set, back) result (i)
 
@@ -1323,35 +1315,35 @@ contains
     logical, intent(in), optional    :: back
     integer                          :: i
 
-! Scan a varying string for occurrences of 
-! characters in a character-string set
+    ! Scan a varying string for occurrences of 
+    ! characters in a character-string set
 
     i = SCAN(char(string), set, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function scan_VS_CH
-    
-!***
+
+  !***
 
   elemental function trim_ (string) result (trim_string)
 
     type(varying_string), intent(in) :: string
     type(varying_string)             :: trim_string
 
-! Remove trailing blanks from a varying string
+    ! Remove trailing blanks from a varying string
 
     trim_string = TRIM(char(string))
 
-! Finish
+    ! Finish
 
     return
 
   end function trim_
 
-!***
+  !***
 
   elemental function verify_VS_VS (string, set, back) result (i)
 
@@ -1360,18 +1352,18 @@ contains
     logical, intent(in), optional    :: back
     integer                          :: i
 
-! Verify a varying string for occurrences of
-! characters in a varying-string set
+    ! Verify a varying string for occurrences of
+    ! characters in a varying-string set
 
     i = VERIFY(char(string), char(set), back)
 
-! Finish
+    ! Finish
 
     return
 
   end function verify_VS_VS
 
-!***
+  !***
 
   elemental function verify_CH_VS (string, set, back) result (i)
 
@@ -1380,18 +1372,18 @@ contains
     logical, intent(in), optional    :: back
     integer                          :: i
 
-! Verify a character string for occurrences of 
-! characters in a varying-string set
+    ! Verify a character string for occurrences of 
+    ! characters in a varying-string set
 
     i = VERIFY(string, char(set), back)
 
-! Finish
+    ! Finish
 
     return
 
   end function verify_CH_VS
 
-!***
+  !***
 
   elemental function verify_VS_CH (string, set, back) result (i)
 
@@ -1400,18 +1392,18 @@ contains
     logical, intent(in), optional    :: back
     integer                          :: i
 
-! Verify a varying string for occurrences of 
-! characters in a character-string set
+    ! Verify a varying string for occurrences of 
+    ! characters in a character-string set
 
     i = VERIFY(char(string), set, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function verify_VS_CH
 
-!***
+  !***
 
   elemental function var_str_ (char) result (string)
 
@@ -1421,7 +1413,7 @@ contains
     integer                      :: length
     integer                      :: i_char
 
-! Convert a character string to a varying string
+    ! Convert a character string to a varying string
 
     length = LEN(char)
 
@@ -1431,13 +1423,13 @@ contains
        string%chars(i_char) = char(i_char:i_char)
     end forall
 
-! Finish
+    ! Finish
 
     return
 
   end function var_str_
 
-!***
+  !***
 
   subroutine get_ (string, maxlen, iostat)
 
@@ -1450,7 +1442,7 @@ contains
     character(LEN=GET_BUFFER_LEN)     :: buffer
     integer                           :: local_iostat
 
-! Read from the default unit into a varying string
+    ! Read from the default unit into a varying string
 
     string = ""
 
@@ -1484,13 +1476,13 @@ contains
 
     string = string//buffer(:n_chars_read)
 
-! Finish (end-of-record)
+    ! Finish (end-of-record)
 
     return
 
   end subroutine get_
 
-!***
+  !***
 
   subroutine get_unit (unit, string, maxlen, iostat)
 
@@ -1504,7 +1496,7 @@ contains
     character(LEN=GET_BUFFER_LEN)     :: buffer
     integer                           :: local_iostat
 
-! Read from the specified unit into a varying string
+    ! Read from the specified unit into a varying string
 
     string = ""
 
@@ -1538,13 +1530,13 @@ contains
 
     string = string//buffer(:n_chars_read)
 
-! Finish (end-of-record)
+    ! Finish (end-of-record)
 
     return
 
   end subroutine get_unit
 
-!***
+  !***
 
   subroutine get_set_VS (string, set, separator, maxlen, iostat)
 
@@ -1554,18 +1546,18 @@ contains
     integer, intent(in), optional               :: maxlen
     integer, intent(out), optional              :: iostat
 
-! Read from the default unit into a varying string,
-! with a custom varying-string separator
+    ! Read from the default unit into a varying string,
+    ! with a custom varying-string separator
 
     call get(string, char(set), separator, maxlen, iostat)
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine get_set_VS
 
-!***
+  !***
 
   subroutine get_set_CH (string, set, separator, maxlen, iostat)
 
@@ -1580,8 +1572,8 @@ contains
     integer                                     :: i_set
     integer                                     :: local_iostat
 
-! Read from the default unit into a varying string,
-! with a custom character-string separator
+    ! Read from the default unit into a varying string,
+    ! with a custom character-string separator
 
     string = ""
 
@@ -1617,13 +1609,13 @@ contains
 
     end do read_loop
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine get_set_CH
 
-!***
+  !***
 
   subroutine get_unit_set_VS (unit, string, set, separator, maxlen, iostat)
 
@@ -1634,18 +1626,18 @@ contains
     integer, intent(in), optional               :: maxlen
     integer, intent(out), optional              :: iostat
 
-! Read from the specified unit into a varying string,
-! with a custom varying-string separator
+    ! Read from the specified unit into a varying string,
+    ! with a custom varying-string separator
 
     call get(unit, string, char(set), separator, maxlen, iostat)
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine get_unit_set_VS
 
-!****
+  !****
 
   subroutine get_unit_set_CH (unit, string, set, separator, maxlen, iostat)
 
@@ -1661,8 +1653,8 @@ contains
     integer                                     :: i_set
     integer                                     :: local_iostat
 
-! Read from the default unit into a varying string,
-! with a custom character-string separator
+    ! Read from the default unit into a varying string,
+    ! with a custom character-string separator
 
     string = ""
 
@@ -1698,37 +1690,37 @@ contains
 
     end do read_loop
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine get_unit_set_CH
 
-!****
+  !****
 
   subroutine put_VS (string, iostat)
 
     type(varying_string), intent(in) :: string
     integer, intent(out), optional   :: iostat
 
-! Append a varying string to the current record of 
-! the default unit
+    ! Append a varying string to the current record of 
+    ! the default unit
 
     call put(char(string), iostat)
 
-! Finish
+    ! Finish
 
   end subroutine put_VS
-    
-!****
+
+  !****
 
   subroutine put_CH (string, iostat)
 
     character(LEN=*), intent(in)   :: string
     integer, intent(out), optional :: iostat
 
-! Append a character string to the current record of 
-! the default unit
+    ! Append a character string to the current record of 
+    ! the default unit
 
     if(PRESENT(iostat)) then
        write(unit=*, FMT="(A)", ADVANCE="NO", IOSTAT=iostat) string
@@ -1736,11 +1728,11 @@ contains
        write(unit=*, FMT="(A)", ADVANCE="NO") string
     endif
 
-! Finish
+    ! Finish
 
   end subroutine put_CH
 
-!****
+  !****
 
   subroutine put_unit_VS (unit, string, iostat)
 
@@ -1748,18 +1740,18 @@ contains
     type(varying_string), intent(in) :: string
     integer, intent(out), optional   :: iostat
 
-! Append a varying string to the current record of 
-! the specified unit
+    ! Append a varying string to the current record of 
+    ! the specified unit
 
     call put(unit, char(string), iostat)
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine put_unit_VS
 
-!****
+  !****
 
   subroutine put_unit_CH (unit, string, iostat)
 
@@ -1767,8 +1759,8 @@ contains
     character(LEN=*), intent(in)   :: string
     integer, intent(out), optional :: iostat
 
-! Append a character string to the current record of 
-! the specified unit
+    ! Append a character string to the current record of 
+    ! the specified unit
 
     if(PRESENT(iostat)) then
        write(unit=unit, FMT="(A)", ADVANCE="NO", IOSTAT=iostat) string
@@ -1776,39 +1768,39 @@ contains
        write(unit=unit, FMT="(A)", ADVANCE="NO") string
     endif
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine put_unit_CH
 
-!****
+  !****
 
   subroutine put_line_VS (string, iostat)
 
     type(varying_string), intent(in) :: string
     integer, intent(out), optional   :: iostat
 
-! Append a varying string to the current record of 
-! the default unit, terminating the record
+    ! Append a varying string to the current record of 
+    ! the default unit, terminating the record
 
     call put_line(char(string), iostat)
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine put_line_VS
 
-!****
+  !****
 
   subroutine put_line_CH (string, iostat)
 
     character(LEN=*), intent(in)   :: string
     integer, intent(out), optional :: iostat
 
-! Append a varying string to the current record of 
-! the default unit, terminating the record
+    ! Append a varying string to the current record of 
+    ! the default unit, terminating the record
 
     if(PRESENT(iostat)) then
        write(unit=*, FMT="(A,/)", ADVANCE="NO", IOSTAT=iostat) string
@@ -1816,13 +1808,13 @@ contains
        write(unit=*, FMT="(A,/)", ADVANCE="NO") string
     endif
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine put_line_CH
 
-!****
+  !****
 
   subroutine put_line_unit_VS (unit, string, iostat)
 
@@ -1830,18 +1822,18 @@ contains
     type(varying_string), intent(in) :: string
     integer, intent(out), optional   :: iostat
 
-! Append a varying string to the current record of 
-! the specified unit, terminating the record
+    ! Append a varying string to the current record of 
+    ! the specified unit, terminating the record
 
     call put_line(unit, char(string), iostat)
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine put_line_unit_VS
 
-!****
+  !****
 
   subroutine put_line_unit_CH (unit, string, iostat)
 
@@ -1849,8 +1841,8 @@ contains
     character(LEN=*), intent(in)   :: string
     integer, intent(out), optional :: iostat
 
-! Append a varying string to the current record of 
-! the specified unit, terminating the record
+    ! Append a varying string to the current record of 
+    ! the specified unit, terminating the record
 
     if(PRESENT(iostat)) then
        write(unit=unit, FMT="(A,/)", ADVANCE="NO", IOSTAT=iostat) string
@@ -1858,13 +1850,13 @@ contains
        write(unit=unit, FMT="(A,/)", ADVANCE="NO") string
     endif
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine put_line_unit_CH
 
-!****
+  !****
 
   elemental function extract_VS (string, start, finish) result (ext_string)
 
@@ -1873,17 +1865,17 @@ contains
     integer, intent(in), optional    :: finish
     type(varying_string)             :: ext_string
 
-! Extract a varying substring from a varying string
+    ! Extract a varying substring from a varying string
 
     ext_string = extract(char(string), start, finish)
 
-! Finish
+    ! Finish
 
     return
 
   end function extract_VS
 
-!****
+  !****
 
   elemental function extract_CH (string, start, finish) result (ext_string)
 
@@ -1895,7 +1887,7 @@ contains
     integer                       :: start_
     integer                       :: finish_
 
-! Extract a varying substring from a character string
+    ! Extract a varying substring from a character string
 
     if(PRESENT(start)) then
        start_ = MAX(1, start)
@@ -1911,13 +1903,13 @@ contains
 
     ext_string = var_str(string(start_:finish_))
 
-! Finish
+    ! Finish
 
     return
 
   end function extract_CH
 
-!****
+  !****
 
   elemental function insert_VS_VS (string, start, substring) result (ins_string)
 
@@ -1926,17 +1918,17 @@ contains
     type(varying_string), intent(in) :: substring
     type(varying_string)             :: ins_string
 
-! Insert a varying substring into a varying string
+    ! Insert a varying substring into a varying string
 
     ins_string = insert(char(string), start, char(substring))
 
-! Finish
+    ! Finish
 
     return
 
   end function insert_VS_VS
 
-!****
+  !****
 
   elemental function insert_CH_VS (string, start, substring) result (ins_string)
 
@@ -1945,17 +1937,17 @@ contains
     type(varying_string), intent(in) :: substring
     type(varying_string)             :: ins_string
 
-! Insert a varying substring into a character string
+    ! Insert a varying substring into a character string
 
     ins_string = insert(string, start, char(substring))
 
-! Finish
+    ! Finish
 
     return
 
   end function insert_CH_VS
 
-!****
+  !****
 
   elemental function insert_VS_CH (string, start, substring) result (ins_string)
 
@@ -1964,17 +1956,17 @@ contains
     character(LEN=*), intent(in)     :: substring
     type(varying_string)             :: ins_string
 
-! Insert a character substring into a varying string
+    ! Insert a character substring into a varying string
 
     ins_string = insert(char(string), start, substring)
 
-! Finish
+    ! Finish
 
     return
 
   end function insert_VS_CH
 
-!****
+  !****
 
   elemental function insert_CH_CH (string, start, substring) result (ins_string)
 
@@ -1985,20 +1977,20 @@ contains
 
     integer                      :: start_
 
-! Insert a character substring into a character
-! string
+    ! Insert a character substring into a character
+    ! string
 
     start_ = MAX(1, MIN(start, LEN(string)+1))
 
     ins_string = var_str(string(:start_-1)//substring//string(start_:))
 
-! Finish
+    ! Finish
 
     return
 
   end function insert_CH_CH
 
-!****
+  !****
 
   elemental function remove_VS (string, start, finish) result (rem_string)
 
@@ -2007,17 +1999,17 @@ contains
     integer, intent(in), optional    :: finish
     type(varying_string)             :: rem_string
 
-! Remove a substring from a varying string
+    ! Remove a substring from a varying string
 
     rem_string = remove(char(string), start, finish)
 
-! Finish
+    ! Finish
 
     return
 
   end function remove_VS
 
-!****
+  !****
 
   elemental function remove_CH (string, start, finish) result (rem_string)
 
@@ -2029,7 +2021,7 @@ contains
     integer                       :: start_
     integer                       :: finish_
 
-! Remove a substring from a character string
+    ! Remove a substring from a character string
 
     if(PRESENT(start)) then
        start_ = MAX(1, start)
@@ -2049,13 +2041,13 @@ contains
        rem_string = string
     endif
 
-! Finish
+    ! Finish
 
     return
 
   end function remove_CH
 
-!****
+  !****
 
   elemental function replace_VS_VS_auto (string, start, substring) result (rep_string)
 
@@ -2064,18 +2056,18 @@ contains
     type(varying_string), intent(in) :: substring
     type(varying_string)             :: rep_string
 
-! Replace part of a varying string with a varying
-! substring
+    ! Replace part of a varying string with a varying
+    ! substring
 
     rep_string = replace(char(string), start, MAX(start, 1)+len(substring)-1, char(substring))
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_VS_VS_auto
 
-!****
+  !****
 
   elemental function replace_CH_VS_auto (string, start, substring) result (rep_string)
 
@@ -2084,18 +2076,18 @@ contains
     type(varying_string), intent(in) :: substring
     type(varying_string)             :: rep_string
 
-! Replace part of a character string with a varying
-! substring
+    ! Replace part of a character string with a varying
+    ! substring
 
     rep_string = replace(string, start, MAX(start, 1)+len(substring)-1, char(substring))
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_CH_VS_auto
 
-!****
+  !****
 
   elemental function replace_VS_CH_auto (string, start, substring) result (rep_string)
 
@@ -2104,18 +2096,18 @@ contains
     character(LEN=*), intent(in)     :: substring
     type(varying_string)             :: rep_string
 
-! Replace part of a varying string with a character
-! substring
+    ! Replace part of a varying string with a character
+    ! substring
 
     rep_string = replace(char(string), start, MAX(start, 1)+LEN(substring)-1, substring)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_VS_CH_auto
 
-!****
+  !****
 
   elemental function replace_CH_CH_auto (string, start, substring) result (rep_string)
 
@@ -2124,18 +2116,18 @@ contains
     character(LEN=*), intent(in) :: substring
     type(varying_string)         :: rep_string
 
-! Replace part of a character string with a character
-! substring
+    ! Replace part of a character string with a character
+    ! substring
 
     rep_string = replace(string, start, MAX(start, 1)+LEN(substring)-1, substring)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_CH_CH_auto
 
-!****
+  !****
 
   elemental function replace_VS_VS_fixed (string, start, finish, substring) result (rep_string)
 
@@ -2145,20 +2137,20 @@ contains
     type(varying_string), intent(in) :: substring
     type(varying_string)             :: rep_string
 
-! Replace part of a varying string with a varying
-! substring
+    ! Replace part of a varying string with a varying
+    ! substring
 
     rep_string = replace(char(string), start, finish, char(substring))
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_VS_VS_fixed
 
-!****
+  !****
 
-!****
+  !****
 
   elemental function replace_CH_VS_fixed (string, start, finish, substring) result (rep_string)
 
@@ -2168,18 +2160,18 @@ contains
     type(varying_string), intent(in) :: substring
     type(varying_string)             :: rep_string
 
-! Replace part of a character string with a varying
-! substring
+    ! Replace part of a character string with a varying
+    ! substring
 
     rep_string = replace(string, start, finish, char(substring))
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_CH_VS_fixed
 
-!****
+  !****
 
   elemental function replace_VS_CH_fixed (string, start, finish, substring) result (rep_string)
 
@@ -2189,18 +2181,18 @@ contains
     character(LEN=*), intent(in)     :: substring
     type(varying_string)             :: rep_string
 
-! Replace part of a varying string with a character
-! substring
+    ! Replace part of a varying string with a character
+    ! substring
 
     rep_string = replace(char(string), start, finish, substring)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_VS_CH_fixed
 
-!****
+  !****
 
   elemental function replace_CH_CH_fixed (string, start, finish, substring) result (rep_string)
 
@@ -2213,8 +2205,8 @@ contains
     integer                      :: start_
     integer                      :: finish_
 
-! Replace part of a character string with a character
-! substring
+    ! Replace part of a character string with a character
+    ! substring
 
     start_ = MAX(1, start)
     finish_ = MIN(LEN(string), finish)
@@ -2225,13 +2217,13 @@ contains
        rep_string = var_str(string(:start_-1)//substring//string(finish_+1:))
     endif
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_CH_CH_fixed
 
-!****
+  !****
 
   elemental function replace_VS_VS_VS_target (string, target, substring, every, back) result (rep_string)
 
@@ -2242,19 +2234,19 @@ contains
     logical, intent(in), optional    :: back
     type(varying_string)             :: rep_string
 
-! Replace part of a varying string with a varying
-! substring, at a location matching a varying-
-! string target
+    ! Replace part of a varying string with a varying
+    ! substring, at a location matching a varying-
+    ! string target
 
     rep_string = replace(char(string), char(target), char(substring), every, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_VS_VS_VS_target
 
-!****
+  !****
 
   elemental function replace_CH_VS_VS_target (string, target, substring, every, back) result (rep_string)
 
@@ -2265,19 +2257,19 @@ contains
     logical, intent(in), optional    :: back
     type(varying_string)             :: rep_string
 
-! Replace part of a character string with a varying
-! substring, at a location matching a varying-
-! string target
+    ! Replace part of a character string with a varying
+    ! substring, at a location matching a varying-
+    ! string target
 
     rep_string = replace(string, char(target), char(substring), every, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_CH_VS_VS_target
 
-!****
+  !****
 
   elemental function replace_VS_CH_VS_target (string, target, substring, every, back) result (rep_string)
 
@@ -2288,19 +2280,19 @@ contains
     logical, intent(in), optional    :: back
     type(varying_string)             :: rep_string
 
-! Replace part of a character string with a varying
-! substring, at a location matching a character-
-! string target
+    ! Replace part of a character string with a varying
+    ! substring, at a location matching a character-
+    ! string target
 
     rep_string = replace(char(string), target, char(substring), every, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_VS_CH_VS_target
 
-!****
+  !****
 
   elemental function replace_CH_CH_VS_target (string, target, substring, every, back) result (rep_string)
 
@@ -2311,19 +2303,19 @@ contains
     logical, intent(in), optional    :: back
     type(varying_string)             :: rep_string
 
-! Replace part of a character string with a varying
-! substring, at a location matching a character-
-! string target
+    ! Replace part of a character string with a varying
+    ! substring, at a location matching a character-
+    ! string target
 
     rep_string = replace(string, target, char(substring), every, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_CH_CH_VS_target
 
-!****
+  !****
 
   elemental function replace_VS_VS_CH_target (string, target, substring, every, back) result (rep_string)
 
@@ -2334,19 +2326,19 @@ contains
     logical, intent(in), optional    :: back
     type(varying_string)             :: rep_string
 
-! Replace part of a varying string with a character
-! substring, at a location matching a varying-
-! string target
+    ! Replace part of a varying string with a character
+    ! substring, at a location matching a varying-
+    ! string target
 
     rep_string = replace(char(string), char(target), substring, every, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_VS_VS_CH_target
 
-!****
+  !****
 
   elemental function replace_CH_VS_CH_target (string, target, substring, every, back) result (rep_string)
 
@@ -2357,19 +2349,19 @@ contains
     logical, intent(in), optional    :: back
     type(varying_string)             :: rep_string
 
-! Replace part of a character string with a character
-! substring, at a location matching a varying-
-! string target
+    ! Replace part of a character string with a character
+    ! substring, at a location matching a varying-
+    ! string target
 
     rep_string = replace(string, char(target), substring, every, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_CH_VS_CH_target
 
-!****
+  !****
 
   elemental function replace_VS_CH_CH_target (string, target, substring, every, back) result (rep_string)
 
@@ -2380,19 +2372,19 @@ contains
     logical, intent(in), optional    :: back
     type(varying_string)             :: rep_string
 
-! Replace part of a varying string with a character
-! substring, at a location matching a character-
-! string target
+    ! Replace part of a varying string with a character
+    ! substring, at a location matching a character-
+    ! string target
 
     rep_string = replace(char(string), target, substring, every, back)
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_VS_CH_CH_target
 
-!****
+  !****
 
   elemental function replace_CH_CH_CH_target (string, target, substring, every, back) result (rep_string)
 
@@ -2409,11 +2401,11 @@ contains
     integer                       :: length_target
     integer                       :: i_target
 
-! Handle special cases when LEN(target) == 0. Such
-! instances are prohibited by the standard, but
-! since this function is elemental, no error can be
-! thrown. Therefore, it makes sense to handle them 
-! in a sensible manner
+    ! Handle special cases when LEN(target) == 0. Such
+    ! instances are prohibited by the standard, but
+    ! since this function is elemental, no error can be
+    ! thrown. Therefore, it makes sense to handle them 
+    ! in a sensible manner
 
     if(LEN(target) == 0) then
        if(LEN(string) /= 0) then
@@ -2424,9 +2416,9 @@ contains
        return
     end if
 
-! Replace part of a character string with a character
-! substring, at a location matching a character-
-! string target
+    ! Replace part of a character string with a character
+    ! substring, at a location matching a character-
+    ! string target
 
     if(PRESENT(every)) then
        every_ = every
@@ -2470,13 +2462,13 @@ contains
        rep_string = rep_string//work_string
     endif
 
-! Finish
+    ! Finish
 
     return
 
   end function replace_CH_CH_CH_target
 
-!****
+  !****
 
   elemental subroutine split_VS (string, word, set, separator, back)
 
@@ -2486,17 +2478,17 @@ contains
     type(varying_string), intent(out), optional :: separator
     logical, intent(in), optional               :: back
 
-! Split a varying string into two verying strings
+    ! Split a varying string into two verying strings
 
     call split_CH(string, word, char(set), separator, back)
 
-! Finish
+    ! Finish
 
     return
 
   end subroutine split_VS
 
-!****
+  !****
 
   elemental subroutine split_CH (string, word, set, separator, back)
 
@@ -2509,7 +2501,7 @@ contains
     logical                                     :: back_
     integer                                     :: i_separator
 
-! Split a varying string into two verying strings
+    ! Split a varying string into two verying strings
 
     if(PRESENT(back)) then
        back_ = back
@@ -2539,7 +2531,7 @@ contains
 
     endif
 
-! Finish
+    ! Finish
 
     return
 

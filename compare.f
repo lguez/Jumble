@@ -1,8 +1,10 @@
 module compare_m
 
+  ! Library:
+  use nr_util, only: assert
+
   use prt_cmp_m, only: prt_cmp
   use avg_mag_m, only: avg_mag
-  use nr_util, only: assert
   use point_m, only: point
 
   implicit none
