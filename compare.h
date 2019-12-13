@@ -16,15 +16,24 @@
   else
      if (.not. any(valid)) then
         print tag_fmt, tag
-        print *, "Domains of definition do not intersect."
+        if (different_domains) then
+           print *, "Domains of definition are not identical and do not ", &
+                "intersect."
+        else
+           print *, "Domains of definition are empty."
+        end if
      else
         if (all(.not. valid .or. data_old == data_new)) then
            ! {valid => data_old == data_new}
-           
-           if (report_id) then
-              write(unit = *, fmt = tag_fmt, advance = "no") tag
-              print *, &
-                   "arrays are identical on the intersection of their domains."
+           if (different_domains) then
+              print tag_fmt, tag
+              print *, "Domains of definition are not identical. Arrays are ", &
+                   "identical on the intersection of their domains."
+           else
+              if (report_id) then
+                 write(unit = *, fmt = tag_fmt, advance = "no") tag
+                 print *, "arrays are identical."
+              end if
            end if
         else
            if (quiet) then
@@ -38,6 +47,8 @@
               where(valid) abs_diff = abs(data_new - data_old)
 
               print tag_fmt, tag
+              if (different_domains) print *, &
+                   "Domains of definition are not identical."
 
               if (comp_mag) then
                  print *

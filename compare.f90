@@ -25,7 +25,7 @@ module compare_m
 contains
 
   subroutine compare1(data_old, data_new, tag, comp_mag, report_id, quiet, &
-       valid)
+       different_domains, valid)
 
     ! Rank 1, real
 
@@ -33,7 +33,7 @@ contains
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet
+    logical, intent(in):: quiet, different_domains
     logical, intent(in):: valid(:)
 
     ! Local:
@@ -59,7 +59,7 @@ contains
   !***********************************************************
 
   subroutine compare1_dble(data_old, data_new, tag, comp_mag, report_id, &
-       quiet, valid)
+       quiet, different_domains, valid)
 
     ! Rank 1, double precision
 
@@ -67,7 +67,7 @@ contains
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet
+    logical, intent(in):: quiet, different_domains
     logical, intent(in):: valid(:)
 
     ! Local:
@@ -93,7 +93,7 @@ contains
   !***********************************************************
 
   subroutine compare2(data_old, data_new, tag, comp_mag, report_id, quiet, &
-       valid)
+       different_domains, valid)
 
     ! Rank 2, real
 
@@ -101,7 +101,7 @@ contains
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet
+    logical, intent(in):: quiet, different_domains
     logical, intent(in):: valid(:, :)
 
     ! Local:
@@ -127,7 +127,7 @@ contains
   !***********************************************************
 
   subroutine compare2_dble(data_old, data_new, tag, comp_mag, report_id, &
-       quiet, valid)
+       quiet, different_domains, valid)
 
     ! Rank 2, double precision
 
@@ -135,7 +135,7 @@ contains
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet
+    logical, intent(in):: quiet, different_domains
     logical, intent(in):: valid(:, :)
 
     ! Local:
@@ -155,13 +155,13 @@ contains
     !------------------------------------------------------
 
     include "compare.h"
- 
+
   end subroutine compare2_dble
 
   !***********************************************************
 
   subroutine compare3(data_old, data_new, tag, comp_mag, report_id, quiet, &
-       valid)
+       different_domains, valid)
 
     ! Rank 3, real
 
@@ -169,7 +169,7 @@ contains
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet
+    logical, intent(in):: quiet, different_domains
     logical, intent(in):: valid(:, :, :)
 
     ! Local:
@@ -196,7 +196,7 @@ contains
   !***********************************************************
 
   subroutine compare3_dble(data_old, data_new, tag, comp_mag, report_id, &
-       quiet, valid)
+       quiet, different_domains, valid)
 
     ! Rank 3, double precision
 
@@ -204,7 +204,7 @@ contains
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet
+    logical, intent(in):: quiet, different_domains
     logical, intent(in):: valid(:, :, :)
 
     ! Local:
@@ -233,7 +233,7 @@ contains
   !***********************************************************
 
   subroutine compare4(data_old, data_new, tag, comp_mag, report_id, quiet, &
-       valid)
+       different_domains, valid)
 
     ! Rank 4, real
 
@@ -241,7 +241,7 @@ contains
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet
+    logical, intent(in):: quiet, different_domains
     logical, intent(in):: valid(:, :, :, :)
 
     ! Local:
@@ -270,7 +270,7 @@ contains
   !***********************************************************
 
   subroutine compare4_dble(data_old, data_new, tag, comp_mag, report_id, &
-       quiet, valid)
+       quiet, different_domains, valid)
 
     ! Rank 4, double precision
 
@@ -278,7 +278,7 @@ contains
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag
     logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet
+    logical, intent(in):: quiet, different_domains
     logical, intent(in):: valid(:, :, :, :)
 
     ! Local:
@@ -301,7 +301,7 @@ contains
     !------------------------------------------------------
 
     include "compare.h"
- 
+
   end subroutine compare4_dble
 
 end module compare_m
