@@ -3,8 +3,9 @@ module compare_m
   ! Library:
   use nr_util, only: assert
 
-  use prt_cmp_m, only: prt_cmp
   use avg_mag_m, only: avg_mag
+  use opt_merge_m, only: opt_merge
+  use prt_cmp_m, only: prt_cmp
   use point_m, only: point
 
   implicit none
@@ -12,12 +13,23 @@ module compare_m
   interface compare
      ! Makes a numerical comparison between two arrays of rank 1 to 4,
      ! of type real or double precision.
+
+     ! real or double precision, intent(in), rank 1 to 4:: data_old, data_new
+     ! character(len = *), intent(in):: tag
+     ! logical, intent(in):: comp_mag
+     ! logical, intent(in):: report_id  (report identical variables)
+     ! logical, intent(in):: quiet
+     ! logical, intent(in), optional:: different_domains (default .false.)
+     ! logical, intent(in), same rank as data_old and data_new:: valid
+
      module procedure compare1, compare1_dble, compare2, compare2_dble, &
           compare3, compare3_dble, compare4, compare4_dble
   end interface compare
 
   character(len = *), parameter:: dashes &
        = "---------------------------------------------"
+
+  logical different_domains_not_opt
 
   private
   public compare
@@ -31,9 +43,8 @@ contains
 
     real, intent(in):: data_old(:), data_new(:)
     character(len = *), intent(in):: tag
-    logical, intent(in):: comp_mag
-    logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet, different_domains
+    logical, intent(in):: comp_mag, report_id, quiet
+    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:)
 
     ! Local:
@@ -65,9 +76,8 @@ contains
 
     double precision, intent(in):: data_old(:), data_new(:)
     character(len = *), intent(in):: tag
-    logical, intent(in):: comp_mag
-    logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet, different_domains
+    logical, intent(in):: comp_mag, report_id, quiet
+    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:)
 
     ! Local:
@@ -99,9 +109,8 @@ contains
 
     real, intent(in):: data_old(:,:), data_new(:,:)
     character(len = *), intent(in):: tag
-    logical, intent(in):: comp_mag
-    logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet, different_domains
+    logical, intent(in):: comp_mag, report_id, quiet
+    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :)
 
     ! Local:
@@ -133,9 +142,8 @@ contains
 
     double precision, intent(in):: data_old(:,:), data_new(:,:)
     character(len = *), intent(in):: tag
-    logical, intent(in):: comp_mag
-    logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet, different_domains
+    logical, intent(in):: comp_mag, report_id, quiet
+    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :)
 
     ! Local:
@@ -167,9 +175,8 @@ contains
 
     real, intent(in):: data_old(:, :, :), data_new(:, : ,:)
     character(len = *), intent(in):: tag
-    logical, intent(in):: comp_mag
-    logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet, different_domains
+    logical, intent(in):: comp_mag, report_id, quiet
+    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :, :)
 
     ! Local:
@@ -202,9 +209,8 @@ contains
 
     double precision, intent(in):: data_old(:, :, :), data_new(:, : ,:)
     character(len = *), intent(in):: tag
-    logical, intent(in):: comp_mag
-    logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet, different_domains
+    logical, intent(in):: comp_mag, report_id, quiet
+    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :, :)
 
     ! Local:
@@ -239,9 +245,8 @@ contains
 
     real, intent(in):: data_old(:, :, :, :), data_new(:, : ,:, :)
     character(len = *), intent(in):: tag
-    logical, intent(in):: comp_mag
-    logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet, different_domains
+    logical, intent(in):: comp_mag, report_id, quiet
+    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :, :, :)
 
     ! Local:
@@ -276,9 +281,8 @@ contains
 
     double precision, intent(in):: data_old(:, :, :, :), data_new(:, : ,:, :)
     character(len = *), intent(in):: tag
-    logical, intent(in):: comp_mag
-    logical, intent(in):: report_id ! report identical variables
-    logical, intent(in):: quiet, different_domains
+    logical, intent(in):: comp_mag, report_id, quiet
+    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :, :, :)
 
     ! Local:

@@ -4,6 +4,8 @@
   call assert(shape(data_old) == shape(data_new), &
        "compare: shapes differ -- " // tag)
 
+  different_domains_not_opt = opt_merge(different_domains, .false.)
+
   if (quiet) then
      tag_fmt = '(a, ":")'
   else
@@ -16,7 +18,7 @@
   else
      if (.not. any(valid)) then
         print tag_fmt, tag
-        if (different_domains) then
+        if (different_domains_not_opt) then
            print *, "Domains of definition are not identical and do not ", &
                 "intersect."
         else
@@ -25,7 +27,7 @@
      else
         if (all(.not. valid .or. data_old == data_new)) then
            ! {valid => data_old == data_new}
-           if (different_domains) then
+           if (different_domains_not_opt) then
               print tag_fmt, tag
               print *, "Domains of definition are not identical. Arrays are ", &
                    "identical on the intersection of their domains."
@@ -47,7 +49,7 @@
               where(valid) abs_diff = abs(data_new - data_old)
 
               print tag_fmt, tag
-              if (different_domains) print *, &
+              if (different_domains_not_opt) print *, &
                    "Domains of definition are not identical."
 
               if (comp_mag) then
