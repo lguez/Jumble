@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.13)
 project(Jumble Fortran)
 
-add_library(jumble opt_merge.f90 uniq.f90 prep_file.f90 jumble.f90
-  prt_cmp.f90 new_unit.f90 get_command_arg_dyn.f90 pr_matrix.f90
-  point.f90 iso_varying_string.f90 csvread.f90 read_column.f90
-  count_lines.f90 avg_mag.f90 compare.f90 greg2jd.f90)
+add_library(jumble opt_merge.f90 uniq.f90 jumble.f90 prt_cmp.f90
+  new_unit.f90 get_command_arg_dyn.f90 pr_matrix.f90 point.f90
+  iso_varying_string.f90 csvread.f90 read_column.f90 count_lines.f90
+  avg_mag.f90 compare.f90 greg2jd.f90 count_values.f90)
 
 set_target_properties(jumble PROPERTIES Fortran_MODULE_DIRECTORY
   ${PROJECT_BINARY_DIR}/modules)

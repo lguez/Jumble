@@ -5,6 +5,7 @@ module jumble
   use avg_mag_m
   use compare_m
   use count_lines_m
+  use count_values_m
   use csvread_m
   use determin_m
   use differ_s_m

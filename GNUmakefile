@@ -5,7 +5,7 @@
 
 VPATH = Numerical Numerical/Lin_2d_real
 
-sources = avg_mag.f90 count_lines.f90 opt_merge.f90 point.f90 compare.f90 csvread.f90 new_unit.f90 read_column.f90 jumble.f90 averge.f90 divisors.f90 quadrat.f90 spherical.f90 prep_file.f90 prt_cmp.f90 uniq.f90 ediff1d.f90 pack_indices.f90 argwhere.f90 get_command_arg_dyn.f90 determin.f90 eigval.f90 eigvect.f90 inv_mat.f90 set2lin.f90 pr_matrix.f90 iso_varying_string.f90 differ_s.f90 greg2jd.f90
+sources = avg_mag.f90 count_lines.f90 opt_merge.f90 point.f90 compare.f90 csvread.f90 new_unit.f90 read_column.f90 jumble.f90 averge.f90 divisors.f90 quadrat.f90 spherical.f90 prt_cmp.f90 uniq.f90 ediff1d.f90 pack_indices.f90 argwhere.f90 get_command_arg_dyn.f90 determin.f90 eigval.f90 eigvect.f90 inv_mat.f90 set2lin.f90 pr_matrix.f90 iso_varying_string.f90 differ_s.f90 greg2jd.f90 count_values.f90
 
 # 2. Objects and libraries
 
