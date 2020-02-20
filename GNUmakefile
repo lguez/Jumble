@@ -9,6 +9,7 @@ sources = nrtype.F90 nr_util.f90 arth.f90 array_copy.f90 swap.f90 reallocate.f90
 
 objects := $(addsuffix .o, $(basename ${sources}))
 lib = libnr_util.a
+ARFLAGS = rvU
 
 # 3. Compiler-dependent part
 
