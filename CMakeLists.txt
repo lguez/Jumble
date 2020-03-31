@@ -8,6 +8,7 @@ add_library(jumble opt_merge.f90 uniq.f90 jumble.f90 prt_cmp.f90
 
 set_target_properties(jumble PROPERTIES Fortran_MODULE_DIRECTORY
   ${PROJECT_BINARY_DIR}/modules)
+
 target_include_directories(jumble PUBLIC
   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/modules>)
 
@@ -17,15 +18,13 @@ endif()
 
 include(Numerical/CMakeLists.txt)
 
-get_directory_property(my_parent PARENT_DIRECTORY)
-
-if(NOT my_parent)
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   find_package(NR_util CONFIG REQUIRED)
 endif()
 
-target_link_libraries(jumble nr_util)
+target_link_libraries(jumble PUBLIC nr_util)
 
-set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
 include(ConfigureCompilerFlags)
 
 include(CMakePackageConfigHelpers)
@@ -33,7 +32,7 @@ configure_package_config_file(Config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
     INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
 
-if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
+if(CMAKE_Fortran_COMPILER_ID MATCHES NAG|Intel)
   set(install_include_dir include/${PROJECT_NAME})
   install(DIRECTORY ${PROJECT_BINARY_DIR}/modules/ DESTINATION
     ${install_include_dir})
