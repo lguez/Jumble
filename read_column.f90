@@ -20,10 +20,10 @@ module read_column_m
 
 contains
 
-  subroutine read_column_real(file, a, first, last)
+  subroutine read_column_real(a, file, first, last)
 
-    character(len=*), intent(in):: file
     real, allocatable, intent(out):: a(:)
+    character(len=*), intent(in):: file
     integer, intent(in), optional:: first ! (first line to read)
     integer, intent(in), optional:: last ! (last line to read)
 
@@ -41,10 +41,10 @@ contains
 
   !***********************************************************
 
-  subroutine read_column_integer(file, a, first, last)
+  subroutine read_column_integer(a, file, first, last)
 
-    character(len=*), intent(in):: file
     integer, allocatable, intent(out):: a(:)
+    character(len=*), intent(in):: file
     integer, intent(in), optional:: first ! (first line to read)
     integer, intent(in), optional:: last ! (last line to read)
 
@@ -62,10 +62,10 @@ contains
 
   !***********************************************************
 
-  subroutine read_column_char(file, a, first, last)
+  subroutine read_column_char(a, file, first, last)
 
-    character(len=*), intent(in):: file
     character(len=*), allocatable, intent(out):: a(:)
+    character(len=*), intent(in):: file
     integer, intent(in), optional:: first ! (first line to read)
     integer, intent(in), optional:: last ! (last line to read)
 
