@@ -18,9 +18,9 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
   target_include_directories(nr_util PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-set(CPP_WP "kind\(0.\)" CACHE STRING "Working precision")
-target_compile_definitions(nr_util PRIVATE CPP_WP=${CPP_WP})
-message(STATUS "Set working precision to ${CPP_WP}")
+set(NR_util_CPP_WP "kind\(0.\)" CACHE STRING "Working precision")
+target_compile_definitions(nr_util PRIVATE CPP_WP=${NR_util_CPP_WP})
+message(STATUS "Set working precision to ${NR_util_CPP_WP}")
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
 include(ConfigureCompilerFlags)
