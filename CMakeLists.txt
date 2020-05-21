@@ -25,6 +25,12 @@ message(STATUS "Set working precision to ${NR_util_CPP_WP}")
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
 include(ConfigureCompilerFlags)
 
+add_executable(test_nr_util test_nr_util.f90)
+target_link_libraries(test_nr_util nr_util)
+
+add_executable(test_ifirstloc test_ifirstloc.f90)
+target_link_libraries(test_ifirstloc nr_util)
+
 include(CMakePackageConfigHelpers)
 configure_package_config_file(Config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
