@@ -22,7 +22,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   find_package(NR_util CONFIG REQUIRED)
 endif()
 
-target_link_libraries(jumble PUBLIC nr_util)
+target_link_libraries(jumble PRIVATE nr_util)
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
 include(ConfigureCompilerFlags)
