@@ -9,9 +9,9 @@
   ! necessary.
   
   first_not_opt = opt_merge(first, 1)
-  last_not_opt = opt_merge(last, 0)
+  last_not_opt = opt_merge(last, huge(0))
 
-  if (last_not_opt == 0) then
+  if (last_not_opt == huge(0)) then
      call count_lines(unit, last_not_opt)
 
      if (last_not_opt == 0) then
