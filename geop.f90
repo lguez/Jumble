@@ -4,6 +4,15 @@ MODULE geop_m
 
   INTERFACE geop
      ! Return a geometrical progression as an array.
+
+     ! Returns an array of length n containing a geometric progression
+     ! whose first value is first and whose multiplier is factor. If
+     ! first and factor have rank greater than zero, returns an array
+     ! of one larger rank, with the last subscript having size n and
+     ! indexing the progression. Note that the following reference
+     ! implementation (for the scalar case) is definitional only, and
+     ! neither parallelized nor optimized for roundoff error.
+
      MODULE PROCEDURE geop_r, geop_d, geop_i, geop_c, geop_dv
   END INTERFACE
 
@@ -39,6 +48,8 @@ CONTAINS
     end if
   END FUNCTION geop_r
 
+  !*********************************************************************
+
   FUNCTION geop_d(first,factor,n)
     DOUBLE PRECISION, INTENT(IN) :: first,factor
     INTEGER, INTENT(IN) :: n
@@ -66,6 +77,8 @@ CONTAINS
     end if
   END FUNCTION geop_d
 
+  !*********************************************************************
+
   FUNCTION geop_i(first,factor,n)
     INTEGER, INTENT(IN) :: first,factor,n
     INTEGER, DIMENSION(n) :: geop_i
@@ -90,6 +103,8 @@ CONTAINS
        end do
     end if
   END FUNCTION geop_i
+
+  !*********************************************************************
 
   FUNCTION geop_c(first,factor,n)
     COMPLEX, INTENT(IN) :: first,factor
@@ -117,6 +132,8 @@ CONTAINS
        end do
     end if
   END FUNCTION geop_c
+
+  !*********************************************************************
 
   FUNCTION geop_dv(first,factor,n)
     DOUBLE PRECISION, DIMENSION(:), INTENT(IN) :: first,factor
