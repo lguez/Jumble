@@ -12,7 +12,7 @@ set_target_properties(jumble PROPERTIES Fortran_MODULE_DIRECTORY
 target_include_directories(jumble PUBLIC
   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/modules>)
 
-if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
+if(CMAKE_Fortran_COMPILER_ID MATCHES "NAG")
   target_include_directories(jumble PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
@@ -32,7 +32,7 @@ configure_package_config_file(Config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
     INSTALL_DESTINATION lib/cmake/${PROJECT_NAME})
 
-if(CMAKE_Fortran_COMPILER_ID MATCHES NAG|Intel)
+if(CMAKE_Fortran_COMPILER_ID MATCHES "NAG|Intel")
   set(install_include_dir include/${PROJECT_NAME})
   install(DIRECTORY ${PROJECT_BINARY_DIR}/modules/ DESTINATION
     ${install_include_dir})
