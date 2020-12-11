@@ -16,7 +16,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES "NAG")
   target_include_directories(jumble PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
-include(Numerical/CMakeLists.txt)
+add_subdirectory(Numerical)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   find_package(NR_util CONFIG REQUIRED)
