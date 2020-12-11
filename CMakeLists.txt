@@ -13,7 +13,7 @@ target_include_directories(jumble PUBLIC
   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/modules>)
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES "NAG")
-  target_include_directories(jumble PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+  target_include_directories(jumble PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
 include(Numerical/CMakeLists.txt)
