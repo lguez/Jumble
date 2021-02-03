@@ -11,10 +11,11 @@ module read_column_m
 
   interface read_column
      ! This generic procedure reads a column of values in an external
-     ! file. The records of the file shoud be formatted. If the
-     ! argument "last" is huge(0) or is absent then the procedure
-     ! reads to the last line in the file. The difference between the
-     ! specific procedures is the type of argument "a".
+     ! file. The file should contain a single column. The records of
+     ! the file shoud be formatted. If the argument "last" is huge(0)
+     ! or is absent then the procedure reads to the last line in the
+     ! file. The difference between the specific procedures is the
+     ! type of argument "a".
      module procedure read_column_real, read_column_integer, read_column_char
   end interface read_column
 
