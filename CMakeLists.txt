@@ -15,7 +15,7 @@ target_include_directories(nr_util PUBLIC
   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/modules>)
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
-  target_include_directories(nr_util PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+  target_include_directories(nr_util PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
 set(NR_util_CPP_WP "kind\(0.\)" CACHE STRING "Working precision")
