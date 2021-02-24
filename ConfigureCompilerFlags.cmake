@@ -30,8 +30,16 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES Intel)
     " -check bounds,format,output_conversion,pointers,stack,uninit")
 
   # Data:
+
   string(APPEND CMAKE_Fortran_FLAGS " -auto -mcmodel=medium")
-  string(APPEND CMAKE_Fortran_FLAGS_DEBUG " -init=arrays,minus_huge,snan")
+  include(CheckFortranCompilerFlag)
+  check_fortran_compiler_flag("-init=minus_huge" HAS_FLAG)
+
+  if(HAS_FLAG)
+    string(APPEND CMAKE_Fortran_FLAGS_DEBUG " -init=arrays,minus_huge,snan")
+  else()
+    string(APPEND CMAKE_Fortran_FLAGS_DEBUG " -init=arrays,snan")
+  endif()
   
   # Compiler diagnostics:
   string(APPEND CMAKE_Fortran_FLAGS
