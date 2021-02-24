@@ -6,7 +6,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES GNU)
   string(APPEND CMAKE_Fortran_FLAGS
     " -fmax-errors=1 -pedantic -Wall -Wcharacter-truncation -Wunused-parameter"
     " -Wno-conversion -Wimplicit-interface -Wimplicit-procedure"
-    " -Wno-integer-division")
+    " -Wno-integer-division -Wno-maybe-uninitialized")
 
   # Debugging options:
   set(CMAKE_Fortran_FLAGS_DEBUG

@@ -183,5 +183,5 @@ parameterize them with a single named constant. See the page on
 
 For integer data objects, we have removed the i4b kind parameterization.
 This parameterization did not make any sense for the routines of
-NR\_util (it was used needlessly for local lop counters, for example).
+NR\_util (it was used needlessly for local loop counters, for example).
 All the integer data objects of NR\_util are of default integer kind.
