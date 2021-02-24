@@ -14,7 +14,8 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES GNU)
 
   # Code generation options:
   string(APPEND CMAKE_Fortran_FLAGS_DEBUG
-    " -fcheck=bounds,do,mem,pointer,recursion -finit-real=nan -O0")
+    " -fcheck=bounds,do,mem,pointer,recursion -finit-derived -finit-real=snan "
+    "-O0")
 
   # Optimization options:
   set(CMAKE_Fortran_FLAGS_RELEASE -O3)
