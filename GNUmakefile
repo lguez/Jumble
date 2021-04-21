@@ -11,7 +11,6 @@ sources = avg_mag.f90 count_lines.f90 opt_merge.f90 point.f90 compare.f90 csvrea
 
 objects := $(sources:.f90=.o)
 lib = libjumble.a
-ARFLAGS = rvU
 
 # 3. Compiler-dependent part
 

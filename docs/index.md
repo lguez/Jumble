@@ -68,9 +68,7 @@ Installation
 5.  Optionally, you may choose additional compiler options by adding to
     the variable `FFLAGS`. You could also change optimization options
     from the default `-O2`.
-6.  On MacOS, remove the letter U in the value of the variable
-    `ARFLAGS`, in `GNUmakefile`.
-7.  In a terminal, go to the Jumble directory, for example:
+6.  In a terminal, go to the Jumble directory, for example:
 
         cd ~/Downloads/Jumble-master
 
