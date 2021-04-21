@@ -28,41 +28,41 @@ Detailed content of NR\_util
 
 Mathematical constants defined in NR\_util: π, π / 2, 2 π, √2, Euler
 constant, π / 180, 180 / π. See module
-[nrtype](Doxygen_NR_util/html/nrtype_8_f90_source.html).
+[nrtype](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/nrtype_8_f90_source.html).
 
 Procedure | Description
 --------- | ----------
-[array\_copy](Doxygen_NR_util/html/array__copy_8f90_source.html) | Copies to a destination array dest the one-dimensional array src, or as much of src as will fit in dest.
-[arth](Doxygen_NR_util/html/arth_8f90_source.html) | Arithmetic progression.
-[assert_eq](Doxygen_NR_util/html/assert__eq_8f90_source.html) | Exit with error message if integer arguments not all equal.
-[assert](Doxygen_NR_util/html/assert_8f90_source.html) | Exit with error message if any assertion is false.
-[cumprod](Doxygen_NR_util/html/cumprod_8f90_source.html) | Cumulative product on an array, with optional multiplicative seed.
-[cumsum](Doxygen_NR_util/html/cumsum_8f90_source.html) | Cumulative sums of one-dimensional array, with optional seed value.
-[diagadd](Doxygen_NR_util/html/diagadd_8f90_source.html) | Adds vector to diagonal of a matrix.
-[diagmult](Doxygen_NR_util/html/diagmult_8f90_source.html) | Multiplies vector into diagonal of a matrix.
-[geop](Doxygen_NR_util/html/geop_8f90_source.html) | Return a geometrical progression as an array.
-[get_diag](Doxygen_NR_util/html/get__diag_8f90_source.html) | Gets diagonal of a matrix.
-[ifirstloc](Doxygen_NR_util/html/ifirstloc_8f90_source.html) | Location of first true value in a logical array, returned as an integer.
-[lower_triangle](Doxygen_NR_util/html/lower__triangle_8f90_source.html) | Returns a lower triangular logical mask.
-[nrerror](Doxygen_NR_util/html/nrerror_8f90_source.html) | Exit with error message.
-[outerand](Doxygen_NR_util/html/outerand_8f90_source.html) | Returns the outer logical and of two vectors.
-[outerdiff](Doxygen_NR_util/html/outerdiff_8f90_source.html) | Returns a matrix that is the outer difference of two vectors.
-[outerdiv](Doxygen_NR_util/html/outerdiv_8f90_source.html) | Returns a matrix that is the outer quotient of two vectors.
-[outerprod](Doxygen_NR_util/html/outerprod_8f90_source.html) | Returns the outer product of two vectors.
-[outersum](Doxygen_NR_util/html/outersum_8f90_source.html) | Returns the outer sum of two vectors.
-[poly](Doxygen_NR_util/html/poly_8f90_source.html) | Evaluate a polynomial P(x) for one or more values x, with optional mask.
-[poly_term](Doxygen_NR_util/html/poly__term_8f90_source.html) | Returns partial cumulants of a polynomial, equivalent to synthetic division.
-[put_diag](Doxygen_NR_util/html/put__diag_8f90_source.html) | Sets diagonal of a matrix.
-[reallocate](Doxygen_NR_util/html/reallocate_8f90_source.html) | Reallocate pointer to new size, preserving its contents.
-[scatter_add](Doxygen_NR_util/html/scatter__add_8f90_source.html) | Scatter-adds source vector to specified components of destination vector.
-[scatter_max](Doxygen_NR_util/html/scatter__max_8f90_source.html) | Scatter-max source vector to specified components of destination vector.
-[swap](Doxygen_NR_util/html/swap_8f90_source.html) | Swap elements of two input arguments corresponding to input mask.
-[unit_matrix](Doxygen_NR_util/html/unit__matrix_8f90_source.html) | Sets matrix to be a unit matrix.
-[upper_triangle](Doxygen_NR_util/html/upper__triangle_8f90_source.html) | Returns an upper triangular logical mask.
-[vabs](Doxygen_NR_util/html/vabs_8f90_source.html) | Length of a vector in L2 norm.
-[zroots_unity](Doxygen_NR_util/html/zroots__unity_8f90_source.html) | Returns nn consecutive powers of the nth root of unity.
+[array\_copy](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/array__copy_8f90_source.html) | Copies to a destination array dest the one-dimensional array src, or as much of src as will fit in dest.
+[arth](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/arth_8f90_source.html) | Arithmetic progression.
+[assert_eq](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/assert__eq_8f90_source.html) | Exit with error message if integer arguments not all equal.
+[assert](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/assert_8f90_source.html) | Exit with error message if any assertion is false.
+[cumprod](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/cumprod_8f90_source.html) | Cumulative product on an array, with optional multiplicative seed.
+[cumsum](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/cumsum_8f90_source.html) | Cumulative sums of one-dimensional array, with optional seed value.
+[diagadd](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/diagadd_8f90_source.html) | Adds vector to diagonal of a matrix.
+[diagmult](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/diagmult_8f90_source.html) | Multiplies vector into diagonal of a matrix.
+[geop](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/geop_8f90_source.html) | Return a geometrical progression as an array.
+[get_diag](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/get__diag_8f90_source.html) | Gets diagonal of a matrix.
+[ifirstloc](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/ifirstloc_8f90_source.html) | Location of first true value in a logical array, returned as an integer.
+[lower_triangle](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/lower__triangle_8f90_source.html) | Returns a lower triangular logical mask.
+[nrerror](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/nrerror_8f90_source.html) | Exit with error message.
+[outerand](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/outerand_8f90_source.html) | Returns the outer logical and of two vectors.
+[outerdiff](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/outerdiff_8f90_source.html) | Returns a matrix that is the outer difference of two vectors.
+[outerdiv](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/outerdiv_8f90_source.html) | Returns a matrix that is the outer quotient of two vectors.
+[outerprod](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/outerprod_8f90_source.html) | Returns the outer product of two vectors.
+[outersum](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/outersum_8f90_source.html) | Returns the outer sum of two vectors.
+[poly](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/poly_8f90_source.html) | Evaluate a polynomial P(x) for one or more values x, with optional mask.
+[poly_term](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/poly__term_8f90_source.html) | Returns partial cumulants of a polynomial, equivalent to synthetic division.
+[put_diag](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/put__diag_8f90_source.html) | Sets diagonal of a matrix.
+[reallocate](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/reallocate_8f90_source.html) | Reallocate pointer to new size, preserving its contents.
+[scatter_add](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/scatter__add_8f90_source.html) | Scatter-adds source vector to specified components of destination vector.
+[scatter_max](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/scatter__max_8f90_source.html) | Scatter-max source vector to specified components of destination vector.
+[swap](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/swap_8f90_source.html) | Swap elements of two input arguments corresponding to input mask.
+[unit_matrix](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/unit__matrix_8f90_source.html) | Sets matrix to be a unit matrix.
+[upper_triangle](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/upper__triangle_8f90_source.html) | Returns an upper triangular logical mask.
+[vabs](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/vabs_8f90_source.html) | Length of a vector in L2 norm.
+[zroots_unity](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/zroots__unity_8f90_source.html) | Returns nn consecutive powers of the nth root of unity.
 
-[Doxygen Documentation](Doxygen_NR_util/html/index.html)
+[Doxygen Documentation](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/index.html)
 
 Installation
 ============
@@ -151,7 +151,7 @@ in source code; one file for each procedure not part of a generic
 procedure; one file for each generic procedure, with all its specific
 procedures; module variables distributed in relevant module files (e. g.
 `npar_arth`) or made local (NPAR\_CUMPROD); removed [stat arguments to
-allocate](https://www.lmd.jussieu.fr/~lguez/argument-stat-de-linstruction-allocate.html); removed tabulation
+allocate](https://www.lmd.jussieu.fr/~lguez/Pelican/argument-stat-de-linstruction-allocate.html); removed tabulation
 characters (they are not allowed by Fortran standard); replaced stop
 character string by print and stop 1.
 
@@ -179,7 +179,7 @@ sense to define several named constants for several real kinds (sp and
 dp in the original routines): either you duplicate the routines or you
 parameterize them with a single named constant. See the page on
 [Managing kind parameters for numeric types in Fortran
-2003](https://www.lmd.jussieu.fr/~lguez/managing-kind-parameters-for-numeric-types-in-fortran-2003.html).
+2003](https://www.lmd.jussieu.fr/~lguez/Pelican/managing-kind-parameters-for-numeric-types-in-fortran-2003.html).
 
 For integer data objects, we have removed the i4b kind parameterization.
 This parameterization did not make any sense for the routines of
