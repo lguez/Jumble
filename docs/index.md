@@ -84,9 +84,7 @@ Installation
 4.  Optionally, you may choose additional compiler options by adding to
     the variable `FFLAGS`, in `GNUmakefile`. You could also change
     optimization options from the default `-O2`.
-5.  On MacOS, remove the letter U in the value of the variable
-    `ARFLAGS`, in `GNUmakefile`.
-6.  In a terminal, go to the NR\_util directory, for example:
+5.  In a terminal, go to the NR\_util directory, for example:
 
         cd ~/Downloads/NR_util-master
 
