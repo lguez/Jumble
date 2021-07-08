@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project(NR_util Fortran)
+set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 
 add_library(nr_util nrtype.F90 nr_util.f90 arth.f90 array_copy.f90
   swap.f90 reallocate.f90 assert.f90 assert_eq.f90 geop.f90 cumsum.f90

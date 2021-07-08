@@ -59,3 +59,6 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
   string(APPEND CMAKE_Fortran_FLAGS " -f2003")
   string(APPEND CMAKE_Fortran_FLAGS_DEBUG " -C=all -gline -nan -strict95")
 endif()
+
+set(CMAKE_Fortran_FLAGS_PROFILE "-p -g -O2")
+set(CMAKE_EXE_LINKER_FLAGS_PROFILE "-p -g -O2")
