@@ -69,7 +69,7 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES Intel)
 elseif(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
   string(APPEND CMAKE_Fortran_FLAGS " -f2003")
 
-  string(APPEND CMAKE_Fortran_FLAGS_DEBUG " -C=all -gline -nan -strict95")
+  string(APPEND CMAKE_Fortran_FLAGS_DEBUG " -C=all -g90 -gline -nan -strict95")
   #  -C=undefined is not binary compatible with Fortran code compiled
   #  without that option, and is not compatible with calling C code
   #  via a BIND(C) interface.
