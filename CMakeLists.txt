@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 project(Jumble Fortran)
+set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 
 add_library(jumble opt_merge.f90 uniq.f90 jumble.f90 prt_cmp.f90
   new_unit.f90 get_command_arg_dyn.f90 pr_matrix.f90 point.f90
