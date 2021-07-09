@@ -24,7 +24,7 @@ Procedure | Description
 [ediff1d](https://www.lmd.jussieu.fr/~lguez/Jumble_Doxygen_html/ediff1d_8f90_source.html) | Computes the differences between consecutive elements of an array.
 [eigval](https://www.lmd.jussieu.fr/~lguez/Jumble_Doxygen_html/eigval_8f90_source.html) | Computes real eigenvalues of a (2, 2) real matrix.
 [eigvect](https://www.lmd.jussieu.fr/~lguez/Jumble_Doxygen_html/eigvect_8f90_source.html) | Computes the matrix of eigenvectors of a (2, 2) real matrix.
-[get\_command\_arg\_dyn](https://www.lmd.jussieu.fr/~lguez/Jumble_Doxygen_html/get__command__arg__dyn_8f90_source.html) | Wrapper for get\_command\_argument with automatic allocation of the character argumet.
+[get\_command\_arg\_dyn](https://www.lmd.jussieu.fr/~lguez/Jumble_Doxygen_html/get__command__arg__dyn_8f90_source.html) | Wrapper for get\_command\_argument with automatic allocation of the character argument.
 [greg2jd](https://www.lmd.jussieu.fr/~lguez/Jumble_Doxygen_html/greg2jd_8f90_source.html) | Converts a date on the Gregorian or Julian calendar to a Julian date. Adapted from David G. Simpson.
 [inv\_mat](https://www.lmd.jussieu.fr/~lguez/Jumble_Doxygen_html/inv__mat_8f90_source.html) | Computes the inverse of a (2, 2) real matrix.
 [iso\_varying\_string](https://www.lmd.jussieu.fr/~lguez/Jumble_Doxygen_html/iso__varying__string_8f90_source.html) | Varying-length strings, conformant to ISO Fortran 95 extension, by Rich Townsend.

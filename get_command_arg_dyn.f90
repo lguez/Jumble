@@ -13,6 +13,11 @@ contains
     ! difference with a direct call to get_command_argument is that
     ! you do not have to check the return status: get_command_arg_dyn
     ! aborts if there is a problem.
+
+    ! Note: no need to call command_argument_count first, because
+    ! there is probably no other reason for failure of the first call
+    ! to get_command_argument below than "number" being greater than
+    ! number of arguments.
     
     integer, intent(in):: number
     character(len = :), allocatable, intent(out):: arg_val
