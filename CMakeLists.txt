@@ -9,7 +9,7 @@ add_library(nr_util nrtype.F90 nr_util.f90 arth.f90 array_copy.f90
   scatter_max.f90 diagadd.f90 diagmult.f90 get_diag.f90 put_diag.f90
   cumprod.f90 ifirstloc.f90 lower_triangle.f90 nrerror.f90
   outerand.f90 outerdiv.f90 outersum.f90 unit_matrix.f90
-  upper_triangle.f90 vabs.f90 zroots_unity.f90)
+  upper_triangle.f90 vabs.f90 zroots_unity.f90 swap_array.h swap_scalar.h)
 
 set_target_properties(nr_util PROPERTIES Fortran_MODULE_DIRECTORY
   ${PROJECT_BINARY_DIR}/modules)
