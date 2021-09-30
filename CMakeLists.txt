@@ -26,9 +26,6 @@ endif()
 
 target_link_libraries(jumble PRIVATE nr_util)
 
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
-include(ConfigureCompilerFlags)
-
 add_executable(test_greg2jd test_greg2jd.f90)
 target_link_libraries(test_greg2jd PRIVATE jumble)
 
