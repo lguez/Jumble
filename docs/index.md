@@ -53,6 +53,35 @@ Installation
 2.  Get [Jumble from Github](https://github.com/lguez/Jumble). The
     directory you get could be called Jumble or Jumble-master (depending
     on whether you cloned or downloaded a ZIP file).
+
+Installation with CMake
+---
+
+This is the recommended way.
+
+Dependency: you must first install [CMake](https://cmake.org/download)
+(version ≥ 3.13).
+
+2.  Type:
+
+        cd the-directory-you-just-downloaded
+        mkdir build
+        cd build
+
+3.  Choose the same installation directory `CMAKE_INSTALL_PREFIX` than
+    for `NR_util`:
+
+        cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/where/you/installed_NR_util
+
+4.  Type:
+
+        make install
+
+Installation directly with make
+---
+
+This is the (old) less automated way, not recommended.
+
 3.  Open the file `GNUmakefile` with a text editor. Locate the line:
 
         nr_util_inc_dir =
