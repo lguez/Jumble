@@ -30,6 +30,7 @@ target_link_libraries(test_nr_util PRIVATE nr_util)
 add_executable(test_ifirstloc test_ifirstloc.f90)
 target_link_libraries(test_ifirstloc PRIVATE nr_util)
 
+add_library(NR_util::nr_util ALIAS nr_util)
 include(CMakePackageConfigHelpers)
 configure_package_config_file(Config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
@@ -48,5 +49,8 @@ install(TARGETS nr_util EXPORT ${PROJECT_NAME}Targets LIBRARY
   INCLUDES DESTINATION ${install_include_dir})
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
   DESTINATION lib/cmake/${PROJECT_NAME})
-install(EXPORT ${PROJECT_NAME}Targets DESTINATION lib/cmake/${PROJECT_NAME})
-export(EXPORT ${PROJECT_NAME}Targets)
+
+install(EXPORT ${PROJECT_NAME}Targets DESTINATION
+  lib/cmake/${PROJECT_NAME} NAMESPACE NR_util::)
+
+export(EXPORT ${PROJECT_NAME}Targets NAMESPACE NR_util::)
