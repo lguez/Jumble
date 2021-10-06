@@ -25,6 +25,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 endif()
 
 target_link_libraries(jumble PRIVATE NR_util::nr_util)
+add_library(Jumble::jumble ALIAS jumble)
 
 add_executable(test_greg2jd test_greg2jd.f90)
 target_link_libraries(test_greg2jd PRIVATE jumble)
@@ -47,5 +48,8 @@ install(TARGETS jumble EXPORT ${PROJECT_NAME}Targets LIBRARY
   INCLUDES DESTINATION ${install_include_dir})
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
   DESTINATION lib/cmake/${PROJECT_NAME})
-install(EXPORT ${PROJECT_NAME}Targets DESTINATION lib/cmake/${PROJECT_NAME})
-export(EXPORT ${PROJECT_NAME}Targets)
+
+install(EXPORT ${PROJECT_NAME}Targets DESTINATION
+  lib/cmake/${PROJECT_NAME} NAMESPACE Jumble::)
+
+export(EXPORT ${PROJECT_NAME}Targets NAMESPACE Jumble::)
