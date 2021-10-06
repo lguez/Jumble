@@ -1,5 +1,5 @@
 ---
-date: '2020-05-15'
+date: '2021-10-5'
 title: 'NR\_util'
 ---
 
@@ -65,11 +65,51 @@ Procedure | Description
 [Doxygen Documentation](https://www.lmd.jussieu.fr/~lguez/NR_util_Doxygen_html/index.html)
 
 Installation
-============
+===
 
-1.  Get [NR\_util from Github](https://github.com/lguez/NR_util). The
-    directory you get could be called NR\_util or NR\_util-master
-    (depending on whether you cloned or downloaded a ZIP file).
+Get [NR\_util from Github](https://github.com/lguez/NR_util). The
+directory you get could be called NR\_util or NR\_util-master
+(depending on whether you cloned or downloaded a ZIP file).
+
+Installation with CMake
+---
+
+This is the recommended way.
+
+Dependency: you must first install [CMake](https://cmake.org/download)
+(version ≥ 3.14).
+
+2.  Type:
+
+        cd the-directory-you-just-downloaded
+        mkdir build
+        cd build
+
+3.  Choose the installation directory `CMAKE_INSTALL_PREFIX` and type
+    the command below with your choice after `-DCMAKE_INSTALL_PREFIX=`
+    (enter an absolute path). For example, you could choose
+    `-DCMAKE_INSTALL_PREFIX=~/.local`.
+
+        cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/wherever
+
+4.  Type:
+
+        make install
+
+Optionally: you can change the working precision for real numbers. By
+default, the working precision for real numbers in NR\_util is set to
+be the default kind of the real type of the Fortran compiler you will
+use. You can change the value to any real kind you want. For example:
+
+	cmake .. -DNR_util_CPP_WP='kind(0d0)'
+	
+or you could choose `selected_real_kind(10)` for example, etc.
+
+Installation directly with make
+---
+
+This is the (old) less automated way, not recommended.
+
 2.  By default, the working precision for real numbers in NR\_util is
     set to be the default kind of the real type of the Fortran compiler
     you will use. Optionally, you can change this working precision for
