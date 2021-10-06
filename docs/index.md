@@ -167,7 +167,7 @@ Rationale for treatment of kind attribute
 =========================================
 
 The treatment of kind attributes is different in NR\_util than in the
-original \"utility routines\" of Numerical Recipes. The procedures in
+original "utility routines" of Numerical Recipes. The procedures in
 NR\_util do not essentially require a large precision. For example,
 they do not require by themselves real double precision. But, if a
 procedure of NR\_util has a real argument, we want to allow a user to
