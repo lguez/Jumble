@@ -24,7 +24,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   find_package(NR_util CONFIG REQUIRED)
 endif()
 
-target_link_libraries(jumble PRIVATE nr_util)
+target_link_libraries(jumble PRIVATE NR_util::nr_util)
 
 add_executable(test_greg2jd test_greg2jd.f90)
 target_link_libraries(test_greg2jd PRIVATE jumble)
