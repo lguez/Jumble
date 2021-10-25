@@ -26,7 +26,7 @@ set(NR_util_CPP_WP kind\(0.\) CACHE STRING "Working precision")
 target_compile_definitions(nr_util PRIVATE CPP_WP=${NR_util_CPP_WP})
 message(STATUS "Working precision: CPP_WP = ${NR_util_CPP_WP}")
 
-add_library(NR_util::nr_util ALIAS nr_util)
+add_library(${PROJECT_NAME}::nr_util ALIAS nr_util)
 
 # test_nr_util
 add_executable(test_nr_util test_nr_util.f90)
@@ -62,8 +62,8 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
   DESTINATION lib/cmake/${PROJECT_NAME})
 
 install(EXPORT ${PROJECT_NAME}Targets DESTINATION
-  lib/cmake/${PROJECT_NAME} NAMESPACE NR_util::)
+  lib/cmake/${PROJECT_NAME} NAMESPACE ${PROJECT_NAME}::)
 
 # End installation part
 
-export(EXPORT ${PROJECT_NAME}Targets NAMESPACE NR_util::)
+export(EXPORT ${PROJECT_NAME}Targets NAMESPACE ${PROJECT_NAME}::)
