@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(Jumble Fortran)
+project(Jumble LANGUAGES Fortran)
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 
 add_library(jumble opt_merge.f90 uniq.f90 jumble.f90 prt_cmp.f90
@@ -25,7 +25,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 endif()
 
 target_link_libraries(jumble PRIVATE NR_util::nr_util)
-add_library(Jumble::jumble ALIAS jumble)
+add_library(${PROJECT_NAME}::jumble ALIAS jumble)
 
 # test_greg2jd
 add_executable(test_greg2jd test_greg2jd.f90)
@@ -57,8 +57,8 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
   DESTINATION lib/cmake/${PROJECT_NAME})
 
 install(EXPORT ${PROJECT_NAME}Targets DESTINATION
-  lib/cmake/${PROJECT_NAME} NAMESPACE Jumble::)
+  lib/cmake/${PROJECT_NAME} NAMESPACE ${PROJECT_NAME}::)
 
 # End installation part
 
-export(EXPORT ${PROJECT_NAME}Targets NAMESPACE Jumble::)
+export(EXPORT ${PROJECT_NAME}Targets NAMESPACE ${PROJECT_NAME}::)
