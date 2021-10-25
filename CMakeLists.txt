@@ -50,8 +50,8 @@ else()
   install(FILES ${PROJECT_BINARY_DIR}/modules/jumble.mod TYPE INCLUDE)
 endif()
 
-install(TARGETS jumble EXPORT ${PROJECT_NAME}Targets LIBRARY
-  INCLUDES DESTINATION ${install_include_dir})
+install(TARGETS jumble EXPORT ${PROJECT_NAME}Targets INCLUDES
+  DESTINATION ${install_include_dir})
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
   DESTINATION lib/cmake/${PROJECT_NAME})
