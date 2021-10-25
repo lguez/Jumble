@@ -40,7 +40,15 @@
   allocate(a(l_r_loc - f_r_loc + 1, l_c_loc - f_c_loc + 1))
 
   do i = 1, l_r_loc - f_r_loc + 1
-     read(unit, fmt=*) (trash, j = 1, f_c_loc - 1), a(i, :)
+     read(unit, fmt=*, iostat = iostat, iomsg = iomsg) &
+          (trash, j = 1, f_c_loc - 1), a(i, :)
+     if (iostat /= 0) then
+        print *, "jumble::csvread:", trim(iomsg)
+        print *, "i = ", i
+        print *, "Is the data read numeric?"
+        deallocate(a)
+        exit
+     end if
   end do
 
   close(unit)

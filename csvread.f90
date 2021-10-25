@@ -40,12 +40,12 @@ contains
     integer, intent(in), optional:: last_c
 
     ! Variables local to the subprogram:
-    integer i, j, unit
+    integer i, j, unit, iostat
     integer f_r_loc ! first row to read, local variable
     integer f_c_loc ! first column to read, local variable
     integer l_r_loc ! last row to read, local variable
     integer l_c_loc ! last column to read, local variable
-    character trash
+    character trash, iomsg*200
 
     !------------------------------------------------------
 
@@ -65,12 +65,12 @@ contains
     integer, intent(in), optional:: last_c
 
     ! Variables local to the subprogram:
-    integer i, j, unit
+    integer i, j, unit, iostat
     integer f_r_loc ! first row to read, local variable
     integer f_c_loc ! first column to read, local variable
     integer l_r_loc ! last row to read, local variable
     integer l_c_loc ! last column to read, local variable
-    character trash
+    character trash, iomsg*200
 
     !------------------------------------------------------
 
