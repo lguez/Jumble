@@ -49,8 +49,8 @@ else()
   install(FILES ${PROJECT_BINARY_DIR}/modules/nr_util.mod TYPE INCLUDE)
 endif()
 
-install(TARGETS nr_util EXPORT ${PROJECT_NAME}Targets LIBRARY
-  INCLUDES DESTINATION ${install_include_dir})
+install(TARGETS nr_util EXPORT ${PROJECT_NAME}Targets INCLUDES
+  DESTINATION ${install_include_dir})
 
 install(EXPORT ${PROJECT_NAME}Targets DESTINATION
   lib/cmake/${PROJECT_NAME} NAMESPACE ${PROJECT_NAME}:: FILE
