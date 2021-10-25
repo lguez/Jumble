@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.16)
 list(APPEND CMAKE_MESSAGE_CONTEXT NR_util)
 project(NR_util LANGUAGES Fortran)
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
