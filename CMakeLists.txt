@@ -58,4 +58,5 @@ install(EXPORT ${PROJECT_NAME}Targets DESTINATION
 
 # End installation part
 
-export(EXPORT ${PROJECT_NAME}Targets NAMESPACE ${PROJECT_NAME}::)
+export(EXPORT ${PROJECT_NAME}Targets NAMESPACE ${PROJECT_NAME}:: FILE
+  ${PROJECT_NAME}Config.cmake)
