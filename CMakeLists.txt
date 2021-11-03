@@ -31,7 +31,8 @@ add_library(${PROJECT_NAME}::jumble ALIAS jumble)
 add_executable(test_greg2jd test_greg2jd.f90)
 target_link_libraries(test_greg2jd PRIVATE jumble)
 
-configure_file(Config.cmake.in ${PROJECT_NAME}Config.cmake @ONLY)
+configure_file(${PROJECT_NAME}Config.cmake.in
+  ${PROJECT_NAME}Config.cmake @ONLY)
 
 # Start installation part
 
