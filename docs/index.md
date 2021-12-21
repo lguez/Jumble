@@ -8,6 +8,8 @@ What is it?
 
 Jumble is a library of various utilities in Fortran 2003.
 
+Author: [Lionel GUEZ](https://www.lmd.jussieu.fr/~lguez)
+
 Detailed content of Jumble
 ==========================
 

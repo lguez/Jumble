@@ -16,6 +16,11 @@ module read_column_m
      ! or is absent then the procedure reads to the last line in the
      ! file. The difference between the specific procedures is the
      ! type of argument "a".
+
+     ! real or integer or character(len=*), allocatable, intent(out):: a(:)
+     ! character(len=*), intent(in):: file
+     ! integer, intent(in), optional:: first ! (first line to read)
+     ! integer, intent(in), optional:: last ! (last line to read)
      module procedure read_column_real, read_column_integer, read_column_char
   end interface read_column
 
@@ -25,8 +30,8 @@ contains
 
     real, allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
-    integer, intent(in), optional:: first ! (first line to read)
-    integer, intent(in), optional:: last ! (last line to read)
+    integer, intent(in), optional:: first
+    integer, intent(in), optional:: last
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
@@ -46,8 +51,8 @@ contains
 
     integer, allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
-    integer, intent(in), optional:: first ! (first line to read)
-    integer, intent(in), optional:: last ! (last line to read)
+    integer, intent(in), optional:: first
+    integer, intent(in), optional:: last
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
@@ -67,8 +72,8 @@ contains
 
     character(len=*), allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
-    integer, intent(in), optional:: first ! (first line to read)
-    integer, intent(in), optional:: last ! (last line to read)
+    integer, intent(in), optional:: first
+    integer, intent(in), optional:: last
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
