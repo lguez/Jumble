@@ -27,6 +27,8 @@
      read(unit, fmt=*)
   end do
   
-  allocate(a(last_not_opt - first_not_opt + 1))
+  my_lbound_not_opt = opt_merge(my_lbound, 1)
+  allocate(a(my_lbound_not_opt:my_lbound_not_opt + last_not_opt &
+       - first_not_opt))
   read(unit, fmt=*) a
   close(unit)

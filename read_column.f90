@@ -21,22 +21,26 @@ module read_column_m
      ! character(len=*), intent(in):: file
      ! integer, intent(in), optional:: first ! (first line to read)
      ! integer, intent(in), optional:: last ! (last line to read)
+     ! integer, optional, intent(in):: my_lbound ! lower bound of argument "a"
+
      module procedure read_column_real, read_column_integer, read_column_char
   end interface read_column
 
 contains
 
-  subroutine read_column_real(a, file, first, last)
+  subroutine read_column_real(a, file, first, last, my_lbound)
 
     real, allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
     integer, intent(in), optional:: first
     integer, intent(in), optional:: last
+    integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
     integer first_not_opt ! first line to read, local variable
     integer last_not_opt ! last line to read, local variable
+    integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
 
     !------------------------------------------------------
@@ -47,17 +51,19 @@ contains
 
   !***********************************************************
 
-  subroutine read_column_integer(a, file, first, last)
+  subroutine read_column_integer(a, file, first, last, my_lbound)
 
     integer, allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
     integer, intent(in), optional:: first
     integer, intent(in), optional:: last
+    integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
     integer first_not_opt ! first line to read, local variable
     integer last_not_opt ! last line to read, local variable
+    integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
 
     !------------------------------------------------------
@@ -68,17 +74,19 @@ contains
 
   !***********************************************************
 
-  subroutine read_column_char(a, file, first, last)
+  subroutine read_column_char(a, file, first, last, my_lbound)
 
     character(len=*), allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
     integer, intent(in), optional:: first
     integer, intent(in), optional:: last
+    integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
     integer first_not_opt ! first line to read, local variable
     integer last_not_opt ! last line to read, local variable
+    integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
 
     !------------------------------------------------------
