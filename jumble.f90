@@ -1,31 +1,61 @@
 module jumble
 
   use argwhere_m
+  use array_copy_m
+  use arth_m
+  use assert_eq_m
+  use assert_m
   use averge_m
   use avg_mag_m
   use compare_m
   use count_lines_m
   use count_values_m
   use csvread_m
+  use cumprod_m
+  use cumsum_m
   use determin_m
+  use diagadd_m
+  use diagmult_m
   use differ_s_m
   use divisors_m
   use ediff1d_m
   use eigval_m
   use eigvect_m
+  use geop_m
   use get_command_arg_dyn_m
+  use get_diag_m
   use greg2jd_m
+  use ifirstloc_m
   use inv_mat_m
   use iso_varying_string
+  use lower_triangle_m
   use new_unit_m
+  use nrerror_m
+  use nrtype
   use opt_merge_m
+  use outerand_m
+  use outerdiff_m
+  use outerdiv_m
+  use outerprod_m
+  use outersum_m
   use pack_indices_m
-  use pr_matrix_m
   use point_m
+  use poly_m
+  use poly_term_m
+  use pr_matrix_m
+  use put_diag_m
   use quadrat_m
   use read_column_m
+  use reallocate_m
+  use scatter_add_m
+  use scatter_max_m
   use set2lin_m
   use spherical
+  use swap_m
   use uniq_m
+  use unit_matrix_m
+  use upper_triangle_m
+  use vabs_m
+  use zroots_unity_m
 
 end module jumble

@@ -1,11 +1,11 @@
-target_sources(jumble PRIVATE nrtype.F90 nr_util.f90 arth.f90
-  array_copy.f90 swap.f90 reallocate.f90 assert.f90 assert_eq.f90
-  geop.f90 cumsum.f90 poly.f90 poly_term.f90 outerprod.f90
-  outerdiff.f90 scatter_add.f90 scatter_max.f90 diagadd.f90
-  diagmult.f90 get_diag.f90 put_diag.f90 cumprod.f90 ifirstloc.f90
-  lower_triangle.f90 nrerror.f90 outerand.f90 outerdiv.f90
-  outersum.f90 unit_matrix.f90 upper_triangle.f90 vabs.f90
-  zroots_unity.f90 swap_array.h swap_scalar.h)
+target_sources(jumble PRIVATE nrtype.F90 arth.f90 array_copy.f90
+  swap.f90 reallocate.f90 assert.f90 assert_eq.f90 geop.f90 cumsum.f90
+  poly.f90 poly_term.f90 outerprod.f90 outerdiff.f90 scatter_add.f90
+  scatter_max.f90 diagadd.f90 diagmult.f90 get_diag.f90 put_diag.f90
+  cumprod.f90 ifirstloc.f90 lower_triangle.f90 nrerror.f90
+  outerand.f90 outerdiv.f90 outersum.f90 unit_matrix.f90
+  upper_triangle.f90 vabs.f90 zroots_unity.f90 swap_array.h
+  swap_scalar.h)
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
   target_include_directories(jumble PRIVATE ${CMAKE_CURRENT_LIST_DIR})
