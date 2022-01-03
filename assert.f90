@@ -22,7 +22,7 @@ CONTAINS
     if (.not. n1) then
        print *, 'An assertion failed with this tag: ' // string
        print *, 'program terminated by assert1'
-       stop 1
+       call abort
     end if
   END SUBROUTINE assert1
 
@@ -34,7 +34,7 @@ CONTAINS
     if (.not. (n1 .and. n2)) then
        print *, 'An assertion failed with this tag: ' // string
        print *, 'program terminated by assert2'
-       stop 1
+       call abort
     end if
   END SUBROUTINE assert2
 
@@ -46,7 +46,7 @@ CONTAINS
     if (.not. (n1 .and. n2 .and. n3)) then
        print *, 'An assertion failed with this tag: ' // string
        print *, 'program terminated by assert3'
-       stop 1
+       call abort
     end if
   END SUBROUTINE assert3
 
@@ -58,7 +58,7 @@ CONTAINS
     if (.not. (n1 .and. n2 .and. n3 .and. n4)) then
        print *, 'An assertion failed with this tag: ' // string
        print *, 'program terminated by assert4'
-       stop 1
+       call abort
     end if
   END SUBROUTINE assert4
 
@@ -70,7 +70,7 @@ CONTAINS
     if (.not. all(n)) then
        print *, 'An assertion failed with this tag: ' // string
        print *, 'program terminated by assert_v'
-       stop 1
+       call abort
     end if
   END SUBROUTINE assert_v
 

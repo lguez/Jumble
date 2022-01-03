@@ -26,6 +26,13 @@ set(NR_util_CPP_WP kind\(0.\) CACHE STRING "Working precision")
 target_compile_definitions(nr_util PRIVATE CPP_WP=${NR_util_CPP_WP})
 message(STATUS "Working precision: CPP_WP = ${NR_util_CPP_WP}")
 
+find_package(MPI)
+
+if(MPI_Fortran_HAVE_F08_MODULE)
+  target_link_libraries(nr_util PRIVATE MPI::MPI_Fortran)
+  target_compile_definitions(nr_util PRIVATE HAVE_MPI)
+endif()
+
 add_library(${PROJECT_NAME}::nr_util ALIAS nr_util)
 
 # test_nr_util
