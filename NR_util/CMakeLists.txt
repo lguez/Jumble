@@ -12,9 +12,9 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES NAG)
 endif()
 
 # CPP_WP
-set(NR_util_CPP_WP kind\(0.\) CACHE STRING "Working precision")
-target_compile_definitions(jumble PRIVATE CPP_WP=${NR_util_CPP_WP})
-message(STATUS "Working precision: CPP_WP = ${NR_util_CPP_WP}")
+set(Jumble_CPP_WP kind\(0.\) CACHE STRING "Working precision")
+target_compile_definitions(jumble PRIVATE CPP_WP=${Jumble_CPP_WP})
+message(STATUS "Working precision: CPP_WP = ${Jumble_CPP_WP}")
 
 find_package(MPI)
 
