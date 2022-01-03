@@ -14,10 +14,9 @@ lib = libjumble.a
 
 # 3. Compiler-dependent part
 
-nr_util_inc_dir = ...
 FC = gfortran
 CPPFLAGS = -DCPP_WP='kind(0.)'
-FFLAGS = -O2 -I${nr_util_inc_dir}
+FFLAGS = -O2
 
 # 4. Rules
 
@@ -32,7 +31,7 @@ all: ${lib}
 ${lib}: ${lib}(${objects})
 
 depend depend.mk:
-	makedepf90 ${CPPFLAGS} -Wmissing -Wconfused $(addprefix -I, ${VPATH}) -nosrc -u nr_util ${sources} >depend.mk
+	makedepf90 ${CPPFLAGS} -Wmissing -Wconfused $(addprefix -I, ${VPATH}) -nosrc ${sources} >depend.mk
 
 clean:
 	rm -f ${lib} ${objects}
