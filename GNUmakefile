@@ -9,13 +9,14 @@ sources = avg_mag.f90 count_lines.f90 opt_merge.f90 point.f90 compare.f90 csvrea
 
 # 2. Objects and library
 
-objects := $(sources:.f90=.o)
+objects := $(addsuffix .o, $(basename ${sources}))
 lib = libjumble.a
 
 # 3. Compiler-dependent part
 
 nr_util_inc_dir = ...
 FC = gfortran
+CPPFLAGS = -DCPP_WP='kind(0.)'
 FFLAGS = -O2 -I${nr_util_inc_dir}
 
 # 4. Rules
@@ -23,12 +24,15 @@ FFLAGS = -O2 -I${nr_util_inc_dir}
 %.o: %.f90
 	$(COMPILE.f) $(OUTPUT_OPTION) $<
 
+%.o: %.F90
+	$(COMPILE.F) $(OUTPUT_OPTION) $<
+
 .PHONY: all clean depend
 all: ${lib}
 ${lib}: ${lib}(${objects})
 
 depend depend.mk:
-	makedepf90 -Wmissing -Wconfused $(addprefix -I, ${VPATH}) -nosrc -u nr_util ${sources} >depend.mk
+	makedepf90 ${CPPFLAGS} -Wmissing -Wconfused $(addprefix -I, ${VPATH}) -nosrc -u nr_util ${sources} >depend.mk
 
 clean:
 	rm -f ${lib} ${objects}
