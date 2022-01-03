@@ -42,6 +42,3 @@ target_link_libraries(test_nr_util PRIVATE nr_util)
 # test_ifirstloc
 add_executable(test_ifirstloc test_ifirstloc.f90)
 target_link_libraries(test_ifirstloc PRIVATE nr_util)
-
-export(EXPORT ${PROJECT_NAME}Targets NAMESPACE ${PROJECT_NAME}:: FILE
-  ${PROJECT_NAME}Config.cmake)
