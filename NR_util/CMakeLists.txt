@@ -43,27 +43,5 @@ target_link_libraries(test_nr_util PRIVATE nr_util)
 add_executable(test_ifirstloc test_ifirstloc.f90)
 target_link_libraries(test_ifirstloc PRIVATE nr_util)
 
-# Start installation part
-
-if(CMAKE_Fortran_COMPILER_ID MATCHES NAG|Intel|PGI)
-  set(install_include_dir include/${PROJECT_NAME})
-
-  install(DIRECTORY ${PROJECT_BINARY_DIR}/modules/ DESTINATION
-    ${install_include_dir})
-
-else()
-  set(install_include_dir include)
-  install(FILES ${PROJECT_BINARY_DIR}/modules/nr_util.mod TYPE INCLUDE)
-endif()
-
-install(TARGETS nr_util EXPORT ${PROJECT_NAME}Targets INCLUDES
-  DESTINATION ${install_include_dir})
-
-install(EXPORT ${PROJECT_NAME}Targets DESTINATION
-  lib/cmake/${PROJECT_NAME} NAMESPACE ${PROJECT_NAME}:: FILE
-  ${PROJECT_NAME}Config.cmake)
-
-# End installation part
-
 export(EXPORT ${PROJECT_NAME}Targets NAMESPACE ${PROJECT_NAME}:: FILE
   ${PROJECT_NAME}Config.cmake)
