@@ -20,12 +20,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES "NAG")
 endif()
 
 add_subdirectory(Numerical)
-
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-  find_package(NR_util CONFIG REQUIRED)
-endif()
-
-target_link_libraries(jumble PRIVATE NR_util::nr_util)
+add_subdirectory(NR_util)
 add_library(${PROJECT_NAME}::jumble ALIAS jumble)
 
 # test_greg2jd
