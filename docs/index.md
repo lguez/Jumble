@@ -23,6 +23,8 @@ comfortable and secure interface taking advantage of the evolution of
 the Fortran language. (Press et al. have not released any new version
 of their code since their version 2.10a, in 2002.)
 
+Author: [Lionel GUEZ](https://www.lmd.jussieu.fr/~lguez)
+
 Detailed content of NR\_util
 ============================
 

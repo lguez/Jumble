@@ -10,7 +10,7 @@ MODULE assert_m
      ! overloads forms with 1, 2, 3, and 4 logical arguments, plus a
      ! form with a vector logical argument
      MODULE PROCEDURE assert1,assert2,assert3,assert4,assert_v
-  END INTERFACE
+  END INTERFACE assert
 
   private assert1,assert2,assert3,assert4,assert_v
 
