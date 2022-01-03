@@ -12,7 +12,7 @@ contains
     ! they are output in ascending order. If there is no real root,
     ! the output array is undefined.
 
-    use nr_util, only: assert
+    use assert_m, only: assert
 
     real, intent(in):: a, b, c
     ! a x^2 + b x + c = 0

@@ -1,6 +1,6 @@
 module point_m
 
-  use nr_util, only: assert
+  use assert_m, only: assert
 
   implicit none
 

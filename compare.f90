@@ -1,8 +1,6 @@
 module compare_m
 
-  ! Library:
-  use nr_util, only: assert
-
+  use assert_m, only: assert
   use avg_mag_m, only: avg_mag
   use opt_merge_m, only: opt_merge
   use prt_cmp_m, only: prt_cmp

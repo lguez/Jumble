@@ -1,6 +1,6 @@
 program test_nr_util
 
-  use nr_util, only: wp
+  use jumble, only: wp
   
   implicit none
 

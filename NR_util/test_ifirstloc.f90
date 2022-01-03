@@ -1,6 +1,6 @@
 program test_ifirstloc
 
-  use nr_util, only: ifirstloc
+  use jumble, only: ifirstloc
 
   implicit none
 
