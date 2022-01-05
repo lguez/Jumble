@@ -1,5 +1,7 @@
 MODULE assert_m
 
+  use abort_m, only: abort
+
   implicit none
 
   INTERFACE assert
@@ -12,7 +14,7 @@ MODULE assert_m
      MODULE PROCEDURE assert1,assert2,assert3,assert4,assert_v
   END INTERFACE assert
 
-  private assert1,assert2,assert3,assert4,assert_v
+  private assert1,assert2,assert3,assert4,assert_v, abort
 
 CONTAINS
 
