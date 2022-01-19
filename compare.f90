@@ -12,6 +12,8 @@ module compare_m
      ! Makes a numerical comparison between two arrays of rank 1 to 4,
      ! of type real or double precision.
 
+     ! compare(data_old, data_new, tag, comp_mag, report_id, quiet, &
+     !    different_domains, valid)
      ! real or double precision, intent(in), rank 1 to 4:: data_old, data_new
      ! character(len = *), intent(in):: tag
      ! logical, intent(in):: comp_mag
