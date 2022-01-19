@@ -13,14 +13,14 @@ module compare_m
      ! of type real or double precision.
 
      ! compare(data_old, data_new, tag, comp_mag, report_id, quiet, &
-     !    different_domains, valid)
+     !    valid, different_domains)
      ! real or double precision, intent(in), rank 1 to 4:: data_old, data_new
      ! character(len = *), intent(in):: tag
      ! logical, intent(in):: comp_mag
      ! logical, intent(in):: report_id  (report identical variables)
      ! logical, intent(in):: quiet
-     ! logical, intent(in), optional:: different_domains (default .false.)
      ! logical, intent(in), same rank as data_old and data_new:: valid
+     ! logical, intent(in), optional:: different_domains (default .false.)
 
      module procedure compare1, compare1_dble, compare2, compare2_dble, &
           compare3, compare3_dble, compare4, compare4_dble
@@ -37,15 +37,15 @@ module compare_m
 contains
 
   subroutine compare1(data_old, data_new, tag, comp_mag, report_id, quiet, &
-       different_domains, valid)
+       valid, different_domains)
 
     ! Rank 1, real
 
     real, intent(in):: data_old(:), data_new(:)
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag, report_id, quiet
-    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:)
+    logical, intent(in), optional:: different_domains
 
     ! Local:
 
@@ -70,15 +70,15 @@ contains
   !***********************************************************
 
   subroutine compare1_dble(data_old, data_new, tag, comp_mag, report_id, &
-       quiet, different_domains, valid)
+       quiet, valid, different_domains)
 
     ! Rank 1, double precision
 
     double precision, intent(in):: data_old(:), data_new(:)
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag, report_id, quiet
-    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:)
+    logical, intent(in), optional:: different_domains
 
     ! Local:
 
@@ -103,15 +103,15 @@ contains
   !***********************************************************
 
   subroutine compare2(data_old, data_new, tag, comp_mag, report_id, quiet, &
-       different_domains, valid)
+       valid, different_domains)
 
     ! Rank 2, real
 
     real, intent(in):: data_old(:,:), data_new(:,:)
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag, report_id, quiet
-    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :)
+    logical, intent(in), optional:: different_domains
 
     ! Local:
 
@@ -136,15 +136,15 @@ contains
   !***********************************************************
 
   subroutine compare2_dble(data_old, data_new, tag, comp_mag, report_id, &
-       quiet, different_domains, valid)
+       quiet, valid, different_domains)
 
     ! Rank 2, double precision
 
     double precision, intent(in):: data_old(:,:), data_new(:,:)
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag, report_id, quiet
-    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :)
+    logical, intent(in), optional:: different_domains
 
     ! Local:
 
@@ -169,15 +169,15 @@ contains
   !***********************************************************
 
   subroutine compare3(data_old, data_new, tag, comp_mag, report_id, quiet, &
-       different_domains, valid)
+       valid, different_domains)
 
     ! Rank 3, real
 
     real, intent(in):: data_old(:, :, :), data_new(:, : ,:)
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag, report_id, quiet
-    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :, :)
+    logical, intent(in), optional:: different_domains
 
     ! Local:
 
@@ -203,15 +203,15 @@ contains
   !***********************************************************
 
   subroutine compare3_dble(data_old, data_new, tag, comp_mag, report_id, &
-       quiet, different_domains, valid)
+       quiet, valid, different_domains)
 
     ! Rank 3, double precision
 
     double precision, intent(in):: data_old(:, :, :), data_new(:, : ,:)
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag, report_id, quiet
-    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :, :)
+    logical, intent(in), optional:: different_domains
 
     ! Local:
 
@@ -239,15 +239,15 @@ contains
   !***********************************************************
 
   subroutine compare4(data_old, data_new, tag, comp_mag, report_id, quiet, &
-       different_domains, valid)
+       valid, different_domains)
 
     ! Rank 4, real
 
     real, intent(in):: data_old(:, :, :, :), data_new(:, : ,:, :)
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag, report_id, quiet
-    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :, :, :)
+    logical, intent(in), optional:: different_domains
 
     ! Local:
 
@@ -275,15 +275,15 @@ contains
   !***********************************************************
 
   subroutine compare4_dble(data_old, data_new, tag, comp_mag, report_id, &
-       quiet, different_domains, valid)
+       quiet, valid, different_domains)
 
     ! Rank 4, double precision
 
     double precision, intent(in):: data_old(:, :, :, :), data_new(:, : ,:, :)
     character(len = *), intent(in):: tag
     logical, intent(in):: comp_mag, report_id, quiet
-    logical, intent(in), optional:: different_domains
     logical, intent(in):: valid(:, :, :, :)
+    logical, intent(in), optional:: different_domains
 
     ! Local:
 
