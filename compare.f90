@@ -3,8 +3,8 @@ module compare_m
   use assert_m, only: assert
   use avg_mag_m, only: avg_mag
   use opt_merge_m, only: opt_merge
-  use prt_cmp_m, only: prt_cmp
   use point_m, only: point
+  use prt_cmp_m, only: prt_cmp
 
   implicit none
 
@@ -12,15 +12,25 @@ module compare_m
      ! Makes a numerical comparison between two arrays of rank 1 to 4,
      ! of type real or double precision.
 
-     ! compare(data_old, data_new, tag, comp_mag, report_id, quiet, &
+     ! subroutine compare(data_old, data_new, tag, comp_mag, report_id, quiet, &
      !    valid, different_domains)
      ! real or double precision, intent(in), rank 1 to 4:: data_old, data_new
      ! character(len = *), intent(in):: tag
      ! logical, intent(in):: comp_mag
      ! logical, intent(in):: report_id  (report identical variables)
+
      ! logical, intent(in):: quiet
+     ! Say if arrays are different but do not quantify difference
+
      ! logical, intent(in), same rank as data_old and data_new:: valid
+     ! This is the mask (used for the two arrays, data_old and
+     ! data_new) where comparison will be done.
+
      ! logical, intent(in), optional:: different_domains (default .false.)
+     ! This tells whether data_old or data_new is defined on a larger domain
+     ! than the one given by argument valid. Providing argument
+     ! different_domains does not change numerical results, it is just
+     ! used to output more informative error messages.
 
      module procedure compare1, compare1_dble, compare2, compare2_dble, &
           compare3, compare3_dble, compare4, compare4_dble
