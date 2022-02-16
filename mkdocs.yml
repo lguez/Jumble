@@ -2,3 +2,10 @@ site_name: Jumble documentation
 site_url: https://www.lmd.jussieu.fr/~lguez/Jumble_site/index.html
 repo_url: https://github.com/lguez/Jumble
 site_author: Lionel GUEZ
+nav:
+   - index.md
+   - detailed_content.md
+   - NR_util.md
+   - installation.md
+   - usage.md
+theme: readthedocs
