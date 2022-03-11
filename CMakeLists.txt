@@ -6,8 +6,8 @@ set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 add_library(jumble opt_merge.f90 uniq.f90 jumble.f90 prt_cmp.f90
   new_unit.f90 get_command_arg_dyn.f90 pr_matrix.f90 point.f90
   iso_varying_string.f90 csvread.f90 read_column.f90 count_lines.f90
-  avg_mag.f90 compare.f90 greg2jd.f90 count_values.f90 csvread.h
-  compare.h read_column.h)
+  compare.f90 greg2jd.f90 count_values.f90 csvread.h compare.h
+  read_column.h)
 
 set_target_properties(jumble PROPERTIES Fortran_MODULE_DIRECTORY
   ${PROJECT_BINARY_DIR}/modules)
