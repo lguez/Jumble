@@ -17,9 +17,9 @@ target_compile_definitions(jumble PRIVATE CPP_WP=${Jumble_CPP_WP})
 message(STATUS "Working precision: CPP_WP = ${Jumble_CPP_WP}")
 
 # test_nr_util
-add_executable(test_nr_util test_nr_util.f90)
+add_executable(test_nr_util EXCLUDE_FROM_ALL test_nr_util.f90)
 target_link_libraries(test_nr_util PRIVATE jumble)
 
 # test_ifirstloc
-add_executable(test_ifirstloc test_ifirstloc.f90)
+add_executable(test_ifirstloc EXCLUDE_FROM_ALL test_ifirstloc.f90)
 target_link_libraries(test_ifirstloc PRIVATE jumble)
