@@ -29,6 +29,7 @@ module jumble
   use inv_mat_m
   use iso_varying_string
   use lower_triangle_m
+  use mean_m
   use new_unit_m
   use nrerror_m
   use nrtype
