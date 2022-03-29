@@ -6,8 +6,6 @@ contains
 
   pure function mean(array, dim, mask, missing)
 
-    use, intrinsic:: ieee_arithmetic, only: ieee_value, IEEE_QUIET_NAN
-
     real, intent(in):: array(:, :)
     integer, intent(in):: dim
     logical, intent(in):: mask(:, :)

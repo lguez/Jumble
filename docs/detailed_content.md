@@ -2,7 +2,7 @@
 
 Mathematical constants defined in Jumble: π, π / 2, 2 π, √2, Euler
 constant, π / 180, 180 / π. See module
-[nrtype](https://github.com/lguez/Jumble/blob/master/NR_util/nrtype.f90).
+[nrtype](https://github.com/lguez/Jumble/blob/master/NR_util/nrtype.F90).
 
 Find below a list of procedures with a short description for each and
 a link to the source code.

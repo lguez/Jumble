@@ -9,7 +9,7 @@ on whether you cloned or downloaded a ZIP file).
 This is the recommended way.
 
 Dependency: you must first install [CMake](https://cmake.org/download)
-(version ≥ 3.16).
+(version ≥ 3.16)[^1].
 
 2.  Type:
 
@@ -70,3 +70,7 @@ files produced by the compilation of Jumble. (Keep them all to be on the
 safe side, or experiment with your compiler to see what you need to keep
 (see usage below).) You can trash everything else (`.o` files, Fortran
 source files, etc.) if you want.
+
+[^1]: On Mac OS, after downloading the application from the CMake web
+    site, run it, then click on "How to Install For Command Line Use"
+    in the Tools menu.
