@@ -9,3 +9,5 @@ nav:
    - installation.md
    - usage.md
 theme: readthedocs
+markdown_extensions:
+  - footnotes

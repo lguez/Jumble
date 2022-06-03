@@ -112,7 +112,12 @@ a link to the source code.
 
 - [greg2jd](https://github.com/lguez/Jumble/blob/master/greg2jd.f90): Converts a date on the Gregorian or Julian calendar to a Julian date. Adapted from David G. Simpson.
 
-- [iso\_varying\_string](https://github.com/lguez/Jumble/blob/master/iso_varying_string.f90): Varying-length strings, conformant to ISO Fortran 95 extension, by Rich Townsend.
+- [iso\_varying\_string](https://github.com/lguez/Jumble/blob/master/iso_varying_string.f90):
+  Varying-length strings, conformant to ISO Fortran 95 extension, by
+  Rich Townsend.
+
+- [mean](https://github.com/lguez/Jumble/blob/master/Numerical/mean.f90):
+  Computes the mean, taking missing values into account.
 
 - [opt\_merge](https://github.com/lguez/Jumble/blob/master/opt_merge.f90): Merges an optional parameter and a default value.
 
