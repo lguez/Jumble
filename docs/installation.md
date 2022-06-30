@@ -17,10 +17,10 @@ Dependency: you must first install [CMake](https://cmake.org/download)
         mkdir build
         cd build
 
-3.  Choose the installation directory `CMAKE_INSTALL_PREFIX` and type
-    the command below with your choice after `-DCMAKE_INSTALL_PREFIX=`
-    (enter an absolute path). For example, you could choose
-    `-DCMAKE_INSTALL_PREFIX=~/.local`.
+3.  Decide in which directory you want to install Jumble after
+    compilation and type the command below with your choice after
+    `-DCMAKE_INSTALL_PREFIX=` (enter an absolute path). For example,
+    a good choice could be `-DCMAKE_INSTALL_PREFIX=~/.local`.
 
         cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/wherever
 
