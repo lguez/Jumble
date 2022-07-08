@@ -3,7 +3,7 @@
 
 # 1. Source files
 
-VPATH = Numerical Numerical/Lin_2d_real NR_util
+VPATH = Numerical Numerical/Lin_2d_real NR_util Input_output
 
 sources = avg_mag.f90 count_lines.f90 opt_merge.f90 point.f90		\
 compare.f90 csvread.f90 new_unit.f90 read_column.f90 jumble.f90		\
