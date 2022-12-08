@@ -6,3 +6,7 @@ add_subdirectory(Lin_2d_real)
 # test_quadrat
 add_executable(test_quadrat EXCLUDE_FROM_ALL test_quadrat.f90)
 target_link_libraries(test_quadrat PRIVATE jumble)
+
+# test_divisors
+add_executable(test_divisors EXCLUDE_FROM_ALL test_divisors.f90)
+target_link_libraries(test_divisors PRIVATE jumble)
