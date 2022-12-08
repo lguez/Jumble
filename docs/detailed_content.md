@@ -69,19 +69,23 @@ a link to the source code.
 
 ## Input-output
 
-- [compare](https://github.com/lguez/Jumble/blob/master/compare.f90): Prints maximum absolute difference and maximum relative difference between two real arrays, with the location of this maximum.
+- [compare](https://github.com/lguez/Jumble/blob/master/Input_output/compare.f90): Prints maximum absolute difference and maximum relative difference between two real arrays, with the location of this maximum.
 
-- [count\_lines](https://github.com/lguez/Jumble/blob/master/count_lines.f90): Counts the number of lines in an external file.
+- [count\_lines](https://github.com/lguez/Jumble/blob/master/Input_output/count_lines.f90): Counts the number of lines in an external file.
 
-- [csvread](https://github.com/lguez/Jumble/blob/master/csvread.f90): Reads numeric values from a CSV (comma-separated values) file.
+- [csvread](https://github.com/lguez/Jumble/blob/master/Input_output/csvread.f90): Reads numeric values from a CSV (comma-separated values) file.
 
-- [get\_command\_arg\_dyn](https://github.com/lguez/Jumble/blob/master/get_command_arg_dyn.f90): Wrapper for get\_command\_argument with automatic allocation of the character argument.
+- [get\_command\_arg\_dyn](https://github.com/lguez/Jumble/blob/master/Input_output/get_command_arg_dyn.f90): Wrapper for get\_command\_argument with automatic allocation of the character argument.
 
-- [new\_unit](https://github.com/lguez/Jumble/blob/master/new_unit.f90): Provides a licit and not already opened external file unit.
+- [new\_unit](https://github.com/lguez/Jumble/blob/master/Input_output/new_unit.f90): Provides a licit and not already opened external file unit.
 
-- [pr\_matrix](https://github.com/lguez/Jumble/blob/master/pr_matrix.f90): Pretty prints a real matrix.
+- [pr\_matrix](https://github.com/lguez/Jumble/blob/master/Input_output/pr_matrix.f90): Pretty prints a real matrix.
 
-- [read\_column](https://github.com/lguez/Jumble/blob/master/read_column.f90): Reads a column of values in an external file.
+- [read\_column](https://github.com/lguez/Jumble/blob/master/Input_output/read_column.f90):
+  Reads a column of values in an external file, given by its file name.
+
+- [read\_opcol](https://github.com/lguez/Jumble/blob/master/Input_output/read_opcol.f90):
+  Reads a column of values in an external file, given by its logical unit.
 
 ## Linear algebra in 2 dimensions on real numbers
 

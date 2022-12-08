@@ -40,6 +40,7 @@ contains
        if (i_max >= 2 .and. mod(n, i_max) == 0) then
           work(n_div + 1) = i_max
           n_div = n_div + 1
+          
           if (i_max**2 /= n) then
              work(n_div + 1) = n / i_max
              n_div = n_div + 1
