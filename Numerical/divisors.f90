@@ -15,7 +15,9 @@ contains
 
     integer i, i_max
     integer n_div ! number of divisors of "n"
-    integer work(n) ! temporary array to hold divisors
+
+    integer, allocatable:: work(:) ! (2 * i_max)
+    ! temporary array to hold divisors
 
     !------------------------
 
@@ -23,11 +25,11 @@ contains
        divisors = [1]
     else
        ! n >= 2, there are at least two divisors: 1 and "n"
+       i_max = int(sqrt(real(n)))
+       allocate(work(2 * i_max))
        work(1) = 1
        work(2) = n
        n_div = 2
-
-       i_max = int(sqrt(real(n)))
 
        do i = 2, i_max - 1
           if (mod(n, i) == 0) then
