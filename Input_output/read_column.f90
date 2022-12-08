@@ -45,7 +45,11 @@ contains
 
     !------------------------------------------------------
 
+    call new_unit(unit)
+    open(unit, file = file, status = 'old', action = 'read', &
+         position = 'rewind')
     include "read_column.h"
+    close(unit)
 
   end subroutine read_column_real
 
@@ -68,7 +72,11 @@ contains
 
     !------------------------------------------------------
 
+    call new_unit(unit)
+    open(unit, file = file, status = 'old', action = 'read', &
+         position = 'rewind')
     include "read_column.h"
+    close(unit)
 
   end subroutine read_column_integer
 
@@ -91,7 +99,11 @@ contains
 
     !------------------------------------------------------
 
+    call new_unit(unit)
+    open(unit, file = file, status = 'old', action = 'read', &
+         position = 'rewind')
     include "read_column.h"
+    close(unit)
 
   end subroutine read_column_char
 

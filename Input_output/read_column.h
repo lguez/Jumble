@@ -1,9 +1,6 @@
   ! -*- mode: f90; -*-
   ! Body of all the specific procedures of generic interface "read_column".
   
-  call new_unit(unit)
-  open(unit, file = file, status = 'old', action = 'read', position = 'rewind')
-
   ! Fill non-optional arguments: first and last line which will
   ! actually be read, taking information from the file itself if
   ! necessary.
@@ -31,4 +28,3 @@
   allocate(a(my_lbound_not_opt:my_lbound_not_opt + last_not_opt &
        - first_not_opt))
   read(unit, fmt=*) a
-  close(unit)
