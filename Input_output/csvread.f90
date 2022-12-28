@@ -14,7 +14,7 @@ module csvread_m
      ! Reads numeric values from a file. Values must be separated by
      ! comma and/or blanks. Values are read into a default real kind
      ! or double precision array. The last column and/or last row
-     ! parameters may be 0. This is interpreted as "last in the
+     ! arguments may be 0. This is interpreted as "last in the
      ! file". The only difference between the interfaces of the
      ! specific procedures is the type of "a".
      

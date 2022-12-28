@@ -1,7 +1,7 @@
   ! -*- mode: f90; -*-
   ! Body of all the specific procedures of generic interface "csvread".
   
-  print *, 'Reading data from file "' // file // '"'
+  print *, 'jumble::csvread: Reading data from file "' // file // '"'
   call new_unit(unit)
   open(unit, file=file, status='old', action='read', position='rewind')
 
@@ -18,7 +18,7 @@
      call count_lines(unit, l_r_loc)
 
      if (l_r_loc == 0) then
-        print *, 'Empty file.'
+        print *, 'jumble::csvread: Empty file.'
         stop 1
      end if
 
@@ -35,7 +35,7 @@
      backspace(unit)
   end if
 
-  print *, 'Reading column(s) ', f_c_loc, ':', l_c_loc, &
+  print *, 'jumble::csvread: Reading column(s) ', f_c_loc, ':', l_c_loc, &
        ', row(s) ', f_r_loc, ':', l_r_loc
   allocate(a(l_r_loc - f_r_loc + 1, l_c_loc - f_c_loc + 1))
 
