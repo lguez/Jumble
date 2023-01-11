@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 list(APPEND CMAKE_MESSAGE_CONTEXT Jumble)
+set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build")
 project(Jumble LANGUAGES Fortran)
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 add_library(jumble opt_merge.f90 uniq.f90 jumble.f90 point.f90
