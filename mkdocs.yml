@@ -10,4 +10,4 @@ nav:
    - usage.md
 theme: readthedocs
 markdown_extensions:
-  - footnotes
+   - footnotes

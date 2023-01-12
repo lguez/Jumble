@@ -9,9 +9,8 @@ The name of the module that you must use in your Fortran program is
 
 ## Building the consumer program with CMake
 
-If you installed Jumble with CMake and your program using Jumble is
-also built with CMake, then add the following lines to the file
-`CMakeLists.txt` for your program:
+If your program using Jumble is built with CMake, then add the
+following lines to the file `CMakeLists.txt` for your program:
 
 ```
 find_package(Jumble)
@@ -26,13 +25,12 @@ files produced by compilation of Jumble) at compile time and
 `libjumble.a` at link time. For most compilers, the options you will
 need to add are:
 
-    -I$jumble_inc_dir
+    -I$jumble_install_dir/include
 
 at compile time and:
 
-    -L$jumble_lib_dir -ljumble
+    -L$jumble_install_dir/lib -ljumble
 
-at link time, where `$jumble_inc_dir` is the name of the directory
-where you put `.mod` files produced by compilation of Jumble and
-`$jumble_lib_dir` is the name of the directory where you put
-`libjumble.a`.
+at link time, where `$jumble_install_dir` is the name of the directory
+where you installed Jumble (the one you specified after
+`-DCMAKE_INSTALL_PREFIX=`).
