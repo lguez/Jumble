@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lionel GUEZ">
+  <link rel="canonical" href="https://www.lmd.jussieu.fr/~lguez/Jumble_site/index.html/NR_util/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Origin of NR_util - Jumble documentation</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Origin of NR_util";
+    var mkdocs_page_input_path = "NR_util.md";
+    var mkdocs_page_url = "/~lguez/Jumble_site/index.html/NR_util/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Jumble documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../detailed_content/">Detailed content of Jumble</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Origin of NR_util</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#difference-with-the-original-code-of-numerical-recipes">Difference with the original code of Numerical Recipes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rationale-for-treatment-of-kind-attribute">Rationale for treatment of kind attribute</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Jumble documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Origin of NR_util</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/lguez/Jumble/edit/master/docs/NR_util.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="origin-of-nr_util">Origin of NR_util</h1>
+<p>The NR_util part of Jumble originates from the "utility routines" of
+<a href="http://numerical.recipes">Numerical Recipes</a> in Fortran 90 (Press et
+al., 1996, Cambridge University Press, appendix C1), version <code>2.10a</code>,
+contained in files <a href="http://numerical.recipes/public-domain.html"><code>nrtype.f90</code> and
+<code>nrutil.f90</code></a>. These
+files of Numerical Recipes were put in the public domain by Press et
+al.</p>
+<p>Why not just use the original files of Press et al.? The motivations
+were: <a href="#rationale-for-treatment-of-kind-attribute">better treatment of kind
+attribute</a>; more
+comfortable and secure interface taking advantage of the evolution of
+the Fortran language. (Press et al. have not released any new version
+of their code since their version 2.10a, in 2002.)</p>
+<h2 id="difference-with-the-original-code-of-numerical-recipes">Difference with the original code of Numerical Recipes</h2>
+<p>The names of the procedures in sub-directory NR_util are the same as
+the original ones. The content of some procedures is changed but no
+public interface has been added.</p>
+<p>As mentioned above, one of the differences between the original
+routines and NR_util is the treatment of kind attributes. Whereas
+Numerical Recipes used three explicit integer kinds (i4b, i2b and
+i1b), two explicit real kinds (sp and dp), two explicit complex kinds
+(spc and dpc) and one explicit logical kind (lgt), NR_util only uses
+one explicit real kind (which is named wp) (used also for complex
+variables). Some procedures of NR_util are coded with this
+parameterized real kind. Other procedures (those which are simple
+enough) are duplicated for default real kind and double precision,
+with a generic interface to these two versions. You can <a href="#rationale-for-treatment-of-kind-attribute">see below the
+rationale</a> for this
+modification if you are interested.</p>
+<p>Other differences between the original routines and NR_util: comments
+in source code; one file for each procedure not part of a generic
+procedure; one file for each generic procedure, with all its specific
+procedures; module variables distributed in relevant module files (e. g.
+<code>npar_arth</code>) or made local (<code>NPAR_CUMPROD</code>); removed <a href="https://www.lmd.jussieu.fr/~lguez/Pelican/argument-stat-de-linstruction-allocate.html">stat arguments to
+allocate</a>; removed tabulation
+characters (they are not allowed by Fortran standard); replaced stop
+character string by print and stop 1.</p>
+<p>Still other differences between the original routines and NR_util, on
+details, made before git log: renamed some specific procedures
+associated to the generic swap; made uniform the interfaces of specific
+procedures for swap and made mask an optional argument, so the interface
+name <code>masked_swap</code> no longer exists; added specific <code>cumsum_d</code> to generic
+cumsum; corrected repeated call to size in <code>get_diag</code>; faster algorithm
+in ifirstloc and added optional argument <code>my_lbound</code>; simplified imaxloc;
+simplified iminloc and added specific procedure <code>iminloc_d</code>; bug fix in
+<code>scatter_max</code>, intent must be inout, not out.</p>
+<h2 id="rationale-for-treatment-of-kind-attribute">Rationale for treatment of kind attribute</h2>
+<p>The treatment of kind attributes is different in NR_util than in the
+original "utility routines" of Numerical Recipes. The procedures in
+NR_util do not essentially require a large precision. For example,
+they do not require by themselves real double precision. But, if a
+procedure of NR_util has a real argument, we want to allow a user to
+call this procedure with an actual argument of all possible real kinds
+(depending on the needs of the calling program). It does not make
+sense to define several named constants for several real kinds (sp and
+dp in the original routines): either you duplicate the routines or you
+parameterize them with a single named constant. See the page on
+<a href="https://www.lmd.jussieu.fr/~lguez/Pelican/managing-kind-parameters-for-numeric-types-in-fortran-2003.html">Managing kind parameters for numeric types in Fortran
+2003</a>.</p>
+<p>For integer data objects, we have removed the i4b kind parameterization.
+This parameterization did not make any sense for the routines of
+NR_util (it was used needlessly for local loop counters, for example).
+All the integer data objects of NR_util are of default integer kind.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../installation/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../detailed_content/" class="btn btn-neutral" title="Detailed content of Jumble"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/lguez/Jumble/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../detailed_content/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../installation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
