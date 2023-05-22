@@ -9,11 +9,12 @@ module ediff1d_m
   private
   public ediff1d
 
+  ! Inspired by numpy.ediff1d. The argument a may have size 0 or 1,
+  ! in which case the returned array has zero size.
+
 contains
 
   function ediff1d_real(a)
-
-    ! Inspired by numpy.ediff1d
 
     real, intent(in):: a(:)
     real ediff1d_real(size(a) - 1)
@@ -30,8 +31,6 @@ contains
   !********************************************************************
 
   function ediff1d_integer(a)
-
-    ! Inspired by numpy.ediff1d
 
     integer, intent(in):: a(:)
     integer ediff1d_integer(size(a) - 1)
