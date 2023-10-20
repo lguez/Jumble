@@ -19,7 +19,14 @@
 
      if (l_r_loc == 0) then
         print *, 'jumble::csvread: Empty file.'
-        stop 1
+
+        if (present(iostat)) then
+           iostat = 1
+           close(unit)
+           return
+        else
+           stop 1
+        end if
      end if
 
      rewind(unit)
@@ -35,19 +42,27 @@
      backspace(unit)
   end if
 
+  if (present(iostat)) iostat = 0 ! default value
+
   print *, 'jumble::csvread: Reading column(s) ', f_c_loc, ':', l_c_loc, &
        ', row(s) ', f_r_loc, ':', l_r_loc
   allocate(a(l_r_loc - f_r_loc + 1, l_c_loc - f_c_loc + 1))
 
   do i = 1, l_r_loc - f_r_loc + 1
-     read(unit, fmt=*, iostat = iostat, iomsg = iomsg) &
+     read(unit, fmt=*, iostat = iostat_loc, iomsg = iomsg) &
           (trash, j = 1, f_c_loc - 1), a(i, :)
-     if (iostat /= 0) then
+     if (iostat_loc /= 0) then
         print *, "jumble::csvread:", trim(iomsg)
         print *, "i = ", i
         print *, "Is the data read numeric?"
-        deallocate(a)
-        exit
+
+        if (present(iostat)) then
+           deallocate(a)
+           iostat = 2
+           exit
+        else
+           stop 2
+        end if
      end if
   end do
 

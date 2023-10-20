@@ -30,7 +30,7 @@ module csvread_m
 
 contains
 
-  subroutine csvread_sp(file, a, first_r, first_c, last_r, last_c)
+  subroutine csvread_sp(file, a, first_r, first_c, last_r, last_c, iostat)
 
     character(len=*), intent(in):: file
     real, allocatable, intent(out):: a(:,:)
@@ -38,9 +38,10 @@ contains
     integer, intent(in), optional:: first_c
     integer, intent(in), optional:: last_r
     integer, intent(in), optional:: last_c
+    integer, intent(out), optional:: iostat
 
     ! Variables local to the subprogram:
-    integer i, j, unit, iostat
+    integer i, j, unit, iostat_loc
     integer f_r_loc ! first row to read, local variable
     integer f_c_loc ! first column to read, local variable
     integer l_r_loc ! last row to read, local variable
@@ -55,7 +56,7 @@ contains
 
   !***********************************************************
 
-  subroutine csvread_dp(file, a, first_r, first_c, last_r, last_c)
+  subroutine csvread_dp(file, a, first_r, first_c, last_r, last_c, iostat)
 
     character(len=*), intent(in):: file
     double precision, allocatable, intent(out):: a(:,:)
@@ -63,9 +64,10 @@ contains
     integer, intent(in), optional:: first_c
     integer, intent(in), optional:: last_r
     integer, intent(in), optional:: last_c
+    integer, intent(out), optional:: iostat
 
     ! Variables local to the subprogram:
-    integer i, j, unit, iostat
+    integer i, j, unit, iostat_loc
     integer f_r_loc ! first row to read, local variable
     integer f_c_loc ! first column to read, local variable
     integer l_r_loc ! last row to read, local variable
