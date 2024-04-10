@@ -11,7 +11,7 @@ contains
     integer, intent(in):: n ! must be >= 1
     integer, allocatable:: divisors(:)
 
-    ! Variables local to the procedure:
+    ! Local:
 
     integer i, i_max
     integer n_div ! number of divisors of "n"

@@ -9,8 +9,8 @@ contains
     ! This subroutine computes the real roots of a quadratic equation
     ! with real coefficients. If there is a double root, it appears in
     ! double in the output array. If there are two distinct roots,
-    ! they are output in ascending order. If there is no real root,
-    ! the output array is undefined.
+    ! they are output in ascending order. If there is no real root
+    ! (check delta), the output array is undefined.
 
     use assert_m, only: assert
 
@@ -20,13 +20,14 @@ contains
     real, intent(out):: delta ! discriminant
     real, intent(out):: root(:) ! (2)
 
-    ! Variables local to the procedure
+    ! Local:
     real q
 
     !---------------
 
-    call assert(a /= 0., "quadrat a must be  /= 0") 
+    call assert(a /= 0., "quadrat: `a` must be  /= 0")
     delta = b**2 - 4. * a * c
+
     if (delta == 0.) then
        root = - b / 2 / a
     else if (delta > 0.) then

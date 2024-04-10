@@ -12,9 +12,10 @@
 directory you get could be called Jumble or Jumble-master (depending
 on whether you cloned or downloaded a ZIP file).
 
-2.  Create a build subdirectory in the directory you have just downloaded:
+2.  Create a build subdirectory in the directory you have just
+    downloaded. For example:
 
-        cd the-directory-you-have-just-downloaded
+        cd ~/Downloads/Jumble-master
         mkdir build
         cd build
 
