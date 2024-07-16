@@ -10,3 +10,5 @@ target_link_libraries(test_quadrat PRIVATE jumble)
 # test_divisors
 add_executable(test_divisors EXCLUDE_FROM_ALL test_divisors.f90)
 target_link_libraries(test_divisors PRIVATE jumble)
+
+add_dependencies(tests_jumble test_quadrat test_divisors)

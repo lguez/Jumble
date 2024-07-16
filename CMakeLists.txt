@@ -14,6 +14,7 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES "NAG")
   target_include_directories(jumble PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 endif()
 
+add_custom_target(tests_jumble)
 add_subdirectory(Numerical)
 add_subdirectory(NR_util)
 add_subdirectory(Input_output)
@@ -22,6 +23,7 @@ add_library(${PROJECT_NAME}::jumble ALIAS jumble)
 # test_greg2jd
 add_executable(test_greg2jd EXCLUDE_FROM_ALL test_greg2jd.f90)
 target_link_libraries(test_greg2jd PRIVATE jumble)
+add_dependencies(tests_jumble test_greg2jd)
 
 # Start installation part
 

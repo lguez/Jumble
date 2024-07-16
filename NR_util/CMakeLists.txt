@@ -23,3 +23,5 @@ target_link_libraries(test_nr_util PRIVATE jumble)
 # test_ifirstloc
 add_executable(test_ifirstloc EXCLUDE_FROM_ALL test_ifirstloc.f90)
 target_link_libraries(test_ifirstloc PRIVATE jumble)
+
+add_dependencies(tests_jumble test_nr_util test_ifirstloc)
