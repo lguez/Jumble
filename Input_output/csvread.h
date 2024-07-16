@@ -53,7 +53,7 @@
           (trash, j = 1, f_c_loc - 1), a(i, :)
      if (iostat_loc /= 0) then
         print *, "jumble::csvread:", trim(iomsg)
-        print *, "i = ", i
+        print *, "row i = ", i
         print *, "Is the data read numeric?"
 
         if (present(iostat)) then
