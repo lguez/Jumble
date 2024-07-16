@@ -5,4 +5,8 @@ target_sources(jumble PRIVATE compare.f90 count_values.f90
 
 add_executable(test_csvread EXCLUDE_FROM_ALL test_csvread.f90)
 target_link_libraries(test_csvread PRIVATE jumble)
-add_dependencies(tests_jumble test_csvread)
+
+add_executable(test_readline EXCLUDE_FROM_ALL test_readline.f90)
+target_link_libraries(test_readline PRIVATE jumble)
+
+add_dependencies(tests_jumble test_csvread test_readline)
