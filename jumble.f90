@@ -48,6 +48,7 @@ module jumble
   use quadrat_m
   use read_column_m
   use read_opcol_m
+  use readline_m
   use reallocate_m
   use scatter_add_m
   use scatter_max_m

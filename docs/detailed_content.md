@@ -87,6 +87,9 @@ a link to the source code.
 - [read\_opcol](https://github.com/lguez/Jumble/blob/master/Input_output/read_opcol.f90):
   Reads a column of values in an external file, given by its logical unit.
 
+- [readline](https://github.com/lguez/Jumble/blob/master/Input_output/readline.f90):
+  Reads a line from an external file.
+
 ## Linear algebra in 2 dimensions on real numbers
 
 - [determin](https://github.com/lguez/Jumble/blob/master/Numerical/Lin_2d_real/determin.f90): Computes the determinant of a (2, 2) real matrix.
