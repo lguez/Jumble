@@ -4,7 +4,7 @@ set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build")
 project(Jumble LANGUAGES Fortran)
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 add_library(jumble opt_merge.f90 uniq.f90 jumble.f90 point.f90
-  iso_varying_string.f90 greg2jd.f90)
+  iso_varying_string.f90 greg2jd.f90 squeeze.f90)
 set_target_properties(jumble PROPERTIES Fortran_MODULE_DIRECTORY
   ${PROJECT_BINARY_DIR}/modules)
 target_include_directories(jumble PUBLIC

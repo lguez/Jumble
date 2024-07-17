@@ -54,6 +54,7 @@ module jumble
   use scatter_max_m
   use set2lin_m
   use spherical
+  use squeeze_m
   use swap_m
   use uniq_m
   use unit_matrix_m
