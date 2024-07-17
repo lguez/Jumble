@@ -23,7 +23,12 @@ add_library(${PROJECT_NAME}::jumble ALIAS jumble)
 # test_greg2jd
 add_executable(test_greg2jd EXCLUDE_FROM_ALL test_greg2jd.f90)
 target_link_libraries(test_greg2jd PRIVATE jumble)
-add_dependencies(tests_jumble test_greg2jd)
+
+# test_squeeze
+add_executable(test_squeeze EXCLUDE_FROM_ALL test_squeeze.f90)
+target_link_libraries(test_squeeze PRIVATE jumble)
+
+add_dependencies(tests_jumble test_greg2jd test_squeeze)
 
 # Start installation part
 
