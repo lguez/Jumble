@@ -28,7 +28,12 @@ target_link_libraries(test_greg2jd PRIVATE jumble)
 add_executable(test_squeeze EXCLUDE_FROM_ALL test_squeeze.f90)
 target_link_libraries(test_squeeze PRIVATE jumble)
 
-add_dependencies(tests_jumble test_greg2jd test_squeeze)
+# test_count_substrings
+add_executable(test_count_substrings EXCLUDE_FROM_ALL test_count_substrings.f90)
+target_link_libraries(test_count_substrings PRIVATE jumble)
+
+add_dependencies(tests_jumble test_greg2jd test_squeeze
+  test_count_substrings)
 
 # Start installation part
 
