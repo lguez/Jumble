@@ -17,13 +17,15 @@ module csvread_m
      ! last row arguments may be 0. This is interpreted as "last in
      ! the file". The only difference between the interfaces of the
      ! specific procedures is the type of "a".
-     
+
      ! character(len=*), intent(in):: file
+
      ! integer, real or double precision, allocatable, intent(out):: a(:,:)
      ! integer, intent(in), optional:: first_r ! first row to read
      ! integer, intent(in), optional:: first_c ! first column to read
      ! integer, intent(in), optional:: last_r ! last row to read
      ! integer, intent(in), optional:: last_c ! last column to read
+     ! integer, intent(out), optional:: iostat
 
      module procedure csvread_sp, csvread_dp, csvread_int
   end interface csvread

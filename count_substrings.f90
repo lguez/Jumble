@@ -13,6 +13,10 @@ contains
     ! Python). If string is empty and substring is not empty then the
     ! function returns 0.
 
+    ! Worst case: when len(substring) = len(string) / 2 and there is 0
+    ! match, the number of comparisons of single characters is of the
+    ! order of len(string)^2.
+
     ! Adapted from:
 
     ! https://rosettacode.org/wiki/Count_occurrences_of_a_substring#Fortran

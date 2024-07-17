@@ -113,7 +113,10 @@ a link to the source code.
   
 - [averge](https://github.com/lguez/Jumble/blob/master/Numerical/averge.f90): Computes the arithmetic average of arithmetic and geometric averages.
 
-- [divisors](https://github.com/lguez/Jumble/blob/master/Numerical/divisors.f90): Returns all the divisors of a given integer.
+- [averge](https://github.com/lguez/Jumble/blob/master/Numerical/averge.f90): Computes the arithmetic average of arithmetic and geometric averages.
+
+- [count\_substrings](https://github.com/lguez/Jumble/blob/master/count_substrings.f90):
+  Counts the number of occurrences of a substring in a string.
 
 - [ediff1d](https://github.com/lguez/Jumble/blob/master/Numerical/ediff1d.f90): Computes the differences between consecutive elements of an array.
 
@@ -139,5 +142,9 @@ a link to the source code.
 - [sphbase](https://github.com/lguez/Jumble/blob/master/Numerical/spherical.f90): Returns the matrix of the spherical base: (radial vector, colatitude vector, azimuthal vector) in the cartesian vector base: (x, y, z).
 
 - [sphrect](https://github.com/lguez/Jumble/blob/master/Numerical/spherical.f90): Converts spherical coordinates to rectangular coordinates.
+
+- [squeeze](https://github.com/lguez/Jumble/blob/master/squeeze.f90):
+  Replaces repeated successive occurrences of a character in a string
+  by a single occurrence of that character.
 
 - [uniq](https://github.com/lguez/Jumble/blob/master/uniq.f90): Reports or omits repeated elements of an array.

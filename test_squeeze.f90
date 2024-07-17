@@ -11,5 +11,5 @@ program test_squeeze
   print *, "Enter a character string, with quotes:"
   read *, line
   write(unit = *, fmt = "(3a)") '"', squeeze(line, " "), '"'
-  
+
 end program test_squeeze

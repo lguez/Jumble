@@ -20,10 +20,10 @@ contains
     character(len = len(string)) buffer
 
     !-------------------------------------------------------------------
-    
+
     i_squeezed = 0
     prev_target = .false.
-    
+
     do i = 1, len(string)
        curr_target = string(i:i) == c
 
@@ -31,12 +31,12 @@ contains
           i_squeezed = i_squeezed + 1
           buffer(i_squeezed:i_squeezed) = string(i:i)
        end if
-       
+
        prev_target = curr_target
     end do
 
     squeeze = buffer(:i_squeezed)
 
   end function squeeze
-  
+
 end module squeeze_m

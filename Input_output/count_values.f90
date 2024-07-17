@@ -6,8 +6,11 @@ contains
 
   subroutine count_values(unit, n)
 
-    ! Count the number of values per line. Does not work with several
-    ! adjacent commas.
+    ! This procedure counts the number of values per line. Values may
+    ! be separated by one or several spaces, or a single comma. The
+    ! procedure does not work with several adjacent commas: several
+    ! commas count as a single separator. In other words, missing
+    ! values are not allowed.
    
     integer, intent(in):: unit ! logical unit for input file
     integer, intent(out):: n
