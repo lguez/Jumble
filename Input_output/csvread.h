@@ -13,6 +13,7 @@
   f_c_loc = opt_merge(first_c, 1)
   l_r_loc = opt_merge(last_r, 0)
   l_c_loc = opt_merge(last_c, 0)
+  transpose_loc = opt_merge(transpose, .false.)
 
   if (l_r_loc == 0) then
      call count_lines(unit, l_r_loc)
@@ -46,11 +47,22 @@
 
   print *, 'jumble::csvread: Reading column(s) ', f_c_loc, ':', l_c_loc, &
        ', row(s) ', f_r_loc, ':', l_r_loc
-  allocate(a(l_r_loc - f_r_loc + 1, l_c_loc - f_c_loc + 1))
+
+  if (transpose_loc) then
+     allocate(a(l_c_loc - f_c_loc + 1, l_r_loc - f_r_loc + 1))
+  else
+     allocate(a(l_r_loc - f_r_loc + 1, l_c_loc - f_c_loc + 1))
+  end if
 
   do i = 1, l_r_loc - f_r_loc + 1
-     read(unit, fmt=*, iostat = iostat_loc, iomsg = iomsg) &
-          (trash, j = 1, f_c_loc - 1), a(i, :)
+     if (transpose_loc) then
+        read(unit, fmt=*, iostat = iostat_loc, iomsg = iomsg) &
+             (trash, j = 1, f_c_loc - 1), a(:, i)
+     else
+        read(unit, fmt=*, iostat = iostat_loc, iomsg = iomsg) &
+             (trash, j = 1, f_c_loc - 1), a(i, :)
+     end if
+
      if (iostat_loc /= 0) then
         print *, "jumble::csvread:", trim(iomsg)
         print *, "row i = ", i
