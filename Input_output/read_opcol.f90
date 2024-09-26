@@ -4,6 +4,7 @@ module read_opcol_m
 
   use count_lines_m, only: count_lines
   use opt_merge_m, only: opt_merge
+  use assert_m, only: assert
 
   implicit none
 
@@ -42,9 +43,12 @@ contains
     integer last_not_opt ! last line to read, local variable
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
+    logical opened
 
     !------------------------------------------------------
 
+    inquire(unit, opened = opened)
+    call assert(opened, "jumble - read_opcol_real: unit must be opened")
     include "read_column.h"
 
   end subroutine read_opcol_real
@@ -64,9 +68,12 @@ contains
     integer last_not_opt ! last line to read, local variable
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
+    logical opened
 
     !------------------------------------------------------
 
+    inquire(unit, opened = opened)
+    call assert(opened, "jumble - read_opcol_integer: unit must be opened")
     include "read_column.h"
 
   end subroutine read_opcol_integer
@@ -86,9 +93,12 @@ contains
     integer last_not_opt ! last line to read, local variable
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
+    logical opened
 
     !------------------------------------------------------
 
+    inquire(unit, opened = opened)
+    call assert(opened, "jumble - read_opcol_char: unit must be opened")
     include "read_column.h"
 
   end subroutine read_opcol_char
