@@ -1,5 +1,7 @@
 module read_column_m
 
+  use, intrinsic:: ISO_FORTRAN_ENV
+
   use count_lines_m, only: count_lines
   use new_unit_m, only: new_unit
   use opt_merge_m, only: opt_merge

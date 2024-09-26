@@ -12,7 +12,8 @@
      call count_lines(unit, last_not_opt)
 
      if (last_not_opt == 0) then
-        print *, 'Jumble:read_column or read_opcol: Empty file.'
+        write(ERROR_UNIT, fmt = *) &
+             'Jumble:read_column or read_opcol: Empty file.'
         stop 1
      end if
      
