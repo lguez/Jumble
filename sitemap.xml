@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
-     <loc>https://www.lmd.jussieu.fr/~lguez/Jumble_site/index.html/</loc>
-     <lastmod>2023-01-13</lastmod>
+     <loc>https://lguez.github.io/Jumble/</loc>
+     <lastmod>2024-12-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://www.lmd.jussieu.fr/~lguez/Jumble_site/index.html/detailed_content/</loc>
-     <lastmod>2023-01-13</lastmod>
+     <loc>https://lguez.github.io/Jumble/detailed_content/</loc>
+     <lastmod>2024-12-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://www.lmd.jussieu.fr/~lguez/Jumble_site/index.html/NR_util/</loc>
-     <lastmod>2023-01-13</lastmod>
+     <loc>https://lguez.github.io/Jumble/NR_util/</loc>
+     <lastmod>2024-12-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://www.lmd.jussieu.fr/~lguez/Jumble_site/index.html/installation/</loc>
-     <lastmod>2023-01-13</lastmod>
+     <loc>https://lguez.github.io/Jumble/installation/</loc>
+     <lastmod>2024-12-04</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://www.lmd.jussieu.fr/~lguez/Jumble_site/index.html/usage/</loc>
-     <lastmod>2023-01-13</lastmod>
+     <loc>https://lguez.github.io/Jumble/usage/</loc>
+     <lastmod>2024-12-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
