@@ -1,5 +1,7 @@
   ! -*- mode: f90; -*-
-  ! Body of all the specific procedures of generic interface "read_column".
+
+  ! Body of all the specific procedures of generic interfaces
+  ! "read_column" and "read_opcol".
   
   ! Fill non-optional arguments: first and last line which will
   ! actually be read, taking information from the file itself if

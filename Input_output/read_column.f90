@@ -19,6 +19,7 @@ module read_column_m
      ! file. The difference between the specific procedures is the
      ! type of argument "a".
 
+     ! subroutine read_column(a, file, first, last, my_lbound)
      ! real or integer or character(len=*), allocatable, intent(out):: a(:)
      ! character(len=*), intent(in):: file
      ! integer, intent(in), optional:: first ! (first line to read)
