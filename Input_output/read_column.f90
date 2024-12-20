@@ -58,9 +58,7 @@ contains
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
-    integer skiprows_not_opt
-    integer nrows_not_opt, usecol_not_opt
-    integer my_lbound_not_opt ! lower bound of argument "a", local variable
+    integer skiprows_not_opt, nrows_not_opt, usecol_not_opt, my_lbound_not_opt
     integer i, j
     character trash
 
@@ -87,9 +85,7 @@ contains
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
-    integer skiprows_not_opt
-    integer nrows_not_opt, usecol_not_opt
-    integer my_lbound_not_opt ! lower bound of argument "a", local variable
+    integer skiprows_not_opt, nrows_not_opt, usecol_not_opt, my_lbound_not_opt
     integer i, j
     character trash
 
@@ -116,9 +112,7 @@ contains
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
-    integer skiprows_not_opt
-    integer nrows_not_opt, usecol_not_opt
-    integer my_lbound_not_opt ! lower bound of argument "a", local variable
+    integer skiprows_not_opt, nrows_not_opt, usecol_not_opt, my_lbound_not_opt
     integer i, j
     character trash
 
@@ -145,9 +139,7 @@ contains
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
-    integer skiprows_not_opt
-    integer nrows_not_opt, usecol_not_opt
-    integer my_lbound_not_opt ! lower bound of argument "a", local variable
+    integer skiprows_not_opt, nrows_not_opt, usecol_not_opt, my_lbound_not_opt
     integer i, j
     character trash
 
