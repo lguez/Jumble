@@ -13,24 +13,33 @@ module read_column_m
 
   interface read_column
      ! This generic procedure reads a column of values in an external
-     ! file. The file should contain a single column. The records of
-     ! the file shoud be formatted. If the argument "nrows" is absent
-     ! then the procedure reads to the last line in the file. The
+     ! file. The records of the file shoud be formatted. The
      ! difference between the specific procedures is the type of
      ! argument "a".
 
-     ! subroutine read_column(a, file, skiprows, nrows, my_lbound)
+     ! subroutine read_column(a, file, skiprows, nrows, my_lbound, usecol)
+
      ! real or integer or character(len=*), allocatable, intent(out):: a(:)
      ! character(len=*), intent(in):: file
 
      ! integer, intent(in), optional:: skiprows
-     ! number of lines to skip at the start of the file, should be >= 0
+
+     ! Number of lines to skip at the start of the file, should be >=
+     ! 0. Default value is 0.
 
      ! integer, intent(in), optional:: nrows
-     ! Number of rows of file to read. If nrows <= 0 then a zero-sized
-     ! array is returned in `a`.
 
-     ! integer, optional, intent(in):: my_lbound ! lower bound of argument "a"
+     ! Number of rows of file to read. If nrows <= 0 then a zero-sized
+     ! array is returned in `a`. If nrows is absent then the procedure
+     ! reads to the last line in the file.
+
+     ! integer, optional, intent(in):: my_lbound
+     ! Lower bound of argument "a". Default is 1.
+
+     ! integer, optional, intent(in):: usecol
+
+     ! Which column to read, with 1 being the first. Should be >=
+     ! 1. Default is 1.
 
      module procedure read_column_real, read_column_integer, read_column_char
   end interface read_column

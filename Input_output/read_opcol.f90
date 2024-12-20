@@ -14,22 +14,32 @@ module read_opcol_m
   interface read_opcol
      ! This generic procedure reads a column of values in an external
      ! file. The file should be already opened for formatted
-     ! sequential access. The file should contain a single column. If
-     ! the argument "nrows" is absent then the procedure reads to the
-     ! last line in the file. The difference between the specific
+     ! sequential access. The difference between the specific
      ! procedures is the type of argument "a".
+
+     ! subroutine read_opcol_real(a, unit, skiprows, nrows, my_lbound, usecol)
 
      ! real or integer or character(len=*), allocatable, intent(out):: a(:)
      ! integer, intent(in):: unit
 
      ! integer, intent(in), optional:: skiprows
-     ! number of lines to skip at the start of the file, should be >= 0
+
+     ! Number of lines to skip at the start of the file, should be >=
+     ! 0. Default value is 0.
 
      ! integer, intent(in), optional:: nrows
-     ! Number of rows of file to read. If nrows <= 0 then a zero-sized
-     ! array is returned in `a`.
 
-     ! integer, optional, intent(in):: my_lbound ! lower bound of argument "a"
+     ! Number of rows of file to read. If nrows <= 0 then a zero-sized
+     ! array is returned in `a`. If nrows is absent then the procedure
+     ! reads to the last line in the file.
+
+     ! integer, optional, intent(in):: my_lbound
+     ! Lower bound of argument "a". Default is 1.
+
+     ! integer, optional, intent(in):: usecol
+
+     ! Which column to read, with 1 being the first. Should be >=
+     ! 1. Default is 1.
 
      module procedure read_opcol_real, read_opcol_integer, read_opcol_char
   end interface read_opcol
