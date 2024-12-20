@@ -10,5 +10,11 @@ program test_read_column
 
   call read_column(a, "test_read_column.txt")
   print *, "a = ", a
+  call read_column(a, "test_read_column.txt", skiprows = 1)
+  print *, "a = ", a
+  call read_column(a, "test_read_column.txt", nrows = 1)
+  print *, "a = ", a
+  call read_column(a, "test_read_column.txt", skiprows = 1, nrows = 1)
+  print *, "a = ", a
 
 end program test_read_column
