@@ -9,17 +9,18 @@
   skiprows_not_opt = opt_merge(skiprows, 0)
 
   if (present(nrows)) then
-     last_not_opt = skiprows_not_opt + nrows
+     nrows_not_opt = nrows
   else
-     call count_lines(unit, last_not_opt)
+     call count_lines(unit, nrows_not_opt)
 
-     if (last_not_opt == 0) then
+     if (nrows_not_opt == 0) then
         write(ERROR_UNIT, fmt = *) &
              'Jumble:read_column or read_opcol: Empty file.'
         stop 1
      end if
      
      rewind(unit)
+     nrows_not_opt = nrows_not_opt - skiprows_not_opt
   end if
 
   ! Go to first line to read:
@@ -28,6 +29,5 @@
   end do
   
   my_lbound_not_opt = opt_merge(my_lbound, 1)
-  allocate(a(my_lbound_not_opt:my_lbound_not_opt + last_not_opt &
-       - skiprows_not_opt - 1))
+  allocate(a(my_lbound_not_opt:my_lbound_not_opt + nrows_not_opt - 1))
   read(unit, fmt=*) a

@@ -43,7 +43,7 @@ contains
 
     ! Variables local to the subprogram:
     integer skiprows_not_opt
-    integer last_not_opt ! last line to read, local variable
+    integer nrows_not_opt
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
     logical opened
@@ -68,7 +68,7 @@ contains
 
     ! Variables local to the subprogram:
     integer skiprows_not_opt
-    integer last_not_opt ! last line to read, local variable
+    integer nrows_not_opt
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
     logical opened
@@ -93,7 +93,7 @@ contains
 
     ! Variables local to the subprogram:
     integer skiprows_not_opt
-    integer last_not_opt ! last line to read, local variable
+    integer nrows_not_opt
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
     logical opened
