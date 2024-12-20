@@ -7,7 +7,7 @@
   ! actually be read, taking information from the file itself if
   ! necessary.
   
-  first_not_opt = opt_merge(first, 1)
+  first_not_opt = opt_merge(skiprows, 0) + 1
   last_not_opt = opt_merge(last, huge(0))
 
   if (last_not_opt == huge(0)) then

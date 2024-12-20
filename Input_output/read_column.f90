@@ -19,10 +19,13 @@ module read_column_m
      ! file. The difference between the specific procedures is the
      ! type of argument "a".
 
-     ! subroutine read_column(a, file, first, last, my_lbound)
+     ! subroutine read_column(a, file, skiprows, last, my_lbound)
      ! real or integer or character(len=*), allocatable, intent(out):: a(:)
      ! character(len=*), intent(in):: file
-     ! integer, intent(in), optional:: first ! (first line to read)
+
+     ! integer, intent(in), optional:: skiprows
+     ! number of lines to skip at the start of the file, should be >= 0
+
      ! integer, intent(in), optional:: last ! (last line to read)
      ! integer, optional, intent(in):: my_lbound ! lower bound of argument "a"
 
@@ -31,11 +34,11 @@ module read_column_m
 
 contains
 
-  subroutine read_column_real(a, file, first, last, my_lbound)
+  subroutine read_column_real(a, file, skiprows, last, my_lbound)
 
     real, allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
-    integer, intent(in), optional:: first
+    integer, intent(in), optional:: skiprows
     integer, intent(in), optional:: last
     integer, optional, intent(in):: my_lbound
 
@@ -58,11 +61,11 @@ contains
 
   !***********************************************************
 
-  subroutine read_column_integer(a, file, first, last, my_lbound)
+  subroutine read_column_integer(a, file, skiprows, last, my_lbound)
 
     integer, allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
-    integer, intent(in), optional:: first
+    integer, intent(in), optional:: skiprows
     integer, intent(in), optional:: last
     integer, optional, intent(in):: my_lbound
 
@@ -85,11 +88,11 @@ contains
 
   !***********************************************************
 
-  subroutine read_column_char(a, file, first, last, my_lbound)
+  subroutine read_column_char(a, file, skiprows, last, my_lbound)
 
     character(len=*), allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
-    integer, intent(in), optional:: first
+    integer, intent(in), optional:: skiprows
     integer, intent(in), optional:: last
     integer, optional, intent(in):: my_lbound
 

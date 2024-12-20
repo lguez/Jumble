@@ -21,7 +21,10 @@ module read_opcol_m
 
      ! real or integer or character(len=*), allocatable, intent(out):: a(:)
      ! integer, intent(in):: unit
-     ! integer, intent(in), optional:: first ! (first line to read)
+
+     ! integer, intent(in), optional:: skiprows
+     ! number of lines to skip at the start of the file, should be >= 0
+
      ! integer, intent(in), optional:: last ! (last line to read)
      ! integer, optional, intent(in):: my_lbound ! lower bound of argument "a"
 
@@ -30,11 +33,11 @@ module read_opcol_m
 
 contains
 
-  subroutine read_opcol_real(a, unit, first, last, my_lbound)
+  subroutine read_opcol_real(a, unit, skiprows, last, my_lbound)
 
     real, allocatable, intent(out):: a(:)
     integer, intent(in):: unit
-    integer, intent(in), optional:: first
+    integer, intent(in), optional:: skiprows
     integer, intent(in), optional:: last
     integer, optional, intent(in):: my_lbound
 
@@ -55,11 +58,11 @@ contains
 
   !***********************************************************
 
-  subroutine read_opcol_integer(a, unit, first, last, my_lbound)
+  subroutine read_opcol_integer(a, unit, skiprows, last, my_lbound)
 
     integer, allocatable, intent(out):: a(:)
     integer, intent(in):: unit
-    integer, intent(in), optional:: first
+    integer, intent(in), optional:: skiprows
     integer, intent(in), optional:: last
     integer, optional, intent(in):: my_lbound
 
@@ -80,11 +83,11 @@ contains
 
   !***********************************************************
 
-  subroutine read_opcol_char(a, unit, first, last, my_lbound)
+  subroutine read_opcol_char(a, unit, skiprows, last, my_lbound)
 
     character(len=*), allocatable, intent(out):: a(:)
     integer, intent(in):: unit
-    integer, intent(in), optional:: first
+    integer, intent(in), optional:: skiprows
     integer, intent(in), optional:: last
     integer, optional, intent(in):: my_lbound
 
