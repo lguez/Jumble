@@ -12,10 +12,6 @@
   if (present(nrows)) then
      last_not_opt = first_not_opt + nrows - 1
   else
-     last_not_opt = huge(0)
-  end if
-
-  if (last_not_opt == huge(0)) then
      call count_lines(unit, last_not_opt)
 
      if (last_not_opt == 0) then
