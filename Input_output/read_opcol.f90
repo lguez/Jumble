@@ -42,7 +42,7 @@ contains
     integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
-    integer first_not_opt ! first line to read, local variable
+    integer skiprows_not_opt
     integer last_not_opt ! last line to read, local variable
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
@@ -67,7 +67,7 @@ contains
     integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
-    integer first_not_opt ! first line to read, local variable
+    integer skiprows_not_opt
     integer last_not_opt ! last line to read, local variable
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
@@ -92,7 +92,7 @@ contains
     integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
-    integer first_not_opt ! first line to read, local variable
+    integer skiprows_not_opt
     integer last_not_opt ! last line to read, local variable
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i

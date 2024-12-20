@@ -44,7 +44,7 @@ contains
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
-    integer first_not_opt ! first line to read, local variable
+    integer skiprows_not_opt
     integer last_not_opt ! last line to read, local variable
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
@@ -71,7 +71,7 @@ contains
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
-    integer first_not_opt ! first line to read, local variable
+    integer skiprows_not_opt
     integer last_not_opt ! last line to read, local variable
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i
@@ -98,7 +98,7 @@ contains
 
     ! Variables local to the subprogram:
     integer unit ! external file unit
-    integer first_not_opt ! first line to read, local variable
+    integer skiprows_not_opt
     integer last_not_opt ! last line to read, local variable
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
     integer i

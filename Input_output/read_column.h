@@ -7,10 +7,10 @@
   ! actually be read, taking information from the file itself if
   ! necessary.
   
-  first_not_opt = opt_merge(skiprows, 0) + 1
+  skiprows_not_opt = opt_merge(skiprows, 0)
 
   if (present(nrows)) then
-     last_not_opt = first_not_opt + nrows - 1
+     last_not_opt = skiprows_not_opt + nrows
   else
      call count_lines(unit, last_not_opt)
 
@@ -24,11 +24,11 @@
   end if
 
   ! Go to first line to read:
-  do i = 1, first_not_opt - 1
+  do i = 1, skiprows_not_opt
      read(unit, fmt=*)
   end do
   
   my_lbound_not_opt = opt_merge(my_lbound, 1)
   allocate(a(my_lbound_not_opt:my_lbound_not_opt + last_not_opt &
-       - first_not_opt))
+       - skiprows_not_opt - 1))
   read(unit, fmt=*) a
