@@ -41,7 +41,8 @@ module read_column_m
      ! Which column to read, with 1 being the first. Should be >=
      ! 1. Default is 1.
 
-     module procedure read_column_real, read_column_integer, read_column_char
+     module procedure read_column_real, read_column_integer, read_column_char, &
+          read_column_double
   end interface read_column
 
 contains
@@ -72,6 +73,35 @@ contains
     close(unit)
 
   end subroutine read_column_real
+
+  !***********************************************************
+
+  subroutine read_column_double(a, file, skiprows, nrows, my_lbound, usecol)
+
+    double precision, allocatable, intent(out):: a(:)
+    character(len=*), intent(in):: file
+    integer, intent(in), optional:: skiprows
+    integer, intent(in), optional:: nrows
+    integer, optional, intent(in):: my_lbound
+    integer, optional, intent(in):: usecol
+
+    ! Variables local to the subprogram:
+    integer unit ! external file unit
+    integer skiprows_not_opt
+    integer nrows_not_opt, usecol_not_opt
+    integer my_lbound_not_opt ! lower bound of argument "a", local variable
+    integer i, j
+    character trash
+
+    !------------------------------------------------------
+
+    call new_unit(unit)
+    open(unit, file = file, status = 'old', action = 'read', &
+         position = 'rewind')
+    include "read_column.h"
+    close(unit)
+
+  end subroutine read_column_double
 
   !***********************************************************
 
