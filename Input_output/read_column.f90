@@ -26,7 +26,10 @@ module read_column_m
      ! integer, intent(in), optional:: skiprows
      ! number of lines to skip at the start of the file, should be >= 0
 
-     ! integer, intent(in), optional:: nrows ! number of rows of file to read
+     ! integer, intent(in), optional:: nrows
+     ! Number of rows of file to read. If nrows <= 0 then a zero-sized
+     ! array is returned in `a`.
+
      ! integer, optional, intent(in):: my_lbound ! lower bound of argument "a"
 
      module procedure read_column_real, read_column_integer, read_column_char

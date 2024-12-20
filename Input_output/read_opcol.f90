@@ -25,7 +25,10 @@ module read_opcol_m
      ! integer, intent(in), optional:: skiprows
      ! number of lines to skip at the start of the file, should be >= 0
 
-     ! integer, intent(in), optional:: nrows ! number of rows of file to read
+     ! integer, intent(in), optional:: nrows
+     ! Number of rows of file to read. If nrows <= 0 then a zero-sized
+     ! array is returned in `a`.
+
      ! integer, optional, intent(in):: my_lbound ! lower bound of argument "a"
 
      module procedure read_opcol_real, read_opcol_integer, read_opcol_char
