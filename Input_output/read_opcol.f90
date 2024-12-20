@@ -36,20 +36,22 @@ module read_opcol_m
 
 contains
 
-  subroutine read_opcol_real(a, unit, skiprows, nrows, my_lbound)
+  subroutine read_opcol_real(a, unit, skiprows, nrows, my_lbound, usecol)
 
     real, allocatable, intent(out):: a(:)
     integer, intent(in):: unit
     integer, intent(in), optional:: skiprows
     integer, intent(in), optional:: nrows
     integer, optional, intent(in):: my_lbound
+    integer, optional, intent(in):: usecol
 
     ! Variables local to the subprogram:
     integer skiprows_not_opt
-    integer nrows_not_opt
+    integer nrows_not_opt, usecol_not_opt
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
-    integer i
+    integer i, j
     logical opened
+    character trash
 
     !------------------------------------------------------
 
@@ -61,20 +63,22 @@ contains
 
   !***********************************************************
 
-  subroutine read_opcol_integer(a, unit, skiprows, nrows, my_lbound)
+  subroutine read_opcol_integer(a, unit, skiprows, nrows, my_lbound, usecol)
 
     integer, allocatable, intent(out):: a(:)
     integer, intent(in):: unit
     integer, intent(in), optional:: skiprows
     integer, intent(in), optional:: nrows
     integer, optional, intent(in):: my_lbound
+    integer, optional, intent(in):: usecol
 
     ! Variables local to the subprogram:
     integer skiprows_not_opt
-    integer nrows_not_opt
+    integer nrows_not_opt, usecol_not_opt
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
-    integer i
+    integer i, j
     logical opened
+    character trash
 
     !------------------------------------------------------
 
@@ -86,20 +90,22 @@ contains
 
   !***********************************************************
 
-  subroutine read_opcol_char(a, unit, skiprows, nrows, my_lbound)
+  subroutine read_opcol_char(a, unit, skiprows, nrows, my_lbound, usecol)
 
     character(len=*), allocatable, intent(out):: a(:)
     integer, intent(in):: unit
     integer, intent(in), optional:: skiprows
     integer, intent(in), optional:: nrows
     integer, optional, intent(in):: my_lbound
+    integer, optional, intent(in):: usecol
 
     ! Variables local to the subprogram:
     integer skiprows_not_opt
-    integer nrows_not_opt
+    integer nrows_not_opt, usecol_not_opt
     integer my_lbound_not_opt ! lower bound of argument "a", local variable
-    integer i
+    integer i, j
     logical opened
+    character trash
 
     !------------------------------------------------------
 

@@ -30,4 +30,9 @@
   
   my_lbound_not_opt = opt_merge(my_lbound, 1)
   allocate(a(my_lbound_not_opt:my_lbound_not_opt + nrows_not_opt - 1))
-  read(unit, fmt=*) a
+  usecol_not_opt = opt_merge(usecol, 1)
+
+  do i = 1, nrows_not_opt
+     read(unit, fmt=*) (trash, j = 1, usecol_not_opt - 1), &
+          a(my_lbound_not_opt + i - 1)
+  end do
