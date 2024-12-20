@@ -15,9 +15,9 @@ module read_opcol_m
      ! This generic procedure reads a column of values in an external
      ! file. The file should be already opened for formatted
      ! sequential access. The file should contain a single column. If
-     ! the argument "last" is huge(0) or is absent then the procedure
-     ! reads to the last line in the file. The difference between the
-     ! specific procedures is the type of argument "a".
+     ! the argument "nrows" is absent then the procedure reads to the
+     ! last line in the file. The difference between the specific
+     ! procedures is the type of argument "a".
 
      ! real or integer or character(len=*), allocatable, intent(out):: a(:)
      ! integer, intent(in):: unit
@@ -25,7 +25,7 @@ module read_opcol_m
      ! integer, intent(in), optional:: skiprows
      ! number of lines to skip at the start of the file, should be >= 0
 
-     ! integer, intent(in), optional:: last ! (last line to read)
+     ! integer, intent(in), optional:: nrows ! number of rows of file to read
      ! integer, optional, intent(in):: my_lbound ! lower bound of argument "a"
 
      module procedure read_opcol_real, read_opcol_integer, read_opcol_char
@@ -33,12 +33,12 @@ module read_opcol_m
 
 contains
 
-  subroutine read_opcol_real(a, unit, skiprows, last, my_lbound)
+  subroutine read_opcol_real(a, unit, skiprows, nrows, my_lbound)
 
     real, allocatable, intent(out):: a(:)
     integer, intent(in):: unit
     integer, intent(in), optional:: skiprows
-    integer, intent(in), optional:: last
+    integer, intent(in), optional:: nrows
     integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
@@ -58,12 +58,12 @@ contains
 
   !***********************************************************
 
-  subroutine read_opcol_integer(a, unit, skiprows, last, my_lbound)
+  subroutine read_opcol_integer(a, unit, skiprows, nrows, my_lbound)
 
     integer, allocatable, intent(out):: a(:)
     integer, intent(in):: unit
     integer, intent(in), optional:: skiprows
-    integer, intent(in), optional:: last
+    integer, intent(in), optional:: nrows
     integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
@@ -83,12 +83,12 @@ contains
 
   !***********************************************************
 
-  subroutine read_opcol_char(a, unit, skiprows, last, my_lbound)
+  subroutine read_opcol_char(a, unit, skiprows, nrows, my_lbound)
 
     character(len=*), allocatable, intent(out):: a(:)
     integer, intent(in):: unit
     integer, intent(in), optional:: skiprows
-    integer, intent(in), optional:: last
+    integer, intent(in), optional:: nrows
     integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:

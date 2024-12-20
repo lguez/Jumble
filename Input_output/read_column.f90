@@ -14,19 +14,19 @@ module read_column_m
   interface read_column
      ! This generic procedure reads a column of values in an external
      ! file. The file should contain a single column. The records of
-     ! the file shoud be formatted. If the argument "last" is huge(0)
-     ! or is absent then the procedure reads to the last line in the
-     ! file. The difference between the specific procedures is the
-     ! type of argument "a".
+     ! the file shoud be formatted. If the argument "nrows" is absent
+     ! then the procedure reads to the last line in the file. The
+     ! difference between the specific procedures is the type of
+     ! argument "a".
 
-     ! subroutine read_column(a, file, skiprows, last, my_lbound)
+     ! subroutine read_column(a, file, skiprows, nrows, my_lbound)
      ! real or integer or character(len=*), allocatable, intent(out):: a(:)
      ! character(len=*), intent(in):: file
 
      ! integer, intent(in), optional:: skiprows
      ! number of lines to skip at the start of the file, should be >= 0
 
-     ! integer, intent(in), optional:: last ! (last line to read)
+     ! integer, intent(in), optional:: nrows ! number of rows of file to read
      ! integer, optional, intent(in):: my_lbound ! lower bound of argument "a"
 
      module procedure read_column_real, read_column_integer, read_column_char
@@ -34,12 +34,12 @@ module read_column_m
 
 contains
 
-  subroutine read_column_real(a, file, skiprows, last, my_lbound)
+  subroutine read_column_real(a, file, skiprows, nrows, my_lbound)
 
     real, allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
     integer, intent(in), optional:: skiprows
-    integer, intent(in), optional:: last
+    integer, intent(in), optional:: nrows
     integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
@@ -61,12 +61,12 @@ contains
 
   !***********************************************************
 
-  subroutine read_column_integer(a, file, skiprows, last, my_lbound)
+  subroutine read_column_integer(a, file, skiprows, nrows, my_lbound)
 
     integer, allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
     integer, intent(in), optional:: skiprows
-    integer, intent(in), optional:: last
+    integer, intent(in), optional:: nrows
     integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:
@@ -88,12 +88,12 @@ contains
 
   !***********************************************************
 
-  subroutine read_column_char(a, file, skiprows, last, my_lbound)
+  subroutine read_column_char(a, file, skiprows, nrows, my_lbound)
 
     character(len=*), allocatable, intent(out):: a(:)
     character(len=*), intent(in):: file
     integer, intent(in), optional:: skiprows
-    integer, intent(in), optional:: last
+    integer, intent(in), optional:: nrows
     integer, optional, intent(in):: my_lbound
 
     ! Variables local to the subprogram:

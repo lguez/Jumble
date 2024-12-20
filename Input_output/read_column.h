@@ -8,7 +8,12 @@
   ! necessary.
   
   first_not_opt = opt_merge(skiprows, 0) + 1
-  last_not_opt = opt_merge(last, huge(0))
+
+  if (present(nrows)) then
+     last_not_opt = first_not_opt + nrows - 1
+  else
+     last_not_opt = huge(0)
+  end if
 
   if (last_not_opt == huge(0)) then
      call count_lines(unit, last_not_opt)
