@@ -18,5 +18,8 @@ program test_read_column
   print *, "a = ", a
   call read_column(a, "test_csvread.csv", usecol = 2)
   print *, "a = ", a
+  call read_column(a, "test_csvread.csv", my_lbound = 62)
+  print *, "a = ", a
+  print *, "lbound(a) = ", lbound(a)
 
 end program test_read_column
