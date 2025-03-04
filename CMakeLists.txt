@@ -2,6 +2,31 @@ cmake_minimum_required(VERSION 3.16)
 list(APPEND CMAKE_MESSAGE_CONTEXT Jumble)
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build")
 project(Jumble LANGUAGES Fortran)
+
+if(CMAKE_Fortran_COMPILER_ID MATCHES Intel|IntelLLVM)
+  STRING(FIND ${CMAKE_Fortran_FLAGS} noold_maxminloc index)
+
+  if(${index} EQUAL -1)
+    message(WARNING "We need -assume noold_maxminloc because of Intel compiler "
+      "bug: "
+      "https://community.intel.com/t5/Intel-Fortran-Compiler/Incorrect-minloc-maxloc-results-with-ifx-2024-0/m-p/1549287")
+  endif()
+
+  set(bug_address
+    "https://community.intel.com/t5/Intel-Fortran-Compiler/Compiler-bug-backspace-after-non-advancing-read/m-p/1614679#M172939")
+
+  if(CMAKE_Fortran_COMPILER_ID MATCHES IntelLLVM
+      AND CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 2024.2.0)
+    message(WARNING "Procedure csvread does not work with ifx version 2023.1.0"
+      "because of backspace bug in compiler: ${bug_address}"
+    )
+  elseif(CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER 19.1.3.20200925)
+    # CMAKE_Fortran_COMPILER_ID MATCHES Intel
+    message(WARNING "Procedure csvread does not work with ifort version "
+      "2021.9.0 because of backspace bug in compiler: ${bug_address}")
+  endif()
+endif()
+
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release Profile)
 add_library(jumble opt_merge.f90 uniq.f90 jumble.f90 point.f90
   iso_varying_string.f90 greg2jd.f90 squeeze.f90 count_substrings.f90)
