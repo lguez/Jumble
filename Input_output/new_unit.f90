@@ -8,8 +8,8 @@ contains
 
     ! This procedure provides a licit and not already opened external
     ! file unit. Note that if you call `new_unit` twice without
-    ! opening a file between the two calls, then `new_unit` wil return
-    ! the same value of `unit` for the two calls.
+    ! opening a file between the two calls, then `new_unit` will
+    ! return the same value of `unit` for the two calls.
 
     integer, intent(out):: unit
 
