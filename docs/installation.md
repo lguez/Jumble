@@ -8,48 +8,48 @@
 
 ## Instructions
 
-1. Get [Jumble from Github](https://github.com/lguez/Jumble). The
-directory you get could be called Jumble or Jumble-master (depending
-on whether you cloned or downloaded a ZIP file).
+1. Download
+   [Jumble](https://github.com/lguez/Jumble/archive/refs/heads/master.zip).
 
-2.  Create a build subdirectory in the directory you have just
-    downloaded. For example:
+2. Unzip it:
 
-        cd ~/Downloads/Jumble-master
-        mkdir build
-        cd build
+		unzip Jumble-master.zip
 
-3.  Decide in which directory you want to install Jumble after
-    compilation and type the command below with your choice after
-    `-DCMAKE_INSTALL_PREFIX=` (enter an absolute path). For example:
+3. Decide in which directory you want to install Jumble and type the
+   command below with your choice after `-DCMAKE_INSTALL_PREFIX=`
+   (enter an absolute path). For example:
 
-        cmake .. -DCMAKE_INSTALL_PREFIX=~/.local
+		cmake -B build -S Jumble-master -DCMAKE_INSTALL_PREFIX=~/.local
 
-4.  Type:
+	The command above is the configuration command. It will create a
+	directory named build.
 
-        make install
+4. Compile:
 
-You do not need to keep the downloaded directory (nor the build
-directory) after installation.
+		cmake --build build
+
+5. Install:
+
+        cmake --install build
+
+You do not need to keep the downloaded directory Jumble-master nor the
+build directory after installation.
 
 ## Advanced instructions
 
 - You can choose any name and any location for the build
-  directory. You have to refer to the source directory when you run
-  cmake from the build directory:
+  directory:
 
-		mkdir /wherever/any/name
-		cd /wherever/any/name
-		cmake /where/I/downloaded/Jumble -DCMAKE_INSTALL_PREFIX=~/.local
+		cmake -B /wherever/any/name -S Jumble-master -DCMAKE_INSTALL_PREFIX=~/.local
 
-- Optionally, you can change the precision for real numbers in
-  procedures `zroots_unity`, `outersum`, `cumprod`, `outerdiv` and
-  `vabs`. By default, the precision for real numbers in Jumble is set
-  to be the default kind of the real type of the Fortran compiler you
-  will use. You can change the value for the procedures listed above
-  to any real kind you want. For example:
+- Optionally, in the configuration command, you can change the
+  precision for real numbers of procedures `zroots_unity`, `outersum`,
+  `cumprod`, `outerdiv` and `vabs`. By default, the precision for real
+  numbers in Jumble is set to be the default kind of the real type of
+  the Fortran compiler you will use. You can change the value for the
+  procedures listed above to any real kind you want. For example:
 
-		cmake .. -DJumble_CPP_WP='kind(0d0)'
+		cmake -B build -S Jumble-master -DJumble_CPP_WP='kind(0d0)'
 
 	or you could choose `selected_real_kind(10)` for example, etc.
 
