@@ -4,7 +4,11 @@ set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build")
 project(Jumble LANGUAGES Fortran)
 
 if(CMAKE_Fortran_COMPILER_ID MATCHES Intel|IntelLLVM)
-  STRING(FIND ${CMAKE_Fortran_FLAGS} noold_maxminloc index)
+  if (CMAKE_Fortran_FLAGS)
+    STRING(FIND ${CMAKE_Fortran_FLAGS} noold_maxminloc index)
+  else()
+    set(index -1)
+  endif()
 
   if(${index} EQUAL -1)
     message(WARNING "We need -assume noold_maxminloc because of Intel compiler "
