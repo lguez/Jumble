@@ -19,15 +19,18 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES Intel|IntelLLVM)
   set(bug_address
     "https://community.intel.com/t5/Intel-Fortran-Compiler/Compiler-bug-backspace-after-non-advancing-read/m-p/1614679#M172939")
 
-  if(CMAKE_Fortran_COMPILER_ID MATCHES IntelLLVM
-      AND CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 2024.2.0)
-    message(WARNING "Procedure csvread does not work with ifx version 2023.1.0"
-      "because of backspace bug in compiler: ${bug_address}"
-    )
-  elseif(CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER 19.1.3.20200925)
+  if(CMAKE_Fortran_COMPILER_ID MATCHES IntelLLVM)
+    if(CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 2024.2.0)
+      message(WARNING "Procedure csvread does not work with ifx version "
+	"2023.1.0 because of backspace bug in compiler: ${bug_address}"
+      )
+    endif()
+  else()
     # CMAKE_Fortran_COMPILER_ID MATCHES Intel
-    message(WARNING "Procedure csvread does not work with ifort version "
-      "2021.9.0 because of backspace bug in compiler: ${bug_address}")
+    if(CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER 19.1.3.20200925)
+      message(WARNING "Procedure csvread does not work with ifort version "
+	"2021.9.0 because of backspace bug in compiler: ${bug_address}")
+    endif()
   endif()
 endif()
 
